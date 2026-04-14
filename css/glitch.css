@@ -1,0 +1,157 @@
+/* Glitch Animation */
+.glitch-sw, .glitch-sw-hover:hover {
+  height: auto;
+  color: white;
+  /*font-size: 60px;*/
+  position: relative;
+  width: 60px;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.glitch-sw:after, .glitch-sw-hover:hover:after {
+  content: attr(data-text);
+  position: absolute;
+  /*left: 2px;*/
+  text-shadow: -1px 0 red;
+  top: 2px;
+  color: white;
+  background: black;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-sw 2s infinite linear alternate-reverse;
+}
+
+.glitch-sw:before, .glitch-sw-hover:hover:before {
+  content: attr(data-text);
+  position: absolute;
+  /*left: -2px;*/
+  text-shadow: 1px 0 blue;
+  top: -2px;
+  color: white;
+  background: black;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2-sw 3s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-sw {
+  5% {
+    clip: rect(0, 16px, 9999px, 58px);
+  }
+  10% {
+    clip: rect(0, 5px, 9999px, 13px);
+  }
+  15% {
+    clip: rect(0, 20px, 9999px, 27px);
+  }
+  20% {
+    clip: rect(0, 2px, 9999px, 41px);
+  }
+  25% {
+    clip: rect(0, 47px, 9999px, 42px);
+  }
+  30% {
+    clip: rect(0, 5px, 9999px, 40px);
+  }
+  35% {
+    clip: rect(0, 39px, 9999px, 50px);
+  }
+  40% {
+    clip: rect(0, 22px, 9999px, 60px);
+  }
+  45% {
+    clip: rect(0, 36px, 9999px, 12px);
+  }
+  50% {
+    clip: rect(0, 25px, 9999px, 50px);
+  }
+  55% {
+    clip: rect(0, 10px, 9999px, 17px);
+  }
+  60% {
+    clip: rect(0, 3px, 9999px, 33px);
+  }
+  65% {
+    clip: rect(0, 58px, 9999px, 4px);
+  }
+  70% {
+    clip: rect(0, 57px, 9999px, 23px);
+  }
+  75% {
+    clip: rect(0, 56px, 9999px, 11px);
+  }
+  80% {
+    clip: rect(0, 2px, 9999px, 46px);
+  }
+  85% {
+    clip: rect(0, 36px, 9999px, 52px);
+  }
+  90% {
+    clip: rect(0, 5px, 9999px, 43px);
+  }
+  95% {
+    clip: rect(0, 17px, 9999px, 13px);
+  }
+}
+@keyframes noise-anim-2-sw {
+  5% {
+    clip: rect(0, 18px, 9999px, 58px);
+  }
+  10% {
+    clip: rect(0, 13px, 9999px, 27px);
+  }
+  15% {
+    clip: rect(0, 42px, 9999px, 49px);
+  }
+  20% {
+    clip: rect(0, 22px, 9999px, 26px);
+  }
+  25% {
+    clip: rect(0, 35px, 9999px, 17px);
+  }
+  30% {
+    clip: rect(0, 15px, 9999px, 3px);
+  }
+  35% {
+    clip: rect(0, 24px, 9999px, 55px);
+  }
+  40% {
+    clip: rect(0, 37px, 9999px, 32px);
+  }
+  45% {
+    clip: rect(0, 7px, 9999px, 34px);
+  }
+  50% {
+    clip: rect(0, 30px, 9999px, 38px);
+  }
+  55% {
+    clip: rect(0, 10px, 9999px, 25px);
+  }
+  60% {
+    clip: rect(0, 7px, 9999px, 8px);
+  }
+  65% {
+    clip: rect(0, 14px, 9999px, 29px);
+  }
+  70% {
+    clip: rect(0, 53px, 9999px, 53px);
+  }
+  75% {
+    clip: rect(0, 54px, 9999px, 49px);
+  }
+  80% {
+    clip: rect(0, 15px, 9999px, 53px);
+  }
+  85% {
+    clip: rect(0, 26px, 9999px, 39px);
+  }
+  90% {
+    clip: rect(0, 60px, 9999px, 17px);
+  }
+  95% {
+    clip: rect(0, 6px, 9999px, 47px);
+  }
+}
+
+/* End glitch Animation */

@@ -1,0 +1,300 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:200,400,600,800);
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  overflow: hidden;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+}
+
+#wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#wrapper.wrapped {
+  transform: translateX(300px);
+}
+#wrapper.wrapped .canvas:before {
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s, opacity 0.5s ease-in-out;
+}
+#wrapper .controls {
+  background-color: #5bc0eb;
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  left: -300px;
+  overflow-y: auto;
+}
+#wrapper .controls::-webkit-scrollbar {
+  width: 4px;
+}
+#wrapper .controls::-webkit-scrollbar-thumb {
+  background-color: fade(white, 20%);
+}
+#wrapper .controls section {
+  margin: 0 15px;
+  font-weight: 600;
+  font-size: 12px;
+}
+#wrapper .controls section h1 {
+  text-indent: -2px;
+}
+#wrapper .controls section h2,
+#wrapper .controls section h3 {
+  text-indent: -1px;
+}
+#wrapper .controls label {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+#wrapper .controls label span {
+  font-weight: 800;
+}
+#wrapper .controls p {
+  color: rgba(255, 255, 255, 0.75);
+}
+#wrapper .controls p strong {
+  color: white;
+}
+#wrapper .canvas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: white;
+  transform: translateX(0);
+  transition: transform 0.2s ease-in-out;
+  backface-visibility: hidden;
+  color: #2d3047;
+  touch-action: none;
+}
+#wrapper .canvas:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: fade(white, 40%);
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s linear 0.5s, opacity 0.5s ease-in-out;
+}
+#wrapper .canvas a {
+  color: #2d3047;
+}
+#wrapper .canvas a:hover {
+  color: #0b113f;
+}
+#wrapper .canvas canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.form-group-vertical {
+  display: inline-block;
+}
+.form-group-vertical label span {
+  display: block;
+  font-size: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.form-control {
+  border-radius: 2px;
+  border-color: fade(white, 20%);
+  box-shadow: none;
+}
+.form-control[type=number] {
+  width: 48px;
+  font-size: 9px;
+  padding: 4px;
+  height: auto;
+}
+
+.btn {
+  border-radius: 2px;
+}
+.btn.btn-wide {
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+  position: relative;
+  cursor: ew-resize;
+  padding: 6px 0;
+  height: 16px;
+}
+.slider .slider-track {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.slider .slider-thumb {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: white;
+  transition: transform 0.2s cubic-bezier(0.34, 1.61, 0.7, 1);
+  transform: scale(1);
+  left: 0;
+  margin: -6px 0 0 -8px;
+  transform: scale(1);
+}
+.slider .slider-thumb:hover {
+  transform: scale(1.5);
+}
+.slider.slider-vertical {
+  padding: 0 6px;
+  height: 100px;
+  cursor: ns-resize;
+  width: 16px;
+  margin: 10px auto;
+}
+.slider.slider-vertical .slider-track {
+  width: 4px;
+  height: 100%;
+  background-color: gray;
+}
+.slider.slider-vertical .slider-thumb {
+  left: auto;
+  bottom: 0;
+  margin: 0 0 -8px -6px;
+}
+
+label.toggle {
+  cursor: pointer;
+  width: 32px;
+  height: 16px;
+  display: block;
+  position: relative;
+  margin: 0px;
+  padding: 6px 0;
+}
+label.toggle input {
+  display: none;
+}
+label.toggle .toggle-track {
+  width: 100%;
+  height: 4px;
+  background-color: fade(white, 20%);
+  transition: all 0.3s cubic-bezier(0.34, 1.61, 0.7, 1);
+}
+label.toggle .toggle-track .toggle-thumb {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 24px;
+  background-color: #ffffff;
+  left: 0px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.34, 1.61, 0.7, 1);
+  top: 0;
+  margin-left: -8px;
+}
+label.toggle input:checked + .toggle-track {
+  background-color: fade(white, 80%);
+}
+label.toggle input:checked + .toggle-track .toggle-thumb {
+  left: 100%;
+  background-color: #ffffff;
+}
+label.toggle:hover .toggle-thumb {
+  transform: scale(1.5);
+}
+
+.quick {
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  z-index: 1;
+}
+.quick a {
+  font-size: 25px;
+  display: block;
+}
+.quick .slider .slider-track {
+  background-color: fade(#2d3047, 20%);
+}
+.quick .slider .slider-thumb {
+  background-color: #2d3047;
+}
+.quick .form-group-vertical {
+  width: 100%;
+}
+
+body.has-shader canvas#render {
+  filter: url("#filter");
+  -webkit-filter: url("#filter");
+}
+
+body.has-night #wrapper .controls {
+  background-color: #ffffff;
+  color: #2d3047;
+}
+body.has-night #wrapper .controls::-webkit-scrollbar-thumb {
+  background-color: fade(#2d3047, 20%);
+}
+body.has-night #wrapper .controls p {
+  color: fade(#2d3047, 80%);
+}
+body.has-night #wrapper .controls p strong {
+  color: #2d3047;
+}
+body.has-night #wrapper .canvas {
+  background-color: #2d3047;
+  color: fade(white, 75%);
+}
+body.has-night #wrapper .canvas a {
+  color: fade(white, 75%);
+}
+body.has-night #wrapper .canvas a:hover {
+  color: white;
+}
+body.has-night #wrapper .canvas:before {
+  background-color: fade(black, 20%);
+}
+body.has-night .form-control {
+  border-color: fade(#2d3047, 20%);
+}
+body.has-night .slider .slider-track {
+  background-color: fade(#2d3047, 20%);
+}
+body.has-night .slider .slider-thumb {
+  background-color: #2d3047;
+}
+body.has-night label.toggle .toggle-track {
+  background-color: fade(#2d3047, 20%);
+}
+body.has-night label.toggle .toggle-track .toggle-thumb {
+  background-color: #2d3047;
+}
+body.has-night label.toggle input:checked .toggle-track {
+  background-color: fade(#2d3047, 80%);
+}
+body.has-night .quick .slider .slider-track {
+  background-color: fade(white, 20%);
+}
+body.has-night .quick .slider .slider-thumb {
+  background-color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

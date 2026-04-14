@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="">
+<head><meta charset="euc-kr"><meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<title>Why Surfers Should Be Fed?</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<link href="https://vjs.zencdn.net/7.20.1/video-js.css" rel="stylesheet" />
+	<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" referrerpolicy="no-referrer" rel="stylesheet" />
+	<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" referrerpolicy="no-referrer" rel="stylesheet" />
+	<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" referrerpolicy="no-referrer" rel="stylesheet" />
+	<link as="font" crossorigin="" href="../fonts/EBGaramond-Regular.ttf" rel="preload" type="font/ttf" />
+	<link as="font" crossorigin="" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/im-fell-french-canon-pro.woff" rel="preload" type="font/woff" />
+	<link as="font" crossorigin="" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/im-fell-french-canon-pro.woff2" rel="preload" type="font/woff2" />
+	<link href="../css/styles.css?v=2" rel="stylesheet" />
+	<link href="../css/animations.css" rel="stylesheet" />
+	<link href="../css/work.css?v=2" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:300,400,500,700|Material+Icons&amp;subset=latin-ext" rel="stylesheet" />
+	<style type="text/css">@font-face {
+      font-family: EBGaramond-Regular;
+      src: url(./fonts/EBGaramond-Regular.ttf);
+    }
+
+    @font-face {
+      font-family: "IM Fell French Canon Pro";
+      src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/im-fell-french-canon-pro.woff2") format("woff2"),
+        url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/im-fell-french-canon-pro.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @keyframes sideslide {
+      0% {
+        transform: translateX(0%) scale(1);
+      }
+
+      50% {
+        transform: translateX(67%) scale(0.75);
+      }
+
+      100% {
+        transform: translateX(134%) scale(1);
+        background: white;
+      }
+    }
+
+    body {
+      font-family: serif;
+    }
+
+    .talk-link {
+      display: block;
+      color: #999999;
+      text-align: right;
+      font-size: 1.4rem;
+      word-wrap: break-word;
+    }
+
+    .mySlider {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .slick-track {
+      display: flex;
+    }
+
+    .slick-track .slick-slide {
+      height: auto;
+    }
+
+    .slick-slide img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    /* slick slider arrows */
+
+    div.slider-arrow {
+      position: absolute;
+      top: 50%;
+      height: 36px;
+      margin-top: -18px;
+      color: white;
+      opacity: 0.5;
+      line-height: 36px;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    div.slider-prev {
+      left: 20px;
+    }
+
+    div.slider-next {
+      right: 20px;
+    }
+
+    .video-js {
+      width: 100%;
+    }
+
+    .vjs-big-play-button {
+      border: none !important;
+      box-shadow: none !important;
+      background-color: transparent !important;
+      font-size: 60px !important;
+    }
+
+    header form {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+    }
+
+    label[for="mode"] {
+      display: block;
+      width: 50px;
+      position: relative;
+      height: 50px;
+    }
+
+    .logo-moon {
+      height: 100%;
+    }
+
+    label[for="mode"]:hover {
+      cursor: pointer;
+    }
+
+    label[for="mode"] img {
+      position: absolute;
+      top: 0;
+      fill: #b7eaff;
+      transition: 0.8s;
+      width: 100%;
+    }
+
+    #mode {
+      display: none;
+    }
+
+    section {
+      max-width: 50rem;
+      line-height: 1.4;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    section h1 {
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    section h2 {
+      text-align: center;
+      margin: 0;
+    }
+
+    section h2 img {
+      width: 50%;
+      min-width: 200px;
+    }
+
+    section h3 {
+      font-size: 2.3rem;
+      text-align: center;
+    }
+
+    section h3:not(section h3:first-of-type) {
+      margin-top: 10rem;
+    }
+
+    section h3 span {
+      display: block;
+    }
+
+    section h3 span:after {
+      content: ":";
+    }
+
+    section p {
+      font-size: 1.4rem;
+    }
+
+    section .diagram {
+      width: 17.8rem;
+      float: right;
+      margin-left: 3rem;
+      max-height: 400px;
+      object-fit: cover;
+      margin-bottom: 2rem;
+    }
+
+    section p img {
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      section .diagram {
+        float: none;
+        display: block;
+        width: 75%;
+        margin: 1rem auto;
+      }
+
+      label[for="mode"] span {
+        height: 105%;
+      }
+
+      .video-js {
+        margin-top: 0;
+      }
+
+      .talk-link {
+        font-size: 1rem;
+      }
+    }
+
+    body {
+      transition: 2s background, color;
+    }
+
+    .night body {
+      background: #000;
+      color: #fff;
+    }
+
+    .night img.switch {
+      filter: invert(100%);
+    }
+
+
+    @media (light-level: dim) {
+      body {
+        background: #000;
+        color: #fff;
+      }
+
+      img.switch {
+        filter: invert(100%);
+      }
+    }
+
+    /* MOBILE MESSAGE SCREEN */
+    .wrapper * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .wrapper {
+      background: #fff;
+      border-radius: 2px;
+      overflow: hidden;
+      min-width: 300px;
+      width: 300px;
+      height: 550px;
+      margin: 0 auto;
+      box-shadow: 0 20px 80px -15px rgba(28, 20, 13, .5), 0 5px 20px -5px rgba(28, 20, 13, .3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrapper header,
+    .wrapper section,
+    .wrapper footer {
+      width: 100%;
+    }
+
+    .wrapper header {
+      height: 56px;
+      background: #212128;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-sizing: border-box;
+      line-height: 24px;
+      box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+    }
+
+    .wrapper header h6 {
+      text-align: center;
+      flex-grow: 1;
+      font-family: serif;
+      font-size: 20px;
+      font-weight: normal;
+      margin: 0 0 2px 0;
+    }
+
+    .wrapper header .material-icons {
+      color: rgba(255, 255, 255, .6);
+      vertical-align: bottom;
+      position: relative;
+    }
+
+    .wrapper header .material-icons:hover:after {
+      position: absolute;
+      top: 50% !important;
+      left: 50% !important;
+      margin-top: -18px;
+      margin-left: -18px;
+      content: '';
+      display: block;
+      background: rgba(255, 255, 255, .08);
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 50% !important;
+    }
+
+    .wrapper section {
+      flex: auto;
+      background: #fafafa;
+      max-height: 500px;
+      overflow: auto;
+    }
+
+    .wrapper section .scroll {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wrapper section .message-wrapper {
+      padding: 5px 0;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .wrapper section .message-wrapper .message-box {
+      order: 1;
+      position: relative;
+      display: inline-block;
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 400;
+      font-family: serif;
+    }
+
+    .wrapper section .message-wrapper .ago {
+      font-size: 11px;
+      align-self: center;
+      white-space: nowrap;
+      padding: 6px;
+      color: rgba(33, 33, 40, .7);
+      font-family: serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .wrapper section .message-wrapper.in {
+      justify-content: flex-start;
+      padding-right: 6px;
+    }
+
+    .wrapper section .message-wrapper.in .message-box {
+      background: #212128;
+      padding: 12px 20px 12px 50px;
+      left: -30px;
+      margin-right: -30px;
+      border-radius: 0 10px 10px 0;
+      color: rgba(255, 255, 255, .95);
+      box-shadow: 0 0 30px -5px rgba(33, 33, 40, .4);
+    }
+
+    .wrapper section .message-wrapper.in .ago {
+      order: 2;
+    }
+
+    .wrapper section .message-wrapper.out {
+      justify-content: flex-end;
+      padding-left: 6px;
+    }
+
+    .wrapper section .message-wrapper.out .message-box {
+      background: #fff;
+      padding: 12px 50px 12px 20px;
+      right: -30px;
+      margin-left: -30px;
+      border-radius: 10px 0 0 10px;
+      color: #212128;
+      box-shadow: 0 0 30px -5px rgba(33, 33, 40, .3);
+    }
+
+    .wrapper section .message-wrapper.out .ago {
+      order: 0;
+    }
+
+    .wrapper footer {
+      min-height: 56px;
+      height: 56px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .wrapper footer div {
+      position: relative;
+      padding: 12px;
+      width: 100%;
+      background: #212128;
+    }
+
+    .wrapper footer div .search {
+      background: #fff;
+      color: #212128;
+      border: 0;
+      -box-shadow: 0 0 30px -5px rgba(33, 33, 40, 0.4);
+      width: 100%;
+      border-radius: 10px;
+      padding: 7px 12px;
+      box-sizing: border-box;
+      outline: none;
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 400;
+      font-family: serif;
+    }
+
+    .wrapper .ripple {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .wrapper .ripple:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transform: scale(10, 10);
+      opacity: 0;
+      transition: transform 0.5s, opacity 1s;
+    }
+
+    .wrapper .ripple:active:after {
+      transform: scale(0, 0);
+      opacity: 0.3;
+      transition: 0s;
+    }
+
+    .wrapper ::-webkit-scrollbar {
+      width: 0;
+    }
+
+    #my-video {
+      margin-top: 6rem;
+    }
+	</style>
+</head>
+<body data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1199.0" data-new-gr-c-s-loaded="14.1070.0">
+<header><a class="link_left" href="../bonus/index.html"><img class="star-menu-icon" src="../logo/spinningstar.svg" /></a>
+<form method="get"><input id="mode" name="mode" onclick="modecheck()" type="checkbox" value="night" /> <label for="mode"> <img alt="" class="logo-moon" src="../mywork/projects/whysurfersshouldbefed/logomoon.png" /> </label></form>
+</header>
+
+<section>
+<h1>Why Surfers Should Be Fed?</h1>
+
+<h3><span>Chapter I</span>Open it</h3>
+
+<p><strong>Personal Notes: &quot;Open it&quot; Installation, February 4, 2020</strong></p>
+
+
+   <p>For this work, I played three roles: cleaning lady, painter, and bookbinder. I wanted to speak about freedom and the quiet power of invisibility. To blur the lines between service and authorship, between what is shown and what is hinted at.</p>
+
+<p>The room is almost empty. A single book sits in a corner: <em>Why surfers should be fed?</em> The title comes from a conversation between philosophers John Rawls and Philippe Van Parijs, over drinks, debating universal income. The phrase was later developed by Van Parijs in his 1991 article <em>Why Surfers Should Be Fed: The Liberal Case for an Unconditional Basic Income</em>, in which he reflects on how society values leisure, work, and freedom &mdash; questions that quietly echo throughout this piece. &ldquo;What about the most selfish guy,&rdquo; Rawls asked, &ldquo;the one who just surfs all day?&rdquo;</p>
+
+<p>I've always liked skater boys. And now I know why. There&rsquo;s something honest in their rhythm &mdash; the way they wait, observe, move with the world rather than against it. Like surfers, they don&rsquo;t take much, but they find flow. There&rsquo;s dignity in that. And elegance.</p>
+
+<p>When I think of this piece, I also think of my father. As a student, he once had a biology teacher who said: &ldquo;The next person who looks out the window will never be invited back to class.&rdquo; My father stood up, opened the window, leaned his elbows on the frame &mdash; and never went back. He didn&rsquo;t need to. I've always loved that story. It stays with me. It says more about freedom than any theory I could write.</p>
+
+<p>In a way, this piece was also a way of leaving an art school with elegance. Not through confrontation. But through an open window.</p>
+
+<p>This room is like a sanctuary. The windows are open, letting the cold air in. The book, placed deliberately in a lonely corner, serves as a sacred object. Its presence invites visitors first to observe and contemplate the title and the book on the edge. For those truly curious, it is not necessary but an option to engage deeper by calling a number written inside. This leads to an SMS interaction, culminating in a flirty poetic invitation to meet at a waste treatment plant after the exhibition. Art is already there, in this city, more useful than even the Eiffel Tower. This part of the work transforms time and space, urging viewers to contemplate the existing beauty around us and open doors to new experiences.</p>
+
+<p>The conversation unfolds in fragments. A message says: &ldquo;The night begins to be black but it is far from being black, it is blue from turquoise blue, to royal blue and finally to midnight blue.&rdquo; Another follows: &ldquo;Forget the weather, our shit is burning. Do you hear the rain? It's human made but well made. Like me.&rdquo;</p>
+
+<p>The waste treatment plant becomes a sort of rendezvous. A place where fiction quietly meets infrastructure. The invitation is there, but the voice behind it fades.</p>
+
+<p>I&rsquo;ve always liked when things unfold discreetly. Like in Gossip Girl: you don&rsquo;t always know who&rsquo;s speaking, but the tension is built through absence, through suggestion. Florence Jung and Sophie Calle taught me that fiction and intimacy can shape space invisibly. That art can whisper, rather than shout.</p>
+
+<p>The room breathes a little. The open window lets in the cold. The atmosphere &mdash; its fading light, its slowness &mdash; owes as much to painting as to weather. Sometimes I want to paint without pigment. Let the space carry its own life. Let almost nothing become everything.</p>
+
+
+</html>
+
+
+<p><img alt="" src="../mywork/projects/whysurfersshouldbefed/3.png" /></p>
+<!-- MOBILE MESSAGE SCREEN -->
+
+<div class="wrapper">
+<header><a class="ripple" href="#/"><i class="material-icons">navigate_before</i> </a>
+
+<h6>Chat</h6>
+<a class="ripple" href="#/"> <i class="material-icons">more_vert</i> </a></header>
+
+<section>
+<div class="scroll">
+<div class="message-wrapper in">
+<div class="message-box">Vodafone Mailbox: +491638703402 hat keine Nachricht hinterlassen: 1 Versuch am 08.02.2020 19:27:40</div>
+<span class="ago"><span>08.02.2020</span> <span>19:27</span> </span></div>
+
+<div class="message-wrapper out">
+<div class="message-box">The night begins to be black but it is far from being black, it is blue from turquoise blue, to royal blue and finally to midnight blue. We get closer to the sunset and I perceive green and yellow. And now even blood red.</div>
+<span class="ago"><span>08.02.2020</span> <span>19:29</span> </span></div>
+
+<div class="message-wrapper in">
+<div class="message-box">Thanks a lot for the inspiration and the anxiety I felt before making that call.</div>
+<span class="ago"><span>08.02.2020</span> <span>19:35</span> </span></div>
+
+<div class="message-wrapper out">
+<div class="message-box">See you, babe.<br />
+09/01/20 at 9 PM<br />
+51°13&#39;25.4&quot;N 6°48&#39;48.7&quot;E</div>
+<span class="ago"><span>08.02.2020</span> <span>21:00</span> </span></div>
+
+<div class="message-wrapper in">
+<div class="message-box">Sounds exciting. What will be about?</div>
+<span class="ago"><span>08.02.2020</span> <span>21:12</span> </span></div>
+
+<div class="message-wrapper in">
+<div class="message-box">Where are you?</div>
+<span class="ago"><span>09.02.2020</span> <span>21:05</span> </span></div>
+
+<div class="message-wrapper out">
+<div class="message-box">Hey honey,<br />
+Forget the weather,<br />
+Our shit is burning.<br />
+Do you hear the rain?<br />
+It&#39;s human made but well made.<br />
+Like me<br />
+It&#39;s warm, it&#39;s for us.<br />
+Forget the phone, I am not there anymore.<br />
+But you are.</div>
+<span class="ago"><span>09.02.2020</span> <span>21:10</span> </span></div>
+</div>
+</section>
+
+<footer>
+<div><input class="search" type="text" /></div>
+</footer>
+</div>
+
+<h3><span>Chapter II</span>. .--- . / -.-. .... . .-. -.-. .... . / .-.. .----. .... --- -- -- .</h3>
+
+<p>This project centers on the idea of using the museum K21 as a lighthouse, with its light shining during evenings and nights, regardless of the museum&rsquo;s usual operating hours. To achieve this, I find inspiration in Diogenes of Sinope, portrayed through the symbol of an Androgynous surfer. He is an historical figure who lived in a barrel and challenged societal norms.&nbsp;</p>
+
+<p><img alt="" class="diagram" src="/mywork/projects/jecherchelhomme/4.png" />&nbsp;The lights emit Morse code, using that famous phrase from Diogenes of Sinope: I am looking for a human. &laquo;<em>Je cherche l&acute;Homme.&nbsp;</em>&raquo; in French, this phrase - by confusing man as a figure of humanity and man of the male gender - makes one think of the exclamation I have often heard from heteronormative women, signifying their search for a true romantic encounter.</p>
+
+<p>Coming To Voice, K21, D&uuml;sseldorf, 2021</p>
+
+<p><img alt="" src="../mywork/projects/jecherchelhomme/2.png" /></p>
+
+<video class="video-js vjs-big-play-centered" controls="" data-setup="{}" height="460" id="my-video" poster="https://www.dropbox.com/s/9ejhxvn1h62hfcw/jecherchelhomme.JPG?raw=1" preload="auto" width="840"><source src="https://www.dropbox.com/s/hf8t306a2d4htx5/jecherchelhomme.mp4?raw=1" type="video/mp4" />
+<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+</video>
+
+<p><img alt="" src="../mywork/projects/jecherchelhomme/3.png" /></p>
+
+<p style="text-align: right; margin-bottom: 0"><u>TALK</u></p>
+<a href="https://www.artjunk.de/events/current-social-paintings-relations-networks/"><span class="talk-link">https://www.artjunk.de/events/current-social-paintings-relations-networks/</span> </a>
+
+<h3><span>Chapter III</span>Viser la lune</h3>
+
+<div class="mySlider">
+<div><img alt="" src="../mywork/projects/whysurfersshouldbefed/BPA1.png" /></div>
+
+<div><img alt="" src="../mywork/projects/whysurfersshouldbefed/BPA2.jpg" /></div>
+
+<div><img alt="" src="../mywork/projects/whysurfersshouldbefed/BPA3.png" /></div>
+
+<div><img alt="" src="../mywork/projects/whysurfersshouldbefed/BPA4.jpg" /></div>
+
+<div><img alt="" src="../mywork/projects/whysurfersshouldbefed/BPA5.png" /></div>
+
+<div><img alt="" src="../mywork/projects/whysurfersshouldbefed/BPA6.jpg" /></div>
+</div>
+
+<p style="text-align: center">Iced roses containing hand-engraved military dog tags. These American dog tags contain messages from unknown people, revealed in the first chapter of<em> Why Surfers Should be Fed?</em></p>
+<!-- <p style="text-align: center">Bahamas - All I&rsquo;ve Ever Known</p> -->
+
+<p><img alt="" class="diagram" src="../mywork/projects/whysurfersshouldbefed/BIGROSE.png" /> In a time when&nbsp;we stay more and more at home, glued to the screen of our phones, seduction has lost its nature. People hope to find this extraordinary idea of destiny, at the end of a click.<br />
+The short film tells the story of a boy who hopes to meet a girl named Luna. He constantly sees signs that bring him back to her. Is he making up these signs?<br />
+<br />
+<em>BPA Space, Cologne 2022.&nbsp;</em></p>
+
+<video class="video-js vjs-big-play-centered" controls="" data-setup="{}" height="640" id="my-video" poster="../mywork/projects/whysurfersshouldbefed/video-poster.jpg" preload="auto" width="840"><source src="../mywork/projects/whysurfersshouldbefed/dogtag.mp4" type="video/mp4" />
+<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+</video>
+
+<p>I don&rsquo;t think I had any bad intentions. There was just something in your eyes that made me<br />
+want to meet you, that&#39;s all.</p>
+
+<p>The tarot card that responds to the 6:18 p.m. mirror time is the moon. It is the eighteenth card of the Tarot de Marseille. It symbolizes fear, dread, anxiety, and worry, i.e. everything<br />
+related to insecurity. It is a card that is qualified as mystical, it designates intuition and clairvoyance.<br />
+It gives you a fruitful imagination and develops your spirituality so that you can feel the feelings of others. The Moon guides you to evolve in the field of divinatory arts and telepathy.<br />
+And if you plan to specialize in such a field, it advises you on the interpretation of dreams.</p>
+
+<p><img alt="" src="../mywork/projects/whysurfersshouldbefed/BPA7.jpg" /></p>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://vjs.zencdn.net/7.20.1/video.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="../js/script.js" type="text/javascript"></script><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p><script>
+      var mode = document.getElementById("mode");
+      var lux;
+      window.addEventListener("devicelight", function (e) {
+        lux = e.value;
+        // AmbientLight API - not well-supported right now
+      });
+      var currentTime = new Date().getHours();
+
+      function modecheck() {
+        if (mode.checked) {
+          document.documentElement.classList.add("night");
+        } else {
+          document.documentElement.classList.remove("night");
+        }
+      }
+
+      function timeCheck() {
+        if (currentTime > 18 || currentTime < 6 || lux < 50) {
+          mode.checked = true;
+        }
+      }
+
+      function callEveryHour() {
+        setInterval(timeCheck(), 1000 * 60 * 60);
+      }
+      timeCheck();
+      modecheck();
+    </script><script>
+      $(document).ready(function () {
+        var $slider_container = $(".mySlider");
+        $(".mySlider").slick({
+          appendArrows: $slider_container,
+          // Add FontAwesome Class
+          prevArrow:
+            '<div class="slider-arrow slider-prev fa-solid fa-chevron-left"></div>',
+          nextArrow:
+            '<div class="slider-arrow slider-next fa-solid fa-chevron-right"></div>',
+          autoplay: true,
+          autoplaySpeed: 4000,
+        });
+        $(".mySlider").show();
+      });
+    </script></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+</body>
+</html>

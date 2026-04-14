@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Run Rabbit Run</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link href="../css/styles.css?v=1.1" rel="stylesheet" />
+  <link href="../css/animations.css" rel="stylesheet" />
+  <link href="../css/work.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap"
+    rel="stylesheet" />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <style>
+    *,
+    *::after,
+    *::before {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(0deg,
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.3)),
+        url(../mywork/projects/runrabbitrun/background.jpg);
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      font-family: serif;
+    }
+
+
+    header {
+      position: absolute;
+      z-index: 10;
+    }
+
+    #more_info_link {
+      color: white;
+    }
+
+    .homer {
+      margin: 0 auto;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 300px;
+    }
+
+    #donut {
+      background-image: url(../mywork/projects/runrabbitrun/carrotcursor.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 100px;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      cursor: none;
+      width: 100px;
+    }
+
+    .top-links {
+      display: inline-block;
+      padding-left: 5%;
+    }
+
+    .top-links a {
+      font-family: inherit;
+      font-weight: 900;
+      position: relative;
+      display: inline-block;
+      padding: 25px 30px;
+      margin: 20px 0;
+      color: #03e9f4;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.5s;
+      letter-spacing: 4px;
+      overflow: hidden;
+      margin-right: 50px;
+      cursor: pointer;
+    }
+
+    .top-links a:hover {
+      background: #03e9f4;
+      color: #050801;
+      box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+        0 0 200px #03e9f4;
+      -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+    }
+
+    .top-links a:nth-child(1) {
+      filter: hue-rotate(270deg);
+    }
+
+    .top-links a:nth-child(2) {
+      filter: hue-rotate(110deg);
+    }
+
+    .top-links a span {
+      position: absolute;
+      display: block;
+    }
+
+    .top-links a span:nth-child(1) {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #03e9f4);
+      animation: animate1 1s linear infinite;
+    }
+
+    @keyframes animate1 {
+      0% {
+        left: -100%;
+      }
+
+      50%,
+      100% {
+        left: 100%;
+      }
+    }
+
+    .top-links a span:nth-child(2) {
+      top: -100%;
+      right: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, #03e9f4);
+      animation: animate2 1s linear infinite;
+      animation-delay: 0.25s;
+    }
+
+    @keyframes animate2 {
+      0% {
+        top: -100%;
+      }
+
+      50%,
+      100% {
+        top: 100%;
+      }
+    }
+
+    .top-links a span:nth-child(3) {
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(270deg, transparent, #03e9f4);
+      animation: animate3 1s linear infinite;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes animate3 {
+      0% {
+        right: -100%;
+      }
+
+      50%,
+      100% {
+        right: 100%;
+      }
+    }
+
+    .top-links a span:nth-child(4) {
+      bottom: -100%;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(360deg, transparent, #03e9f4);
+      animation: animate4 1s linear infinite;
+      animation-delay: 0.75s;
+    }
+
+    @keyframes animate4 {
+      0% {
+        bottom: -100%;
+      }
+
+      50%,
+      100% {
+        bottom: 100%;
+      }
+    }
+
+    .modalVideo {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 10;
+    }
+
+    .modalVideo video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      display: block;
+    }
+
+    .modalVideo .modal-close {
+      cursor: pointer;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      padding: 5px;
+      color: #444;
+      background-color: #fff;
+    }
+
+    .is-hide {
+      display: none;
+    }
+
+    .logo {
+      display: none;
+    }
+
+    .logo img {
+      width: 80px;
+    }
+
+    /*rotate device mobile*/
+
+    .rotate-container {
+      width: 100%;
+      min-height: 100vh;
+      background-color: black;
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      display: none;
+    }
+
+    .phone {
+      height: 50px;
+      width: 100px;
+      border: 3px solid white;
+      border-radius: 10px;
+      animation: rotate 1.5s ease-in-out infinite alternate;
+      display: none;
+    }
+
+    .message {
+      color: white;
+      font-size: 1em;
+      margin-top: 40px;
+      display: none;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      50% {
+        transform: rotate(-90deg);
+      }
+
+      100% {
+        transform: rotate(-90deg);
+      }
+    }
+
+    @media screen and (max-width: 768px) and (orientation: portrait) {
+
+      .phone,
+      .message,
+      .rotate-container {
+        display: block;
+      }
+
+      .rotate-container {
+        display: flex;
+      }
+
+      .logo {
+        display: none !important;
+      }
+    }
+
+    @media screen and (max-width: 768px),
+    (min-width: 600px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+
+      .homer,
+      #donut {
+        display: none;
+      }
+
+      .top-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        min-height: 100vh;
+        padding: 0;
+      }
+
+      .top-links a {
+        text-align: center;
+        font-size: 1rem;
+        width: 30%;
+      }
+
+      .modalVideo video {
+        width: 100%;
+        height: 100%;
+      }
+
+      .logo {
+        display: block;
+        position: absolute;
+        left: 2rem;
+        top: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="rotate-container">
+    <div class="phone"></div>
+    <div class="message">
+
+      <p>Cute bunny, please rotate your phone.</p>
+    </div>
+  </div>
+  <div class="logo">
+    <a href="../">
+      <img src="../mywork/projects/runrabbitrun/bugsbunny/rabbitgoback.svg" alt="" /></a>
+  </div>
+  <div class="top-links">
+    <a id="race-1" href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Race 1
+    </a>
+    <a id="race-2" href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Race 2
+    </a>
+    <a id="night-mode" href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Night Mode
+    </a>
+  </div>
+
+  <div class="modalVideo is-hide" id="firstVid">
+    <video width="80%" height="80%" src="../mywork/projects/runrabbitrun/race1.mp4" frameborder="0" allowfullscreen
+      controls></video>
+    <a class="modal-close js-modal-close">X</a>
+  </div>
+
+  <div class="modalVideo is-hide" id="secondVid">
+    <video width="80%" height="80%" src="../mywork/projects/runrabbitrun/race2.mp4" frameborder="0" allowfullscreen
+      controls></video>
+    <a class="modal-close js-modal-close">X</a>
+  </div>
+
+  <div class="modalVideo is-hide" id="thirdVid">
+    <video width="80%" height="80%" src="../mywork/projects/runrabbitrun/nightmode.mp4" frameborder="0" allowfullscreen
+      controls></video>
+    <a class="modal-close js-modal-close">X</a>
+  </div>
+
+  <img id="homer" class="homer" src="../mywork/projects/runrabbitrun/bugsbunny/upleftrabbit.svg" alt="" />
+  <div id="donut"></div>
+
+  <div class="modal" id="myModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+
+      <center>
+        You&acute;re so vulnerable<br />
+        <br />
+        That makes you so adorable<br />
+        <br />
+        But Run Rabbit Run<br />
+        <br />
+        As those wild rabbits living in this parking lot, we are playing as
+        well in a democratic society. If life is a video game, why can&rsquo;t
+        they take part with us? What interests me is to go back to the basis
+        of our childhood, when we didn&rsquo;t distinguish between animals and
+        humans. When your dog was your brother. Where do our rules come from?
+        What defines us as human beings? What is the nature of these
+        &laquo;wild&raquo; rabbits?
+      </center>
+
+      <p></p>
+      <br />
+      <br />
+      <br />
+      &nbsp;
+    </div>
+  </div>
+  <script src="../js/script.js" type="text/javascript"></script>
+  <script>
+    $(window).mousemove(function (e) {
+      var x = e.pageX;
+      var y = e.pageY;
+
+      const topLinks = document.querySelector(".top-links");
+      const donut = document.getElementById("donut");
+      let isOverlap = elementsOverlap(topLinks, donut);
+
+      if (isOverlap) {
+        donut.style.visibility = "hidden";
+        $("#donut").click(function () {
+          window.location.href = "../";
+        });
+      } else {
+        donut.style.visibility = "visible";
+      }
+
+      $("#donut").css({
+        left: x + "px",
+        top: y + "px",
+      });
+
+      if (x < $(window).width() / 2 - 70) {
+        $("#homer").attr(
+          "src",
+          "../mywork/projects/runrabbitrun/bugsbunny/downleftrabbit.svg"
+        );
+      } else if (x > $(window).width() / 2 + 70) {
+        $("#homer").attr(
+          "src",
+          "../mywork/projects/runrabbitrun/bugsbunny/downrightrabbit.svg"
+        );
+      } else if (
+        Math.abs(x - $(window).width() / 2) < 70 &&
+        y > $(window).height() / 2
+      ) {
+        $("#homer").attr(
+          "src",
+          "../mywork/projects/runrabbitrun/bugsbunny/rabbitgoback.svg"
+        );
+      }
+
+      if (x < $(window).width() / 2 && y < $(window).height() / 2 + 210) {
+        $("#homer").attr(
+          "src",
+          "../mywork/projects/runrabbitrun/bugsbunny/upleftrabbit.svg"
+        );
+      } else if (
+        x > $(window).width() / 2 &&
+        y < $(window).height() / 2 + 210
+      ) {
+        $("#homer").attr(
+          "src",
+          "../mywork/projects/runrabbitrun/bugsbunny/uprightrabbit.svg"
+        );
+      }
+    });
+
+    function elementsOverlap(el1, el2) {
+      const domRect1 = el1.getBoundingClientRect();
+      const domRect2 = el2.getBoundingClientRect();
+
+      return !(
+        domRect1.top > domRect2.bottom ||
+        domRect1.right < domRect2.left ||
+        domRect1.bottom < domRect2.top ||
+        domRect1.left > domRect2.right
+      );
+    }
+  </script>
+
+  <script>
+    $(function () {
+      var $modal = $("#firstVid");
+      var HIDE_CLASS = "is-hide";
+      let modalVideo = $("#firstVid video");
+      $("#race-1").on("click", function () {
+        $modal.removeClass(HIDE_CLASS);
+        modalVideo.trigger("play");
+      });
+
+      $("#firstVid .js-modal-close").on("click", function () {
+        $modal.addClass(HIDE_CLASS);
+        modalVideo.trigger("pause");
+        modalVideo.get(0).load();
+      });
+
+      var $modal1 = $("#secondVid");
+      let modalVideo1 = $("#secondVid video");
+      $("#race-2").on("click", function () {
+        $modal1.removeClass(HIDE_CLASS);
+        modalVideo1.trigger("play");
+      });
+
+      $("#secondVid .js-modal-close").on("click", function () {
+        $modal1.addClass(HIDE_CLASS);
+        modalVideo1.trigger("pause");
+        modalVideo1.get(0).load();
+      });
+
+      var $modal2 = $("#thirdVid");
+      let modalVideo2 = $("#thirdVid video");
+      $("#night-mode").on("click", function () {
+        $modal2.removeClass(HIDE_CLASS);
+        modalVideo2.trigger("play");
+      });
+
+      $("#thirdVid .js-modal-close").on("click", function () {
+        $modal2.addClass(HIDE_CLASS);
+        modalVideo2.trigger("pause");
+        modalVideo2.get(0).load();
+      });
+    });
+  </script>
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/style.css?v=1.4" />
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <title>Bonus</title>
+  <style>
+    #preloader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+
+      font-size: 2rem;
+      background: white;
+      z-index: 9999;
+      display: none;
+    }
+
+    .preloader-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .typing-text {
+      padding: 1rem;
+    }
+
+    .typing-text::after {
+      content: "|";
+      animation: blink 1s step-end infinite;
+    }
+
+    #page-container {
+      display: none;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      #preloader {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="preloader">
+    <div class="preloader-container">
+      <span class="typing-text"></span>
+    </div>
+  </div>
+  <div id="modal"></div>
+  <div class="container" id="page-container">
+    <div class="box box0">
+      <div class="heart-container">
+        <img class="heart hoverable-image" onclick="createDoubleWindowsForHeart(event)" src="assets/heart/balloon2.png"
+          alt="" data-gif-src="assets/heart/balloon2.gif" />
+      </div>
+    </div>
+    <div class="box box1">
+      <div class="full-table">
+        <img class="fish hoverable-image"
+          onclick="createCustomWindow('Underwater Love', './assets/fish/fish.html', this)" src="assets/fish/fish.png"
+          alt="fish" data-gif-src="assets/fish/fish.gif" />
+        <img class="lamp hoverable-image" onclick="createCustomWindow('712.5 Missing', 'assets/lamp/lamp.html', this)"
+          src="assets/lamp/lampp.png" alt="lamp" data-gif-src="assets/lamp/lampp.gif" />
+        <a target="_blank" href="https://www.yaelkempf.com/work/loveisthelaw.html">
+          <img class="music" src="assets/note/note.png" alt="" />
+        </a>
+        <img class="frame hoverable-image" onclick="createCustomWindow('Where R U', 'assets/frame/frame.html', this)"
+          src="assets/frame/frame.png" alt="frame" data-gif-src="assets/frame/frame.gif" />
+        <img class="dice hoverable-image" onclick="createCustomWindow('Random', 'assets/random/dice.html', this)"
+          src="assets/random/random1.png" alt="dice" data-gif-src="assets/random/random1.gif" />
+        <img class="magazine hoverable-image"
+          onclick="createCustomWindow('Wood &#169;', 'assets/magazine/magazine.html', this)"
+          src="assets/magazine/magazine.png" alt="magazine" data-gif-src="assets/magazine/magazine.gif" />
+        <img id="penImage" src="assets/pen/pen.png" class="pen hoverable-image" alt="pen"
+          data-gif-src="assets/pen/pen.gif" />
+        <img class="table" src="assets/table.png" alt="table" />
+        <a target="_blank" href="https://www.yaelkempf.com/work/gnothiseauton.html">
+          <img class="cartoondhl hoverable-image" src="assets/windowbox/cartondhl.png" alt=""
+            data-gif-src="assets/windowbox/cartondhl.gif" />
+        </a>
+      </div>
+    </div>
+    <div class="box box2">
+      <div class="full-board">
+        <img class="board" src="assets/adversatingboard/adversatingboard.png" alt="board"
+          onclick="createDoubleWindowsForBoard(event)" />
+        <img class="person-board hoverable-image" src="assets/adversatingboard/scafolding.png" alt="person board"
+          onclick="createCustomWindow('Derwandandair', 'assets/derwandandair/derwandandair.html', this)"
+          data-gif-src="assets/adversatingboard/scafolding.gif" />
+      </div>
+    </div>
+    <div class="box box3">
+      <div>
+        <div class="speaker-relative">
+          <img id="speaker-audio" class="hoverable-image speaker" src="assets/speaker/speaker.png" alt="Speaker"
+            data-gif-src="assets/speaker/speaker.gif" data-sounds="1,2,3,4,5" />
+
+          <audio id="sound1" src="assets/music/Apocalypse by Cigarettes After Sex.mp3"></audio>
+          <audio id="sound2" src="assets/music/Atomic Blue - You're Right.mp3"></audio>
+          <audio id="sound3" src="assets/music/Bahamas_All_I_ve_Ever_Known.mp3"></audio>
+          <audio id="sound4" src="assets/music/Imagination_Mornin_Lights.mp3"></audio>
+          <audio id="sound5" src="assets/music/JayJay Johanson  Video Games.mp3"></audio>
+        </div>
+      </div>
+      <div class="dog-container">
+        <img class="dog hoverable-image"
+          onclick="createCustomWindow('Viser La Lune 2024', 'assets/dog_2022_BPA_Cologne/dog.html', this)"
+          src="assets/dog_2022_BPA_Cologne/dog.png" alt="Dog" data-gif-src="assets/dog_2022_BPA_Cologne/dog.gif" />
+        <img class="dog-necklace-gif"
+          onclick="createCustomWindow('Viser La Lune 2023', 'assets/dog_2022_BPA_Cologne/necklace.html', this)"
+          src="assets/dog_2022_BPA_Cologne/necklace.gif" alt="" />
+        <img class="dog-necklace-img hoverable-image"
+          onclick="createCustomWindow('Viser La Lune 2023', 'assets/dog_2022_BPA_Cologne/necklace.html', this)"
+          src="assets/dog_2022_BPA_Cologne/necklace.png" alt=""
+          data-gif-src="assets/dog_2022_BPA_Cologne/necklace.gif" />
+      </div>
+
+      <a target="_blank" href=" https://www.yaelkempf.com/work/areyoureallyasking.html">
+        <img class="hoverable-image chicken" src="assets/windowbox/chicken.png" alt="Chicken"
+          data-gif-src="assets/windowbox/chicken.gif" />
+      </a>
+    </div>
+    <div class="box box4">
+      <div class="window-box">
+        <a target="_blank" href="https://www.yaelkempf.com/work/whysurfersshouldbefed.html">
+          <img class="window hoverable-image" src="assets/windowbox/windowtransparent.png" alt="window"
+            data-gif-src="assets/windowbox/windowtransparent.gif" />
+        </a>
+      </div>
+    </div>
+    <div class="box box6">
+      <div class="horse-box">
+        <a target="_blank" href=" https://www.yaelkempf.com/work/godblessamerica.html">
+          <img class="horse hoverable-image" src="assets/windowbox/cheval.png" alt="horse"
+            data-gif-src="assets/windowbox/cheval.gif" />
+        </a>
+      </div>
+    </div>
+    <div class="box box5">
+      <div class="cars-box">
+        <img class="nest hoverable-image" onclick="createCustomWindow('Nest', 'car-pages/nest.html', this)"
+          src="assets/nest/nest.png" alt="nest" data-gif-src="assets/nest/nest.gif" />
+        <!-- <img
+            class="car1"
+            onclick="createCustomWindow('Let\'s Rock Tonight', 'car-pages/car1.html', this)"
+            src="assets/car3/car3.png"
+            alt="dog"
+          /> -->
+        <img class="car1" src="assets/car3/car3.png" alt="dog" onclick="createDoubleWindowsForLetsRock(event)" />
+        <img class="car2" onclick="createCustomWindow('R.I.P', 'car-pages/car3.html', this)" src="assets/car2/car2.png"
+          alt="dog" />
+        <img class="car3" onclick="createCustomWindow('Wandering', 'car-pages/car2.html', this)"
+          src="assets/car1/Car1.png" alt="dog" />
+      </div>
+    </div>
+  </div>
+  <div class="pen-paint hidden" id="penPaint">
+    <div id="wrapper">
+      <div class="close">
+        <i class="fa fa-close" id="closeButton"></i>
+      </div>
+      <div class="controls">
+        <section>
+          <h2>Options</h2>
+          <div class="form-group">
+            <label for="preset">Preset(s) <span></span></label>
+            <select class="form-control" id="preset"></select>
+          </div>
+          <div class="form-group">
+            <label for="composite">Compositing <span></span></label>
+            <select class="form-control" id="composite" data-config="composite"></select>
+          </div>
+          <div class="form-group">
+            <label for="night">Nightmode <span></span></label>
+            <label class="toggle" for="night">
+              <input type="checkbox" id="night" />
+              <div class="toggle-track">
+                <div class="toggle-thumb"></div>
+              </div>
+            </label>
+          </div>
+        </section>
+        <section>
+          <h3>Animation</h3>
+          <p>
+            Lorem ipsum dolor sit amet,
+            <strong>consectetur</strong> adipisicing elit.
+          </p>
+          <div class="form-group">
+            <label for="scale">Scale <span></span></label>
+            <div class="slider" data-min="0" data-max="100" data-accuracy="2">
+              <input type="hidden" id="scale" data-config="scale" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="speed">Speed <span></span></label>
+            <div class="slider" data-min="-5" data-max="5" data-accuracy="2">
+              <input type="hidden" id="speed" value="0" data-config="speed" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="linewidth">Line width <span></span></label>
+            <div class="slider" data-min="1" data-max="50" data-accuracy="0">
+              <input type="hidden" id="linewidth" data-config="linewidth" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="layers">Layers <span></span></label>
+            <div class="slider" data-min="1" data-max="10" data-accuracy="0">
+              <input type="hidden" id="layers" data-config="layers" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Filter</h3>
+          <div class="form-group">
+            <label for="shader">Enable <span></span></label>
+            <label class="toggle" for="shader">
+              <input type="checkbox" id="shader" />
+              <div class="toggle-track">
+                <div class="toggle-thumb"></div>
+              </div>
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="blur">Blur radius <span></span></label>
+            <div class="slider" data-min="1" data-max="50" data-accuracy="0">
+              <input type="hidden" id="blur" data-config="blur" value="10" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="rr">RR</label>
+            <input class="form-control" id="rr" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="rg">RG</label>
+            <input class="form-control" id="rg" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="rb">RB</label>
+            <input class="form-control" id="rb" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="ra">RA</label>
+            <input class="form-control" id="ra" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="r1">R1</label>
+            <input class="form-control" id="r1" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <br />
+          <div class="form-group form-group-vertical">
+            <label for="gr">GR</label>
+            <input class="form-control" id="gr" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="gg">GG</label>
+            <input class="form-control" id="gg" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="gb">GB</label>
+            <input class="form-control" id="gb" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="ga">GA</label>
+            <input class="form-control" id="ga" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="g1">G1</label>
+            <input class="form-control" id="g1" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <br />
+          <div class="form-group form-group-vertical">
+            <label for="br">BR</label>
+            <input class="form-control" id="br" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="bg">BG</label>
+            <input class="form-control" id="bg" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="bb">BB</label>
+            <input class="form-control" id="bb" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="ba">BA</label>
+            <input class="form-control" id="ba" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="b1">B1</label>
+            <input class="form-control" id="b1" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <br />
+          <div class="form-group form-group-vertical">
+            <label for="ar">AR</label>
+            <input class="form-control" id="ar" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="ag">AG</label>
+            <input class="form-control" id="ag" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="ab">AB</label>
+            <input class="form-control" id="ab" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="aa">AA</label>
+            <input class="form-control" id="aa" type="number" step="0.1" value="0" data-shader />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="a1">A1</label>
+            <input class="form-control" id="a1" type="number" step="0.1" value="0" data-shader />
+          </div>
+        </section>
+        <section>
+          <div class="form-group">
+            <button class="btn btn-success btn-wide trigger-save">
+              <i class="fa fa-floppy-o"></i> Save as...
+            </button>
+          </div>
+        </section>
+      </div>
+      <div class="canvas">
+        <div class="quick">
+          <a href="#" class="trigger-menu"><i class="fa fa-cogs"></i></a>
+          <a href="#" class="trigger-clear"><i class="fa fa-eraser"></i></a>
+
+          <div class="form-group-vertical">
+            <label for="linewidth"><a href="#"><i class="fa fa-paint-brush"></i></a></label>
+            <div class="slider slider-vertical" data-min="1" data-max="50" data-accuracy="0">
+              <input type="hidden" id="linewidth" data-config="linewidth" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+        </div>
+        <canvas id="temporary"></canvas>
+        <canvas id="render"></canvas>
+      </div>
+    </div>
+
+    <svg>
+      <defs>
+        <filter id="filter">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="" result="filter" />
+          <feBlend />
+        </filter>
+      </defs>
+    </svg>
+  </div>
+</body>
+<script src="js/app.js"></script>
+<script src="assets/pen/pen.js"></script>
+<script>
+  var typingElement = document.querySelector(".typing-text");
+  var typeArray = ["Well, I must endure the presence of two or three caterpillars if I wish to become acquainted with the butterflies."];
+  var index = 0,
+    isAdding = true,
+    typeIndex = 0;
+
+  function playAnim() {
+    setTimeout(
+      function () {
+        typingElement.innerText = typeArray[typeIndex].slice(0, index);
+
+        // If typing
+        if (isAdding) {
+          if (index >= typeArray[typeIndex].length) {
+            isAdding = false;
+            // If text typed completely, wait 2s before starting to remove it.
+            setTimeout(function () {
+              playAnim();
+            }, 2000);
+            return;
+          } else {
+            // Continue to typing text by increasing index
+            index++;
+          }
+        } else {
+          // If removing
+          if (index === 0) {
+            isAdding = true;
+            //If text removed completely, move on to next text by increasing typeIndex
+            typeIndex++;
+            if (typeIndex >= typeArray.length) {
+              // Turn to beginning when reached to last text
+              typeIndex = 0;
+            }
+          } else {
+            // Continue to removing text by decreasing index
+            index--;
+          }
+        }
+        // Call the function always
+        playAnim();
+      },
+
+      /* 
+        If typing text, call it every 120ms
+        If removing text, call it every 60ms
+        Type slower, remove faster
+      */
+      isAdding ? 120 : 60
+    );
+  }
+
+  // Start typing text
+  playAnim();
+
+
+  $(document).ready(function () {
+    // Show text animation only once for an user
+    var visited = localStorage.getItem('visited');
+    if (visited) {
+      $('#page-container').fadeIn();
+    } else {
+      $('#preloader').show();
+      setTimeout(() => {
+        $('#page-container').fadeIn();
+        $("#preloader").fadeOut();
+      }, 20000);
+      localStorage.setItem('visited', true);
+    }
+  });
+
+
+
+</script>
+
+</html>

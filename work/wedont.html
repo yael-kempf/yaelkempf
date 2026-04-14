@@ -1,0 +1,339 @@
+<html>
+
+<head>
+  <meta charset="us-ascii" />
+  <title></title>
+</head>
+
+<body data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1062.0" data-new-gr-c-s-loaded="14.1062.0">
+  <header>
+    <a href="../index.html"><img src="../logo/spinningstar.svg" /></a>
+    <a href="#!" id="more_info_link">More Info</a>
+  </header>
+
+  <section>
+    <h1></h1>
+
+    <div class="gallery">
+      <div class="col">
+        <div class="image">
+          <img alt="" src="https://www.yaelkempf.com/mywork/projects/wedonthaveforeverwebsite/3.png" />
+        </div>
+
+        <div class="image">
+          <img alt="" src="https://www.yaelkempf.com/mywork/projects/wedonthaveforeverwebsite/9.png" />
+        </div>
+
+        <div class="image">
+          <img alt="" src="https://www.yaelkempf.com/mywork/projects/wedonthaveforeverwebsite/4.png" />
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="image">
+          <img alt="" src="https://www.yaelkempf.com/mywork/projects/wedonthaveforeverwebsite/10.png" />
+        </div>
+
+        <div class="image">
+          <img alt="" src="https://www.yaelkempf.com/mywork/projects/wedonthaveforeverwebsite/11.png" />
+        </div>
+
+        <div class="image">
+          <img alt="" src="https://www.yaelkempf.com/mywork/projects/wedonthaveforeverwebsite/12.png" />
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="image">
+          <img alt="" src="https://www.yaelkempf.com/mywork/projects/wedonthaveforeverwebsite/5.png" />
+        </div>
+
+        <div class="image">
+          <img alt="" src="https://www.yaelkempf.com/mywork/projects/wedonthaveforeverwebsite/7.png" />
+        </div>
+
+        <div class="image">
+          <img alt="" src="https://www.yaelkempf.com/mywork/projects/wedonthaveforeverwebsite/8.png" />
+        </div>
+      </div>
+    </div>
+    <style type="text/css">
+      body {
+        font-family: Times New Roman, sans-serif;
+        color: #111;
+        background: #eee;
+        overflow-x: hidden;
+      }
+
+      section {
+        padding: 10vw;
+        height: 100%;
+        min-height: 500vh;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow-y: visible;
+      }
+
+      .credit {
+        text-align: center;
+        z-index: 999;
+        font-size: 0.8rem;
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+
+      /* a {
+          color: #fff;
+        } */
+
+      * {
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-weight: 800;
+        margin: 2rem auto;
+        font-size: clamp(3vw, 2rem, 4rem);
+        text-align: center;
+        z-index: 999;
+        max-width: 800px;
+        mix-blend-mode: difference;
+        pointer-events: none;
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: grid;
+        place-items: center;
+      }
+
+      .gallery {
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: visible;
+
+        @media (max-width: 768px) {
+          width: 160%;
+        }
+      }
+
+      .col {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        width: 100%;
+        align-self: flex-start;
+        justify-self: flex-start;
+      }
+
+      .col:nth-child(2) {
+        align-self: flex-end;
+        justify-self: flex-end;
+      }
+
+      .image {
+        width: 100%;
+        filter: saturate(0);
+        padding: 1rem;
+      }
+
+      .image:hover {
+        z-index: 99999999999 !important;
+        filter: saturate(1);
+      }
+
+      img {
+        transition: 0.3s ease-out;
+        overflow: hidden;
+        box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+          0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+          0 12.5px 10px rgba(0, 0, 0, 0.06),
+          0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+          0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+          0 100px 80px rgba(0, 0, 0, 0.12);
+        width: 100%;
+      }
+    </style>
+    <script language="javascript">
+      console.clear();
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const additionalY = { val: 0 };
+      let additionalYAnim;
+      let offset = 0;
+      const cols = gsap.utils.toArray(".col");
+
+      cols.forEach((col, i) => {
+        const images = col.childNodes;
+
+        // DUPLICATE IMAGES FOR LOOP
+        images.forEach((image) => {
+          var clone = image.cloneNode(true);
+          col.appendChild(clone);
+        });
+
+        // SET ANIMATION
+        images.forEach((item) => {
+          let columnHeight = item.parentElement.clientHeight;
+          let direction = i % 2 !== 0 ? "+=" : "-="; // Change direction for odd columns
+
+          gsap.to(item, {
+            y: direction + Number(columnHeight / 2),
+            duration: 120,
+            repeat: -1,
+            ease: "none",
+            modifiers: {
+              y: gsap.utils.unitize((y) => {
+                if (direction == "+=") {
+                  offset += additionalY.val;
+                  y = (parseFloat(y) - offset) % (columnHeight * 0.5);
+                } else {
+                  offset += additionalY.val;
+                  y = (parseFloat(y) + offset) % -Number(columnHeight * 0.5);
+                }
+
+                return y;
+              }),
+            },
+          });
+        });
+      });
+
+      const imagesScrollerTrigger = ScrollTrigger.create({
+        trigger: "section",
+        start: "top 50%",
+        end: "bottom 50%",
+        onUpdate: function (self) {
+          const velocity = self.getVelocity();
+          if (velocity > 0) {
+            if (additionalYAnim) additionalYAnim.kill();
+            additionalY.val = -velocity / 2000;
+            additionalYAnim = gsap.to(additionalY, { val: 0 });
+          }
+          if (velocity < 0) {
+            if (additionalYAnim) additionalYAnim.kill();
+            additionalY.val = -velocity / 3000;
+            additionalYAnim = gsap.to(additionalY, { val: 0 });
+          }
+        },
+      });
+    </script>
+    <p></p>
+
+    <p></p>
+
+    <p></p>
+
+    <p></p>
+
+    <footer></footer>
+
+    <p></p>
+
+    <p></p>
+
+    <p>&times;</p>
+
+    <p>
+      <i>Working as a merchandising display, the window showcases farming of
+        live mushrooms, which could possibly be fed to the community.</i><br />
+      <i>They&rsquo;re growing by consuming the plastic structure of the toys
+        which are here symbolizing the contemporary art world.</i><br />
+      &nbsp;
+    </p>
+
+    <h4><u>PRESS RELEASE</u></h4>
+
+    <p>
+      It is summer. The heat radiates from the asphalt of the Belgian Quarter,
+      and sweat trickles down your body as you peer through the windows of the
+      BPA space in Cologne. Meanwhile, the rubber soles of your shoes threaten
+      to melt into the ground, and the inflatable pool toys behind the glass
+      remind you where you would rather be right now. Like a faded childhood
+      memory of hot days by the water, Ya&euml;l Kempf&#39;s latest exhibition
+      reminds us of the transience of time that mercilessly fleets away.<br />
+      Three inflatable swimming toys collapse in on themselves as if they are
+      tired of their existence. A large white plastic swan exhaustedly lays
+      its head to one side and tries to support the weight of a ridiculously
+      oversized Chiquita banana. Meanwhile, a pathetic-looking plastic shark
+      floats in space as if to prove one last time its non-existing vitality.
+      Their ironically heavy bodies are attached to ropes that lift them into
+      the air, feigning a perfidious kind of liveliness while trying to
+      pitifully mask their artificiality. The hanging on the wall adds more
+      layers to these reflections as it attempts to drown the fluorescent
+      light like black tar. It is made entirely of nori leaves, which are
+      considered to be organic. However, the seaweed is processed and cut into
+      squares by machines in a highly industrialized and standardized way
+      which alienates the final product from the original algae immensely.<br />
+      What will only become visible in the course of the exhibition is that
+      the plastic sculptures are merely vessels, for their insides are filled
+      with a special kind of sporulated soil. Over time, fungi will begin to
+      sprout towards the surface and emerge as mushrooms in alienesque shapes
+      and forms from inside their hosts. They are highly sophisticated
+      organisms that are interconnected through intricate mycelial networks.
+      Because of their extensive adaptability, fungi tend to lurk in dark,
+      damp places since they do not photosynthesize and consequently are not
+      dependent on sunlight. Therefore, like animals, they must feed by
+      ingesting organic substances which they absorb from their
+      environment.<br />
+      While mushrooms are included in most cuisines, they are also known for
+      their poisonous characteristics. At first glance, the fungi in Ya&euml;l
+      Kempf&rsquo;s installation resemble parasites that infest their plastic
+      hosts leading to their slow demise. This is only one of a multitude of
+      cultural associations. When looking at the inflatable swan with its head
+      so heavy that it cannot stand upright, the lyrics from Jefferson
+      Airplane&rsquo;s song White Rabbit may come to mind which pays tribute
+      to the drug-fuelled counterculture of the 1960s: &rdquo;And you&#39;ve
+      just had some kind of mushroom / and your mind is moving low&ldquo;.<br />
+      Within this struggle of the artificial, the fungus emerges as the only
+      living organism in the entire installation. Moreover, its existence is
+      inherently intertwined with the spontaneous and unexpected as it is not
+      just a passive artistic resource, like the inflatable pool toys or the
+      nori leaves, but an active collaborator. In the process, a fragile and
+      laborious relationship develops because the whole idea behind the work
+      depends on the cooperation between the artist and the fungal organism.
+      Its success is never certain and the decay of the collaborator is always
+      possible. While pondering the growth of the fungi and looking at the
+      inflatable pool toys, which have been given a new sense of use,
+      Ya&euml;l Kempf&rsquo;s reflections on the continuous cycles of becoming
+      and dying are revealed. As you stand here waiting for a mushroom to
+      appear, the passing of time is tangibly brought into the exhibition
+      space.<br />
+      Alica S&auml;nger<br />
+      <br />
+      Special thanks to BPA<br />
+      <br />
+      <a
+        href="http://bpaspace.com/we-dont-have-forever-yael-kempf-exhibition/">http://bpaspace.com/we-dont-have-forever-yael-kempf-exhibition/</a><br />
+      Publication:<br />
+      <a href="https://yyyymmdd.art/2021-WE-DONT-HAVE-FOREVER">https://yyyymmdd.art/2021-WE-DONT-HAVE-FOREVER</a>
+    </p>
+
+    <p></p>
+
+    <p>
+      <br />
+      <br />
+      &nbsp;
+    </p>
+    <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+  </section>
+</body>
+
+</html>

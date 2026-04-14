@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>God Bless America</title>
+  <link rel="preload" href="../fonts/EBGaramond-Regular.ttf" as="font" type="font/ttf" crossorigin />
+  <link href="../css/styles.css" rel="stylesheet" />
+  <link href="../css/animations.css" rel="stylesheet" />
+  <link href="../css/work.css" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: EBGaramond-Regular;
+      src: url(./fonts/EBGaramond-Regular.ttf);
+    }
+
+    *,
+    *::after,
+    *::before {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: serif;
+    }
+
+    .site-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .site-wrapper.loading {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .loader-wrapper {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      background-color: white;
+      z-index: 2;
+    }
+
+    .loader-wrapper p {
+      font-size: 2rem;
+      padding-top: 1rem;
+      text-align: center;
+    }
+
+    .loader {
+      width: 120px;
+      height: 120px;
+      animation: spin 1s linear infinite;
+      perspective: 600px;
+    }
+
+    .loader img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    header {
+      position: absolute;
+    }
+
+    video {
+      max-width: 100%;
+    }
+
+    .main-container {
+      width: 100%;
+      max-width: 1250px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem 4rem;
+      padding: 2rem;
+      padding-top: 8rem;
+    }
+
+    .main-text {
+      font-size: 2rem;
+      text-align: right;
+    }
+
+    .desc {
+      font-size: 1.2rem;
+      padding: 1.5rem 0;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+
+    .jackson {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+
+    @media screen and (min-height: 768px) {
+      .loader {
+        width: 400px;
+        height: 400px;
+      }
+    }
+
+    @media screen and (max-width: 1200px) {
+      .main-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media screen and (max-width: 576px) {
+      .big-video {
+        width: 100%;
+      }
+
+      .main-text {
+        font-size: 1rem;
+      }
+
+      .desc {
+        font-size: 0.65rem;
+      }
+
+      .loader-wrapper p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-wrapper loading">
+    <div class="loader-wrapper">
+      <div class="loader">
+        <img src="../mywork/projects/godblessamerica/loadermj.png" alt="" />
+      </div>
+      <p>to enjoy this work you need a quiet environment.</p>
+      <marquee width="100%" class="jackson" direction="left" scrollamount="20">
+        <img src="https://media.giphy.com/media/EDZP0UCtxiRQQ/giphy.gif" />
+      </marquee>
+    </div>
+
+    <header>
+      <a class="link_left" href="../bonus/index.html">
+        <img src="../logo/spinningstar.svg" class="star-menu-icon" />
+      </a>
+    </header>
+
+    <main class="main-container">
+      <div class="main-text">
+        <p>
+          Like Above and Below from Nicolas Steiner, from the depths of the
+          flood channels under the former paper factory, Rihanna, Shia
+          Leboeuf, and Michael Jackson meeting for the first time, Survivors,
+          full of dreams and aspirations..
+        </p>
+
+        <div class="desc">
+          <p>here. extract with MJ</p>
+          <p>
+            Residency and exhibition at the Studio Orta -Les Moulins curated
+            by Iseult
+          </p>
+          <p>Perrault and Leo Orta,2018.</p>
+        </div>
+
+        <video controls src="../mywork/projects/godblessamerica/GodblessAmerica1.mp4"></video>
+      </div>
+
+      <video controls src="../mywork/projects/godblessamerica/GodblessAmerica2.mp4"></video>
+    </main>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../js/script.js" type="text/javascript"></script>
+  <script>
+    $(function () {
+      const siteWrapper = document.querySelector(".site-wrapper");
+      setTimeout(() => {
+        $(".loader-wrapper").hide();
+        siteWrapper.classList.remove("loading");
+      }, 5000);
+    });
+  </script>
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>

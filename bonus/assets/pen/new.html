@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click to Create Flower</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      canvas {
+        display: block;
+      }
+
+      #clearButton {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="clearButton">Clear Canvas</button>
+    <canvas id="flowerCanvas"></canvas>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const canvas = document.getElementById("flowerCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const branches = [];
+
+        function drawBranch(startX, startY, endX, endY) {
+          ctx.strokeStyle = "green";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(startX, startY);
+          ctx.lineTo(endX, endY);
+          ctx.stroke();
+        }
+
+        const flowerImage = new Image();
+        flowerImage.src = "flower-image-2.png";
+
+        function createFlower(x, y) {
+          // Draw flower image
+          ctx.drawImage(flowerImage, x - 40, y - 70, 100, 80); // Adjust position and size as needed
+        }
+
+        function clearCanvas() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          branches.length = 0; // Clear the branches array
+        }
+
+        document
+          .getElementById("clearButton")
+          .addEventListener("click", clearCanvas);
+
+        canvas.addEventListener("click", function (event) {
+          const mouseX = event.clientX;
+          const mouseY = event.clientY;
+
+          const startY = canvas.height;
+          const endY = mouseY;
+
+          branches.push({ startX: mouseX, startY, endX: mouseX, endY });
+
+          function animateBranch() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (const branch of branches) {
+              drawBranch(
+                branch.startX,
+                branch.startY,
+                branch.endX,
+                branch.endY
+              );
+              createFlower(branch.endX, branch.endY);
+            }
+
+            requestAnimationFrame(animateBranch);
+          }
+
+          animateBranch();
+        });
+      });
+    </script>
+  </body>
+</html>

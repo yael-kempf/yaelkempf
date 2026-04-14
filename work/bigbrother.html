@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Brother</title>
+    <link href='https://fonts.googleapis.com/css?family=Cedarville+Cursive' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
+        @font-face {
+            font-family: 'CandleBright';
+            src: url('../fonts/candlebright_sample.ttf') format('truetype'),
+        }
+
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            font-family: serif;
+            font-size: 40px;
+            text-align: center;
+            overflow-x: hidden;
+            margin: 0px;
+            font-family: 'CandleBright';
+        }
+
+        header {
+            position: absolute;
+            z-index: 10;
+            top: 70px;
+        }
+
+        header a {
+            font-size: 36px;
+            margin: 5px;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: serif;
+        }
+
+        header a.link_left {
+            padding: 16px;
+            float: left;
+            width: 60px;
+        }
+
+        .star-menu-icon {
+            height: auto;
+            width: 60px;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .scrollDist,
+        .main {
+            position: absolute;
+        }
+
+        .main {
+            top: -70px !important;
+        }
+
+        .show-desc {
+            display: none;
+        }
+
+        .video-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .video-card .video-box {
+            grid-column: 1 / span 2;
+        }
+
+        #background {
+            font-family: 'Cedarville Cursive', cursive;
+            transform: translateY(2rem) translateX(1rem);
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            top: 2rem;
+            display: none;
+        }
+
+        .text-container {
+            padding-top: 1rem;
+        }
+
+        .text-container .desc {
+            padding-bottom: 1rem;
+        }
+
+        .text-container .close-btn {
+            display: none;
+        }
+
+        .grid-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 0 4rem;
+            font-family: serif;
+            line-height: 1.25;
+            padding: 0 2rem;
+            padding-top: 1rem;
+        }
+
+        .grid-content p {
+            padding: .25rem .5rem;
+            font-size: .5rem;
+        }
+
+        .grid-content h3 {
+            font-family: 'CandleBright';
+            font-size: 1.5rem;
+            transform: scale(0.94);
+            animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
+        }
+
+        .grid-content h3 span {
+            display: inline-block;
+            opacity: 0;
+            filter: blur(4px);
+        }
+
+        .grid-content h3 span:nth-child(1) {
+            animation: fade-in 0.8s 0s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+
+        .grid-content h3 span:nth-child(2) {
+            animation: fade-in 0.8s 0.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+
+        .grid-content h3 span:nth-child(3) {
+            animation: fade-in 0.8s 0.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+
+        @keyframes scale {
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fade-in {
+            100% {
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        .grid-content h2 {
+            font-family: 'CandleBright';
+            font-size: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        #gallery {
+            display: flex;
+            justify-content: center;
+        }
+
+        #background img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 0px;
+        }
+
+        #background figure {
+            position: relative;
+            background-color: #e1dde7 !important;
+            text-align: center;
+            font-size: 15px;
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 1px 2px 3px black;
+            width: 220px;
+            height: 250px;
+        }
+
+        figure.pic1 {
+            transform: rotate(-25deg) translateX(10px) translateY(50px);
+            z-index: 1;
+        }
+
+        figure.pic2 {
+            transform: rotate(15deg);
+            z-index: 2;
+        }
+
+        #background figure:hover {
+            box-shadow: 5px 10px 100px black;
+            -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+            z-index: 20;
+        }
+
+        .video-box {
+            display: flex;
+        }
+
+        .video-box video {
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+
+        /* before after image slider */
+
+        /* Our wrapper */
+        .wrapper {
+            width: 230px;
+            height: 270px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        /* Our image information */
+        .before,
+        .after {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-color: white;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .content-image {
+            height: 100%;
+        }
+
+        .after {
+            width: 125px;
+        }
+
+        .scroller {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            background-color: transparent;
+            opacity: 0.9;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .scroller:hover {
+            opacity: 1;
+        }
+
+        .scrolling {
+            pointer-events: none;
+            opacity: 1;
+        }
+
+        .scroller__thumb {
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+        }
+
+        .scroller:before,
+        .scroller:after {
+            content: " ";
+            display: block;
+            width: 7px;
+            height: 9999px;
+            position: absolute;
+            left: 50%;
+            margin-left: -3.5px;
+            z-index: 30;
+            transition: 0.1s;
+        }
+
+        .scroller:before {
+            top: 100%;
+        }
+
+        .scroller:after {
+            bottom: 100%;
+        }
+
+        /* If you want to cahnge the colors, make sure you change the fill in the svgs to match */
+        .scroller {
+            border: 5px solid #fff;
+        }
+
+        .scroller:before,
+        .scroller:after {
+            background: #fff;
+        }
+
+        svg.mobile {
+            display: none;
+        }
+
+        @media screen and (max-width:1600px) {
+            .grid-content {
+                gap: 0 1rem;
+                padding: 1rem;
+            }
+
+            .grid-content p {
+                font-size: .45rem;
+            }
+
+            .grid-content h2,
+            .grid-content h3 {
+                font-size: 1.25rem;
+            }
+
+            #background {
+                transform: translateY(3rem) translateX(1rem);
+            }
+
+            #background img {
+                width: 150px;
+                height: 150px;
+            }
+
+            #background figure {
+                width: 170px;
+                height: 170px;
+            }
+
+            .video-card {
+                place-items: center;
+            }
+
+            .text-container .desc {
+                padding-bottom: 0;
+            }
+
+
+        }
+
+        @media screen and (max-width:1200px) {
+            .main {
+                top: -20px !important;
+            }
+
+            header {
+                top: 20px;
+            }
+
+            .grid-content {
+                grid-template-columns: 1fr;
+                padding: 0 .5rem;
+                padding-top: 1.5rem;
+            }
+
+            .video-card {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .video-box video {
+                max-width: 600px;
+            }
+
+            #background {
+                transform: translateY(.5rem);
+            }
+
+            .video-card .video-box {
+                grid-column: initial;
+            }
+
+            #background figure {
+                width: 120px;
+                height: 120px;
+            }
+
+            #background img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .show-desc {
+                display: block;
+                position: fixed;
+                right: 20px;
+                top: 50px;
+                font-size: .5rem;
+                border: 1px solid black;
+                padding: 5px;
+                color: black;
+            }
+
+            .text-container {
+                position: fixed;
+                background: white;
+                top: 0;
+                left: 0;
+                border: 2px solid black;
+                transform: translateY(-100%);
+                transition: transform .5s ease-in-out;
+                z-index: 100;
+                padding-bottom: 1rem;
+            }
+
+            .text-container.show {
+                transform: translateY(0);
+            }
+
+            .grid-content h2,
+            .grid-content h3 {
+                font-size: 1rem;
+                padding-bottom: 0;
+            }
+
+            .text-container .desc {
+                padding-bottom: 0;
+            }
+
+            .text-container .close-btn {
+                display: block;
+                position: fixed;
+                top: 40px;
+                right: 20px;
+                font-size: .5rem;
+            }
+
+            .grid-content p {
+                font-size: .35rem;
+            }
+
+            .wrapper {
+                width: 170px;
+                height: 200px;
+                margin: 0 auto;
+            }
+        }
+
+        @media screen and (max-width:576px) {
+            svg.mobile {
+                display: block;
+            }
+
+            svg.desktop {
+                display: none;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- This is a recreation of Unfold's (https://dribbble.com/unfold) parallax scene: https://cdn.dribbble.com/users/14268/screenshots/3275340/northface.gif -->
+    <div class="scrollDist"></div>
+    <div class="main">
+        <header>
+            <a class="link_left" href="../"><img src="../logo/spinningstar-black.svg" class="star-menu-icon" /></a>
+        </header>
+        <svg class="desktop" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+            <mask id="m">
+                <g class="cloud1">
+                    <rect fill="#fff" width="100%" height="801" y="799" />
+                    <image xlink:href="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800" />
+                </g>
+            </mask>
+            <image class="sky" xlink:href="../mywork/projects/bigbrother/back.png" width="800" height="590" />
+            <image class="mountBg" xlink:href="" width="1200" height="800" />
+            <image class="mountMg" xlink:href="../mywork/projects/bigbrother/angel.png" width="400" height="400" x="400"
+                y="150" />
+            <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800" />
+            <image class="mountFg" xlink:href="" width="1200" height="800" />
+            <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800" />
+            <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800" />
+            <text fill="#fff" x="300" y="100">You're not alone</text>
+            <!-- <polyline class="arrow" fill="#fff"
+                points="599,250 599,289 590,279 590,282 600,292 610,282 610,279 601,289 601,250" /> -->
+
+            <g mask="url(#m)">
+                <rect fill="#fff" width="100%" height="100%" />
+                <!-- <text x="550" y="100" fill="#162a43">Big Brother</text> -->
+            </g>
+
+            <!-- <rect id="arrowBtn" width="100" height="100" opacity="0" x="550" y="220" style="cursor:pointer" /> -->
+        </svg>
+
+        <svg class="mobile" viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+            <mask id="m1">
+                <g class="cloud1">
+                    <rect fill="#fff" width="100%" height="801" y="799" />
+                    <image xlink:href="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800" />
+                </g>
+            </mask>
+            <image class="sky" xlink:href="../mywork/projects/bigbrother/back.png" width="800" height="590" x="-200" />
+            <image class="mountBg" xlink:href="" width="1200" height="800" />
+            <image class="mountMg" xlink:href="../mywork/projects/bigbrother/angel.png" width="400" height="400" x="200"
+                y="150" />
+            <!-- <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800" /> -->
+            <image class="mountFg" xlink:href="" width="1200" height="800" />
+            <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800" />
+            <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800" />
+            <text fill="#fff" x="180" y="100">You're not alone</text>
+            <!-- <polyline class="arrow" fill="#fff"
+                points="599,250 599,289 590,279 590,282 600,292 610,282 610,279 601,289 601,250" /> -->
+
+            <g mask="url(#m1)">
+                <rect fill="#fff" width="100%" height="100%" />
+                <!-- <text x="550" y="100" fill="#162a43">Big Brother</text> -->
+            </g>
+
+            <!-- <rect id="arrowBtn" width="100" height="100" opacity="0" x="550" y="220" style="cursor:pointer" /> -->
+        </svg>
+        <div class="content">
+            <div class="grid-content">
+                <div class="video-card">
+                    <span class="show-desc">Show Description</span>
+                    <div class="wrapper">
+                        <div class="before">
+                            <img class="content-image" src="../mywork/projects/bigbrother/beforewebsite.png"
+                                draggable="false" />
+                        </div>
+                        <div class="after">
+                            <img class="content-image" src="../mywork/projects/bigbrother/afterwebsite.png"
+                                draggable="false" />
+                        </div>
+                        <div class="scroller">
+                            <svg class="scroller__thumb" xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                viewBox="0 0 100 100">
+                                <polygon points="0 50 37 68 37 32 0 50" style="fill:#fff" />
+                                <polygon points="100 50 64 32 64 68 100 50" style="fill:#fff" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div id="background">
+                        <div id="gallery">
+                            <figure class="pic1">
+                                <img src="../mywork/projects/bigbrother/pola1.jpg" />
+                                <figcaption></figcaption>
+                            </figure>
+                            <figure class="pic2">
+                                <img src="../mywork/projects/bigbrother/pola2.jpg" />
+                                <figcaption></figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="video-box">
+                        <video autoplay muted loop src="../mywork/projects/bigbrother/bigbro.mp4"></video>
+                    </div>
+                </div>
+
+                <div class="text-container">
+                    <div class="close-btn">&#10005</div>
+                    <h2>Big Brother</h2>
+                    <div class="desc">
+                        <p>"Big Brother," a site-specific installation curated by Mara Sporn in 2023 at Düsseldorf's
+                            former
+                            prison
+                            chapel, "Ulmer Höhe," intricately blends reclaimed bronze, plaster, paint, carbon, a spy
+                            camera,
+                            a
+                            Bible, and a mini-printer.
+                        </p>
+                        <p>
+                            The installation engages visitors through a covert video system in the wall, highlighting
+                            pervasive
+                            surveillance and transforming the act of being photographed into a commentary on constant
+                            observation. A
+                            strategically placed bronze angel symbolizes the link between religion and surveillance,
+                            emphasizing
+                            the
+                            transformation of religious motifs in the context of modern surveillance. In a parallel
+                            narrative,
+                            the
+                            installation fuses traditional and technological elements, unveiling Bible images through a
+                            hidden
+                            spy
+                            camera and mini-printer, symbolizing the evolution of narratives in the digital age. Words
+                            like
+                            "aware"
+                            and "knowbot" on the walls represent the coexistence of ancient wisdom and modern
+                            technology,
+                            prompting
+                            reflection on the evolving nature of communication. Overall, 'Big Brother' navigates the
+                            complexities of
+                            contemporary reality, exploring nuanced relationships between the sacred and technological
+                            while
+                            providing a captivating commentary on the multifaceted nature of surveillance in our
+                            interconnected
+                            world.</p>
+                    </div>
+
+                    <a href="../work/bigbro.html">
+                        <h3>
+                            <span>test</span>
+                            <span>me</span>
+                            <span>darling</span>
+                        </h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
+        integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"
+        integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollToPlugin.min.js"
+        integrity="sha512-gXXZigEOXAVnGZ2otmK1DqTFK/vF87A+x6Owjf5CN+zVxcg9bLg3F6J1s9yGnFFT08QLt7G0vI3XNWJVue260w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        window.addEventListener('load', function () {
+            gsap.set('.main', { position: 'fixed', background: '#fff', width: '100%', maxWidth: '100%', height: '100%', top: 0, left: '50%', x: '-50%' })
+            gsap.set('.scrollDist', { width: '100%', height: '200%' })
+            gsap.timeline({ scrollTrigger: { trigger: '.scrollDist', start: 'top top', end: 'bottom bottom', scrub: 1 } })
+                .fromTo('.sky', { y: 0 }, { y: -200 }, 0)
+                .fromTo('.cloud1', { y: 100 }, { y: -800 }, 0)
+                .fromTo('.cloud2', { y: -150 }, { y: -500 }, 0)
+                .fromTo('.cloud3', { y: -50 }, { y: -650 }, 0)
+                .fromTo('.mountBg', { y: -10 }, { y: -100 }, 0)
+                .fromTo('.mountMg', { y: -30 }, { y: -250 }, 0)
+                .fromTo('.mountFg', { y: -50 }, { y: -600 }, 0)
+
+            $('#arrowBtn').on('mouseenter', (e) => { gsap.to('.arrow', { y: 10, duration: 0.8, ease: 'back.inOut(3)', overwrite: 'auto' }); })
+            $('#arrowBtn').on('mouseleave', (e) => { gsap.to('.arrow', { y: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto' }); })
+            $('#arrowBtn').on('click', (e) => { gsap.to(window, { scrollTo: innerHeight, duration: 1.5, ease: 'power1.inOut' }); }) // scrollTo requires the ScrollTo plugin (not to be confused w/ ScrollTrigger)
+        })
+    </script>
+
+    <script>
+        window.addEventListener("scroll", (event) => {
+            let scroll = this.scrollY;
+            if (scroll > 500) {
+                $(".content").fadeIn();
+            } else {
+                $(".content").fadeOut();
+            }
+
+
+        });
+
+        const textContainer = document.querySelector(".text-container");
+        const showDesc = document.querySelector(".show-desc");
+        const closeBtn = document.querySelector(".text-container .close-btn");
+
+        showDesc.addEventListener('click', function () {
+            textContainer.classList.add("show");
+        })
+
+        closeBtn.addEventListener('click', function () {
+            textContainer.classList.remove("show")
+        })
+    </script>
+
+    <script>
+        // I hope this over-commenting helps. Let's do this!
+        // Let's use the 'active' variable to let us know when we're using it
+        let active = false;
+
+        // First we'll have to set up our event listeners
+        // We want to watch for clicks on our scroller
+        document.querySelector('.scroller').addEventListener('mousedown', function () {
+            active = true;
+            // Add our scrolling class so the scroller has full opacity while active
+            document.querySelector('.scroller').classList.add('scrolling');
+        });
+        // We also want to watch the body for changes to the state,
+        // like moving around and releasing the click
+        // so let's set up our event listeners
+        document.body.addEventListener('mouseup', function () {
+            active = false;
+            document.querySelector('.scroller').classList.remove('scrolling');
+        });
+        document.body.addEventListener('mouseleave', function () {
+            active = false;
+            document.querySelector('.scroller').classList.remove('scrolling');
+        });
+
+        // Let's figure out where their mouse is at
+        document.body.addEventListener('mousemove', function (e) {
+            if (!active) return;
+            // Their mouse is here...
+            let x = e.pageX;
+            // but we want it relative to our wrapper
+            x -= document.querySelector('.wrapper').getBoundingClientRect().left;
+            // Okay let's change our state
+            scrollIt(x);
+        });
+
+        // Let's use this function
+        function scrollIt(x) {
+            let transform = Math.max(0, (Math.min(x, document.querySelector('.wrapper').offsetWidth)));
+            document.querySelector('.after').style.width = transform + "px";
+            document.querySelector('.scroller').style.left = transform - 25 + "px";
+        }
+
+        // Let's set our opening state based off the width, 
+        // we want to show a bit of both images so the user can see what's going on
+        scrollIt(150);
+
+        // And finally let's repeat the process for touch events
+        // first our middle scroller...
+        document.querySelector('.scroller').addEventListener('touchstart', function () {
+            active = true;
+            document.querySelector('.scroller').classList.add('scrolling');
+        });
+        document.body.addEventListener('touchend', function () {
+            active = false;
+            document.querySelector('.scroller').classList.remove('scrolling');
+        });
+        document.body.addEventListener('touchcancel', function () {
+            active = false;
+            document.querySelector('.scroller').classList.remove('scrolling');
+        });
+
+        document.body.addEventListener('touchmove', function (e) {
+            if (!active)
+                return;
+            let x = e.touches[0].pageX;
+            x -= document.querySelector('.wrapper').getBoundingClientRect().left; scrollIt(x);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="us-ascii" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>God bless America</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link href="../css/styles.css" rel="stylesheet" />
+  <link href="../css/animations.css" rel="stylesheet" />
+  <link href="../css/work.css" rel="stylesheet" />
+  <style type="text/css">
+    body {
+      font-family: serif;
+    }
+
+    .site-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .site-wrapper.loading {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .loader-wrapper {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      background-color: white;
+      z-index: 2;
+    }
+
+    .loader {
+      width: 120px;
+      height: 120px;
+      animation: spin 1s linear infinite;
+      perspective: 600px;
+    }
+
+    .loader img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media screen and (min-height: 768px) {
+      .loader {
+        width: 400px;
+        height: 400px;
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+
+    @media screen and (max-width: 576px) {
+      .big-video {
+        width: 100%;
+      }
+    }
+  </style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="site-wrapper loading">
+    <div class="loader-wrapper">
+      <div class="loader">
+        <img alt="" src="../mywork/projects/godblessamerica/loadermj.png" />
+      </div>
+    </div>
+
+    <header>
+      <a class="link_left" href="../"><img class="star-menu-icon" src="../logo/spinningstar.svg" />
+      </a>
+      <a class="link_right" href="#!" id="more_info_link">More Info</a>
+    </header>
+
+    <div class="container-big">
+      <center>
+        <iframe allow="autoplay;fullscreen" allowfullscreen="" frameborder="0" height="180" id="left-video-gb"
+          scrolling="no"
+          src="https://onelineplayer.com/player.html?autoplay=false&amp;autopause=false&amp;muted=false&amp;loop=false&amp;url=https%3A%2F%2Fwww.dropbox.com%2Fs%2F18tfgu7psu05uq0%2FGodblessAmerica1.mp4%3Fraw%3D1&amp;poster=https%3A%2F%2Fwww.dropbox.com%2Fs%2Faf2pky37vui5n5u%2Fgodblessamerica1.png%3Fraw%3D1&amp;time=true&amp;progressBar=true&amp;overlay=true&amp;muteButton=true&amp;fullscreenButton=true&amp;style=light&amp;quality=auto&amp;playButton=true"
+          style="display: inline; float: left; margin: 120px 20px 0px" width="320"></iframe>
+      </center>
+
+      <center>
+        <iframe allow="autoplay;fullscreen" allowfullscreen="" class="big-video" frameborder="0" height="1000"
+          id="portrait" scrolling="no"
+          src="https://onelineplayer.com/player.html?autoplay=false&amp;autopause=false&amp;muted=false&amp;loop=false&amp;url=https%3A%2F%2Fwww.dropbox.com%2Fs%2Fdizuqluc1oflz5w%2FGodblessAmerica2.mp4%3Fraw%3D1&amp;poster=https%3A%2F%2Fwww.dropbox.com%2Fs%2F1mebka9uhk2x0r1%2Fgodblessamerica2.png%3Fraw%3D1&amp;time=true&amp;progressBar=true&amp;overlay=true&amp;muteButton=true&amp;fullscreenButton=true&amp;style=light&amp;quality=auto&amp;playButton=true"
+          width="480"></iframe>
+      </center>
+    </div>
+
+    <div class="modal" id="myModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <p>
+          Like Above and Below from Nicolas Steiner, from the depths of the
+          flood channels under the former paper factory, Rihanna, Shia
+          Leboeuf, and Michael Jackson meet for the first time, Survivors,
+          full of dreams and aspirations. 2018, La Totale curated by Leo Orta
+          and Iseult Perrault, Studio Orta, Les Moulins de Boissy-le-Châtel.
+        </p>
+
+        <br />
+        <br />
+        <br />
+        &nbsp;
+      </div>
+    </div>
+  </div>
+  <script src="../js/script.js" type="text/javascript"></script>
+  <script>
+    window.addEventListener("load", function () {
+      const loader = document.querySelector(".loader-wrapper");
+      const siteWrapper = document.querySelector(".site-wrapper");
+      loader.style.display = "none";
+      siteWrapper.classList.remove("loading");
+    });
+  </script>
+  <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+</body>
+
+</html>

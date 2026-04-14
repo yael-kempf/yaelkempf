@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Thanx 4 Coming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <link rel="preload" href="../fonts/EBGaramond-Regular.ttf" as="font" type="font/ttf" crossorigin />
+
+  <link rel="preload" href="../fonts/EBGaramond-Bold.ttf" as="font" type="font/ttf" crossorigin />
+
+  <link href="../css/styles.css?v=2" rel="stylesheet" />
+  <link href="../css/animations.css" rel="stylesheet" />
+  <link href="../css/work.css?v=2" rel="stylesheet" />
+  <!-- <link href="../css/thxforcoming.css" rel="stylesheet" /> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: EBGaramond-Bold;
+      src: url(../fonts/EBGaramond-Bold.ttf);
+    }
+
+    @font-face {
+      font-family: EBGaramond-Regular;
+      src: url(../fonts/EBGaramond-Regular.ttf);
+    }
+
+    /* CURSOR HOVER EFFECT */
+    body {
+      font-size: 1.8rem;
+      font-family: serif;
+      background-color: whitesmoke;
+    }
+
+    .coin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      right: 40px;
+      bottom: 40px;
+      z-index: 2;
+      width: 100px;
+      height: 100px;
+    }
+
+    .coin img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.4s;
+    }
+
+    .coin img:hover {
+      transform: scale(0.9);
+    }
+
+    .ring {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      left: 40px;
+      bottom: 40px;
+      z-index: 2;
+      width: 100px;
+      height: 100px;
+    }
+
+    .ring img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.4s;
+    }
+
+    .ring img:hover {
+      transform: scale(0.9);
+    }
+
+    .cursor {
+      position: absolute;
+      width: 600px;
+      height: 400px;
+      top: 50%;
+      left: 50%;
+      margin: -100px 0 0 -100px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+    .bottom-article {
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 5px 0;
+      text-align: right;
+    }
+
+    .bottom-article p {
+      margin: 0;
+    }
+
+    .wrapper {
+      padding: 5% 0;
+    }
+
+    .project {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-basis: 1;
+      position: relative;
+      z-index: 2;
+      color: rgb(200, 200, 200);
+      mix-blend-mode: difference;
+      cursor: url("../mywork/projects/thanxforcoming/makeamericagreatagain-cursor-1.png"),
+        auto;
+      font-family: serif;
+    }
+
+    .project-title p {
+      font-weight: 400;
+    }
+
+    .project-list {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .container-big {
+      margin: 0 auto;
+      display: none;
+      overflow-x: hidden;
+      width: 90%;
+      max-width: 1000px;
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      padding: 0 5%;
+      overflow: hidden;
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* END CURSOR HOVER EFFECT */
+
+    /* BUSINESS CARD */
+    .card-container {
+      display: flex;
+      flex-flow: column wrap;
+      align-content: center;
+      justify-content: center;
+      padding-bottom: 2rem;
+      min-height: 100vh;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .scene {
+      position: relative;
+      -webkit-perspective: 1000;
+      perspective: 1000;
+      width: 100%;
+    }
+
+    .card {
+      -webkit-transition: all 1s ease;
+      transition: all 1s ease;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      position: relative;
+      margin-left: 5px;
+      -webkit-transition: all 1s ease;
+      transition: all 1s ease;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      max-width: 560px;
+      min-height: 300px;
+      width: 100%;
+      margin: 0 auto;
+      background-color: whitesmoke;
+      border: none;
+    }
+
+    .card:hover {
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+
+    .businesscard {
+      background: #fff;
+      max-width: 560px;
+      min-height: 300px;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      margin: 0 auto;
+      font-family: serif;
+      color: #000;
+      box-shadow: 4px 4px 15px -5px #000;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .businesscard.front {
+      z-index: 2;
+      background: url("https://www.prems.work/userfiles/tr01sibrand.nl/images/businesscardbg.jpg");
+    }
+
+    .businesscard.back {
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+      background: url("https://www.prems.work/userfiles/tr01sibrand.nl/images/businesscardbg.jpg");
+      z-index: 3;
+      font-size: 11px;
+    }
+
+    .businesscard.back img {
+      max-width: 560px;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .card:hover .businesscard.front {
+      display: none;
+    }
+
+    .card:hover .businesscard.front {
+      display: block;
+    }
+
+    .businesscard div {
+      float: left;
+      width: 100%;
+    }
+
+    .wrap:nth-child(1) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 1;
+      padding: 10px;
+    }
+
+    .wrap:nth-child(2) {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .wrap:nth-child(3) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      padding-bottom: 5px;
+    }
+
+    .card-bottom {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    .card-bottom .adress {
+      width: 70%;
+    }
+
+    .card-bottom p {
+      margin: 0;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .card-bottom img {
+      width: 150px;
+      height: 30px;
+      object-fit: cover;
+      margin: 0;
+      margin-top: 5px;
+    }
+
+    .card-bottom .sponsor {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      flex: 0 1 150px;
+    }
+
+    .card-bottom .sponsor p {
+      display: block;
+      width: 150px;
+      text-align: left;
+    }
+
+    .businesscard .number {
+      width: 50%;
+      text-align: left;
+      font-size: 18px;
+      text-transform: none;
+    }
+
+    .businesscard .company {
+      width: 50%;
+      text-align: right;
+      font-size: 21px;
+    }
+
+    .businesscard .company p {
+      margin: 0;
+      margin-bottom: -15px;
+      font-size: 18px;
+    }
+
+    .businesscard .company b {
+      font-size: 28px;
+    }
+
+    .businesscard .company small {
+      font-size: 61%;
+    }
+
+    .businesscard .nameandfunction {
+      width: 100%;
+      font-size: 40px;
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .businesscard .nameandfunction small {
+      font-size: 24px;
+      font-style: italic;
+    }
+
+    /* BUSINESS CARD ENDS */
+
+    /* SCREENSAVER STARTS */
+    body {
+      margin: 0;
+    }
+
+    .x,
+    .y {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      display: none;
+    }
+
+    .x {
+      animation: x 13s linear infinite alternate;
+    }
+
+    .y {
+      animation: y 7s linear infinite alternate;
+    }
+
+    @keyframes x {
+      100% {
+        transform: translateX(calc(100vw - 100px));
+      }
+    }
+
+    @keyframes y {
+      100% {
+        transform: translateY(calc(100vh - 100px));
+      }
+    }
+
+    .mobile-slider {
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      display: none;
+    }
+
+    .mobile-slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    /* SCREENSAVER ENDS */
+
+    @media screen and (max-width: 768px) {
+      body {
+        font-size: 1rem;
+      }
+
+      .bottom-article {
+        font-size: 0.8rem;
+      }
+
+      .x,
+      .y {
+        display: initial;
+      }
+
+    }
+
+    @media screen and (max-width: 576px) {
+      .coin {
+        width: 50px;
+        height: 50px;
+        top: 20px;
+        right: 20px;
+        bottom: 0;
+        position: absolute;
+      }
+
+      .ring {
+        width: 50px;
+        height: 50px;
+        top: 20px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        position: absolute;
+      }
+
+      .container-big {
+        display: block;
+        padding: 0 1rem;
+      }
+
+      .businesscard,
+      .card {
+        min-height: 200px;
+      }
+
+      .card-container {
+        position: static;
+        min-height: 30vh;
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .site {
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
+      }
+
+      .businesscard .number,
+      .businesscard .company p {
+        font-size: 12px !important;
+      }
+
+      .businesscard .nameandfunction {
+        font-size: 18px;
+      }
+
+      .businesscard .nameandfunction small {
+        font-size: 16px;
+      }
+
+      .cursor {
+        width: 300px;
+        height: 200px;
+      }
+
+      .businesscard.back img {
+        max-width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card-bottom {
+        gap: 0 20px;
+      }
+
+      .card-bottom p {
+        font-size: 10px !important;
+      }
+
+      .card-bottom .sponsor {
+        flex: 0 1 100px;
+      }
+
+      .card-bottom .sponsor img,
+      .card-bottom .sponsor p {
+        width: 100px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site">
+    <div class="x">
+      <img class="y" src="../mywork/projects/thanxforcoming/makeamericagreatagain-cursor-1.png" alt="codepen" />
+    </div>
+    <div class="mobile-slider">
+      <img src="../mywork/projects/thanxforcoming/1.jpg" alt="" />
+      <img src="../mywork/projects/thanxforcoming/2.jpg" alt="" />
+      <img src="../mywork/projects/thanxforcoming/3.jpg" alt="" />
+      <img src="../mywork/projects/thanxforcoming/4.jpg" alt="" />
+      <img src="../mywork/projects/thanxforcoming/5.png" alt="" />
+      <img src="../mywork/projects/thanxforcoming/6.jpg" alt="" />
+      <img src="../mywork/projects/thanxforcoming/7.jpg" alt="" />
+      <img src="../mywork/projects/thanxforcoming/8.jpg" alt="" />
+    </div>
+    <div class="coin">
+      <img src="../mywork/projects/thanxforcoming/euros.png" alt="" />
+    </div>
+    <div class="ring">
+      <a target="_blank" href="https://youtu.be/37hsW9MfDN4">
+        <img src="../mywork/projects/thanxforcoming/ring.png" alt="">
+      </a>
+    </div>
+    <audio id="my-audio" loop
+      src="../mywork/projects/thanxforcoming/Tzusing_-_4_Floors_of_Whores_(getmp3.pro).mp3"></audio>
+    <header>
+      <a class="link_left" href="../"><img src="../logo/spinningstar.svg" class="star-menu-icon" /></a>
+    </header>
+
+    <!-- BUSINESS CARD -->
+
+    <div class="card-container">
+      <div class="scene">
+        <div class="card">
+          <div class="businesscard front">
+            <div class="wrap">
+              <div class="number">Moltkerei Werkstatt e.V.</div>
+              <div class="company">
+                <p>Moltkestr. 8 (im Hof) - D 50674 Köln</p>
+              </div>
+            </div>
+            <div class="wrap">
+              <div class="nameandfunction">
+                Ya&euml;l KEMPF
+                <small>Thanx 4 Coming</small>
+              </div>
+            </div>
+            <div class="wrap">
+              <div class="card-bottom">
+                <div class="adress">
+                  <p>Opening | Thursday, December 5th, 2019 | 7 to 9pm</p>
+                  <p>Exhibition | December 6th - 15th, 2019</p>
+                  <p>on Saturdays and Sundays | 3 to 6pm</p>
+                  <p>& by appointment +49 1577 407 6633</p>
+                </div>
+                <div class="sponsor">
+                  <p>sponsored by</p>
+                  <img src="../mywork/projects/thanxforcoming/logo_stadt_koeln_schwarz-tanz.svg" alt="" />
+                  <p style="font-size: 12px">Kulturamt</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="businesscard back">
+            <img src="../mywork/projects/thanxforcoming/backvisitcard.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-big">
+      <div class="cursor"></div>
+      <div class="wrapper">
+        <div class="project-list">
+          <div class="project project-1">
+            <div class="project-title">
+              <p>
+                With her performance and installation-based exhibition Thanx 4
+                Coming, Ya&euml;l Kempf pushes against typical conventions
+                about how art is valued intrinsically and extrinsically.
+              </p>
+            </div>
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project project-2">
+            <div class="project-title">
+              <p>
+                When art is treated as just another commodity to be consumed,
+                it is not only the artwork that is for sale, but also all
+                those involved in its creation.
+              </p>
+            </div>
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project project-3">
+            <div class="project-title">
+              <p>
+                This dynamic allows those in a small elite circle with the
+                greatest financial resources to position themselves as
+                gatekeepers, thereby passing judgment on the meaning of art
+                itself.
+              </p>
+            </div>
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project project-4">
+            <div class="project-title">
+              <p>
+                Ya&euml;l Kempf critiques this system and tries to break it by
+                giving everyone who visits the exhibition a &euro;1 coin. This
+                paradigm shift of paying visitors for showing up &ndash; as
+                opposed to requiring an entrance fee &ndash; draws them into
+                the performance and, by extension, its valuation. The more
+                visitors who attend the exhibition, the more money the artist
+                loses.
+              </p>
+            </div>
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project project-5">
+            <div class="project-title">
+              <p>
+                This transparent valuation is based solely on social
+                interaction. You don&rsquo;t have to do anything because you
+                won&rsquo;t be judged. You can do everything because you alone
+                decide.
+              </p>
+            </div>
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project project-6">
+            <div class="project-title">
+              <p>
+                The video and sculpture installation transforms the exhibition
+                space into a darkened nightclub with deep bass, fog machines,
+                and rotating lights.
+              </p>
+            </div>
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project project-7">
+            <div class="project-title">
+              <p>
+                Participants become invisible in the dense fog and sink into
+                limbo. Kempf then changes the perspective and breaks the
+                illusion of being at a party by throwing visitors back into
+                the dysfunctional present via video screens.
+              </p>
+            </div>
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project project-8">
+            <div class="project-title">
+              <p>
+                The artist persuasively dissects the relationship between
+                image, language, and viewer to reassemble it into a new
+                narrative construct. The resulting declaration of love tries
+                to seduce the visitor into visualizing another worldview
+                formed by fate instead of chance.
+              </p>
+            </div>
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project project-9">
+            <div class="project-title">
+              <p>
+                Thanx 4 Coming moves between the surreal and the unavoidable
+                truth that each of us must leave our individual comfort zones
+                in order to come together collectively to create social
+                change.
+              </p>
+            </div>
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project project-10">
+            <div class="project-title">
+              <p>Alexander P&uuml;tz &amp; Angela Thiesen</p>
+            </div>
+            <div class="project-overlay"></div>
+          </div>
+        </div>
+
+        <div class="bottom-article">
+          <u>Followed by Talk: ART &amp; VALUE // December 7, 2019, 4 p.m.</u>
+          <p>
+            A conversation with Gil Bronner (Philara Collection,
+            D&uuml;sseldorf), David Evrard (artist, Brussels),
+          </p>
+          <p>
+            Markus Kersting (kuk Galerie, Cologne) and moderated by Raphael
+            Nocken (Kunsthalle D&uuml;sseldorf).
+          </p>
+          <p>
+            Special thanks to Elvira Axt, Gil Bronner, David Evrard, Markus
+            Kersting, Raphael Nocken
+          </p>
+          <p></p>
+          <p></p>
+          <p>fotos &copy; Deniz Saridas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!-- gsap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
+    integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="../js/script.js" type="text/javascript"></script>
+  <!-- <script src="../js/cursor-hover.js"></script> -->
+  <script>
+    // CURSOR HOVER EFFECT
+    if (window.innerWidth > 768) {
+      var $cursor = $(".cursor"),
+        $overlay = $(".project-overlay");
+
+      function moveCircle(e) {
+        TweenLite.to($cursor, 0.5, {
+          css: {
+            left: e.pageX,
+            top: e.pageY,
+          },
+          delay: 0.03,
+        });
+      }
+
+      $(".project-1").hover(function () {
+        $(".cursor").css({
+          "background-image": "url(../mywork/projects/thanxforcoming/1.jpg)",
+        });
+      });
+
+      $(".project-2").hover(function () {
+        $(".cursor").css({
+          "background-image": "url(../mywork/projects/thanxforcoming/2.jpg)",
+        });
+      });
+      $(".project-3").hover(function () {
+        $(".cursor").css({
+          "background-image": "url(../mywork/projects/thanxforcoming/2b.png)",
+        });
+      });
+      $(".project-4").hover(function () {
+        $(".cursor").css({
+          "background-image": "url(../mywork/projects/thanxforcoming/3.jpg)",
+        });
+      });
+
+      $(".project-5").hover(function () {
+        $(".cursor").css({
+          "background-image": "url(../mywork/projects/thanxforcoming/4.jpg)",
+        });
+      });
+
+      $(".project-6").hover(function () {
+        $(".cursor").css({
+          "background-image":
+            "url(../mywork/projects/thanxforcoming/thxforcoming.gif)",
+        });
+      });
+      $(".project-7").hover(function () {
+        $(".cursor").css({
+          "background-image": "url(../mywork/projects/thanxforcoming/5.png)",
+        });
+      });
+
+      $(".project-8").hover(function () {
+        $(".cursor").css({
+          "background-image": "url(../mywork/projects/thanxforcoming/6.jpg)",
+        });
+      });
+      $(".project-9").hover(function () {
+        $(".cursor").css({
+          "background-image": "url(../mywork/projects/thanxforcoming/7.png)",
+        });
+      });
+      $(".project-10").hover(function () {
+        $(".cursor").css({
+          "background-image": "url(../mywork/projects/thanxforcoming/8.jpg)",
+        });
+      });
+      var flag = false;
+      $($overlay).mousemove(function () {
+        flag = true;
+        TweenLite.to($cursor, 0.3, { scale: 1.5, autoAlpha: 1 });
+        $($overlay).on("mousemove", moveCircle);
+      });
+
+      $($overlay).mouseout(function () {
+        flag = false;
+        TweenLite.to($cursor, 0.3, { scale: 0.1, autoAlpha: 0 });
+      });
+    }
+
+    //SHOW PAGE AFTER CARD CLICKED
+
+    if (window.innerWidth > 768) {
+      const card = document.querySelector(".card");
+      const cardContainer = document.querySelector(".card-container");
+      const container = document.querySelector(".container-big");
+      card.addEventListener("click", function () {
+        cardContainer.style.display = "none";
+        container.style.display = "block";
+      });
+    }
+
+    //PLAY AUDIO ON CLICK COIN
+    const coin = document.querySelector(".coin");
+    const myAudio = document.querySelector("#my-audio");
+    const isPlaying = (audElem) => {
+      return !audElem.paused;
+    };
+    coin.addEventListener("click", function () {
+      if (isPlaying(myAudio)) {
+        myAudio.pause();
+      } else {
+        myAudio.play();
+      }
+    });
+
+    // TOUCH SLIDER
+
+    if (window.innerWidth < 768) {
+      window.oncontextmenu = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+      };
+      let mobileSlider = document.querySelector(".mobile-slider");
+      let mobileSliderImg = document.querySelectorAll(".mobile-slider img");
+      function slider() {
+        mobileSlider.style.display = "initial";
+        for (let i = 0; i < mobileSliderImg.length; i++) {
+          let myTimeout = setTimeout(
+            function (j) {
+              mobileSliderImg[j].style.display = "initial";
+            },
+            i * 1000,
+            i
+          );
+
+          document.body.addEventListener("touchend", () => {
+            mobileSlider.style.display = "none";
+            for (let x = 0; x < mobileSliderImg.length; x++) {
+              mobileSliderImg[x].style.display = "none";
+            }
+
+            clearTimeout(myTimeout);
+          });
+
+          window.addEventListener("scroll", function () {
+            mobileSlider.style.display = "none";
+            for (let x = 0; x < mobileSliderImg.length; x++) {
+              mobileSliderImg[x].style.display = "none";
+            }
+
+            clearTimeout(myTimeout);
+          });
+        }
+      }
+
+      document.body.addEventListener("touchstart", () => {
+        let myTimeout2 = setTimeout(function () {
+          slider();
+        }, 1000);
+        document.body.addEventListener("touchend", () => {
+          mobileSlider.style.display = "none";
+          for (let x = 0; x < mobileSliderImg.length; x++) {
+            mobileSliderImg[x].style.display = "none";
+          }
+
+          clearTimeout(myTimeout2);
+        });
+      });
+    }
+  </script>
+  <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+</body>
+
+</html>

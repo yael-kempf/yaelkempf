@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Small logo for browser tab -->
+  <link href="logo/favicon.ico" rel="icon" type="image/x-icon">
+  <title>Love U</title>
+  <meta name="description" content="New York Times: “You're a candle in the darkness.”">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow-x: hidden;
+      font-size: 125%;
+    }
+
+    body {
+      font-family: serif;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #futter-cont a {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    /* Style pour le message de salutation */
+    #greeting {
+      padding: 1rem;
+      font-size: 36px;
+      font-style: italic;
+      display: none;
+    }
+
+    #futter-cont #futterbly {
+      margin-top: 1em;
+    }
+
+    .newsletter {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .hidden-menu {
+      position: absolute;
+      margin: auto;
+      width: 100%;
+      max-width: 1200px;
+      display: none;
+    }
+
+    .hidden-menu .items {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      gap: .75rem 0;
+      font-size: 2rem;
+      font-style: italic;
+    }
+
+    .hidden-menu a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .menj {
+      display: inline-block;
+      position: relative;
+      padding: 3px;
+    }
+
+    .menj:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      -webkit-transition: all ease 0.5s;
+      -moz-transition: all ease 0.5s;
+      transition: all ease 0.5s;
+      height: 8px;
+      background: rgba(255, 12, 129, 0.83);
+      z-index: -99999;
+    }
+
+    .menj:hover:after {
+      height: 2.5rem;
+      background: coral;
+    }
+
+    .menj:hover {
+      color: #FFF;
+    }
+
+    @media screen and (max-width :576px) {
+
+      #futterbly {
+        display: none;
+      }
+
+      #greeting {
+        font-size: 24px;
+      }
+
+      .hidden-menu {
+        transform: translateY(5rem);
+      }
+
+      .hidden-menu .items {
+        font-size: 16px;
+      }
+
+      .newsletter {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+
+      .menj:after {
+        height: 5px;
+      }
+
+      .menj:hover:after {
+        height: 24px;
+      }
+    }
+
+    @media (orientation: landscape) and (hover: none) and (pointer: coarse) {
+      #futterbly {
+        display: none;
+      }
+    }
+
+
+    .mobile-only {
+      background-color: #111;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      display: none;
+
+    }
+
+    .js-type-writer {
+      font-size: 48px;
+      font-family: sans-serif;
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+      visibility: hidden;
+    }
+
+    .js-type-writer>span {
+      border-right: .05em solid;
+      animation: caret 1s steps(1) infinite;
+    }
+
+    @keyframes caret {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+
+    @media screen and (max-width:576px) {
+    }
+  </style>
+
+
+  <link href="css/animations.css?v=3.5" rel="stylesheet" />
+  <!-- Scripts for loading screen-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+    referrerpolicy="no-referrer" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="futter-cont" style="visibility: hidden;">
+    <a href="bonus/index.html">
+      <div id="futterbly">
+        <div class="left wing"></div>
+        <div class="right wing"></div>
+      </div>
+    </a>
+  </div>
+
+  <div id="greeting">
+  </div>
+
+  <div class="hidden-menu">
+    <div class="items">
+      <p>Beneath
+        <a href="work/bigbrother.html">
+          <span class="menj">Big Brother</span>
+        </a>'s all-seeing sight,
+      </p>
+      <p>Where <a href="work/wedonthaveforever.html">
+          <span class="menj">mushrooms</span>
+        </a> murmur in
+        the night,</p>
+      <p>And <a href="work/lanausee.html">
+          <span class="menj">algae</span>
+        </a> sway in the ocean's light.</p>
+      <p>In a realms where <a href="work/runrabbitrun.html">
+          <span class="menj">GTA</span>
+        </a> and <a href="work/playitforwhat.html">
+          <span class="menj">FIFA</span>
+        </a>
+        meet,</p>
+      <p>An <a href="work/republicainsocial.html"><span class="menj">odyssey</span></a>
+        unfolds, both wild and sweet.</p>
+      <p><a href="work/thxforcoming.html"><span class="menj">Thanks for
+            coming</span></a>, our journey's not complete.</p>
+    </div>
+  </div>
+
+  <div class="newsletter">
+    <iframe width="340" height="305"
+      src="https://b2f24b07.sibforms.com/serve/MUIFACyeJkeO8R6gMzIfCqSSIl9d9jY4YgrY0IHAqwcCYCw2kHcRnXsbGPnFTDvcRd56KfB_xcffWUHRlU2kFGs1hvapir9oCvWw-yZQ3lUoZirG2pTmE07l4I-z89eFBVdkq5FzZSVPE55NdVG7VNHVSoBGgCvacJ4Hn4FZKWcym455DZaTKicW4pSG-NO8NhjgKT3Is-Mscd8b"
+      frameborder="0" scrolling="auto" allowfullscreen
+      style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      // Show greeting animation only once for an user
+      var visited = localStorage.getItem('visited');
+      if (visited) {
+        $('.hidden-menu').fadeIn();
+      } else {
+        $('#greeting').show();
+        $('#greeting').each(function (index) {
+          var characters = $(this).text().split("");
+          $this = $(this);
+          $this.empty();
+          $.each(characters, function (i, el) {
+            if (el == " ") {
+              el = "&nbsp;"
+            }
+            $this.append('<span class="letter-' + i + '">' + el + '</span>');
+          });
+        });
+        setTimeout(() => {
+          $('.hidden-menu').fadeIn();
+          $('#greeting').fadeOut();
+        }, 15000);
+        localStorage.setItem('visited', true);
+      }
+    });
+
+  </script>
+
+  <script>
+    function updateGreeting() {
+      const currentHour = new Date().getHours();
+      const europeanHour = currentHour === 0 ? "midnight" : currentHour > 12 ? currentHour - 12 : currentHour;
+      const previousEuropeanHour = currentHour === 0 ? 11 : currentHour - 1 === 0 ? 11 : currentHour - 1 > 12 ? currentHour - 1 - 12 : currentHour - 1;
+      const timeOfDay = currentHour < 12 ? "morning" : currentHour < 18 ? "afternoon" : "evening";
+      const greetingSentence = `I knew you would arrive around ${europeanHour === "midnight" ? "midnight my dear Cinderella. However, I was already happy by 11." : `${europeanHour} in the ${timeOfDay}, I was already happy by ${previousEuropeanHour}.`}`;
+
+      document.getElementById('greeting').textContent = greetingSentence;
+    }
+
+    updateGreeting(); // Initial update
+
+    // Update the greeting every minute
+    setInterval(updateGreeting, 60000);
+
+
+    $(document).ready(function () {
+      setTimeout(function () {
+        $('#futter-cont').css('visibility', '');
+      }, 500);
+    });
+  </script>
+
+
+  <script>
+    window.addEventListener('load', function () {
+
+      const typeWriter = selector => {
+        const el = document.querySelector(selector)
+        el.style.visibility = "visible"
+        const text = el.innerHTML
+
+          ; (function _type(i = 0) {
+            if (i === text.length) return
+
+            el.innerHTML =
+              text.substring(0, i + 1) + '<span aria-hidden="true"></span>'
+            setTimeout(() => _type(i + 1), 100)
+          })()
+      }
+      typeWriter(".js-type-writer")
+
+    })
+
+  </script>
+
+  <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+  <div class="elfsight-app-7633051d-08be-454f-93c7-27a2e9808859"></div>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      div {
+        text-align: center;
+      }
+      img {
+        height: 300px;
+        padding: 20px 5px;
+        width: auto;
+        display: none;
+        margin: auto;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random</title>
+  </head>
+  <body>
+    <div>
+      <img src="agglo1.png" alt="" />
+    </div>
+    <div>
+      <img src="agglo3.png" alt="" />
+    </div>
+    <div>
+      <img src="Capture d’écran 2013-11-08 à 00.20.11.png" alt="" />
+    </div>
+    <div>
+      <img src="flir_20201007T225153.jpg" alt="" />
+    </div>
+    <div>
+      <img src="flir_20201007T225229.jpg" alt="" />
+    </div>
+    <div>
+      <img src="img-110704223502-0002.png" alt="" />
+    </div>
+    <div>
+      <img src="img-111014173321-0006.png" alt="" />
+    </div>
+    <div>
+      <img src="img-111014173737-0002.png" alt="" />
+    </div>
+    <div>
+      <img src="P2289892.jpg" alt="" />
+    </div>
+    <div>
+      <img src="tumblr_npbkzvuana1tcy6edo2_1280.jpg" alt="" />
+    </div>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const allImages = document.querySelectorAll("img");
+
+      // Select a random image to display
+      const randomIndex = Math.floor(Math.random() * allImages.length);
+      const randomImage = allImages[randomIndex];
+
+      // Show the selected image
+      randomImage.style.display = "block";
+    });
+  </script>
+</html>

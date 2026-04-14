@@ -1,0 +1,237 @@
+/* Styles for main page, menus and popups*/
+@font-face {
+    font-family: EBGaramond-Bold;
+    src: url(../fonts/EBGaramond-Bold.ttf);
+}
+
+@font-face {
+    font-family: EBGaramond-Regular;
+    src: url(../fonts/EBGaramond-Regular.ttf);
+}
+
+/* Styles for loader */
+.loading-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    font-family: serif;
+    color: black;
+    z-index: 10000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading-text {
+    padding: 10px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* End styles for loader */
+
+/* Styles for backgrounds */
+.work-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 0;
+}
+
+.bg-element {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-size: cover;
+    /* <------ */
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* optional, center the image */
+}
+
+/* End styles for backgrounds */
+
+
+/* Styles container for whole page */
+.work_body {
+    background: #000000;
+    padding: 0px;
+    margin: 0px;
+    min-height: 100vh;
+}
+
+/* End styles for whole page container */
+
+/* Styles for very top of page */
+.work-header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 110;
+}
+
+.work-header a {
+    color: white;
+    margin: 5px;
+    font-size: 36px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: serif;
+}
+
+.work-header .link-right {
+    float: right;
+    /*transform: translateX(19px);*/
+}
+
+.star-menu-icon {
+    height: auto;
+    width: 60px;
+    mix-blend-mode: difference;
+}
+
+.inverted {
+    filter: invert(1);
+}
+
+/* End styles for very top of page */
+
+
+/* Styles for content container */
+.work-container {
+    position: fixed;
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* End styles for content container */
+
+
+/* Styles for sidebar menu */
+.work-menu {
+    display: none;
+    /*display: flex;*/
+    writing-mode: vertical-rl;
+    position: fixed;
+    top: 60px;
+    margin: 5px;
+    right: 0;
+    color: white;
+    line-height: 56px;
+    font-size: 28px;
+    flex-direction: row;
+    justify-content: space-around;
+    height: calc(100% - 60px);
+    z-index: 110;
+}
+
+.work-menu a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.work-modal-menu {
+    /*display: none;*/
+    display: flex;
+    writing-mode: vertical-rl;
+    /*position: fixed;*/
+    top: 60px;
+    margin: 5px;
+    right: 0;
+    color: black;
+    line-height: 56px;
+    font-size: 28px;
+    flex-direction: row;
+    justify-content: space-around;
+    height: calc(100% - 60px);
+    z-index: 300;
+}
+
+.work-modal-menu a {
+    color: black;
+    text-decoration: none;
+}
+
+/* End styles for sidebar menu */
+
+/* Styles for popups*/
+.work-modal {
+    display: none;
+    z-index: 200;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: white;
+    color: black;
+    overflow-y: scroll;
+}
+
+.work-modal.work-modal-open {
+    display: block;
+}
+
+.work-modal .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 32px);
+}
+
+/* End styles for popups*/
+
+/* Responsive font sizes */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .sections {
+        font-size: 20px !important;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .sections {
+        font-size: 22px !important;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .sections {
+        font-size: 24px !important;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .sections {
+        font-size: 28px !important;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .sections {
+        font-size: 32px !important;
+    }
+}

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="controls">
+        <section>
+          <h2>Options</h2>
+          <div class="form-group">
+            <label for="preset">Preset(s) <span></span></label>
+            <select class="form-control" id="preset"></select>
+          </div>
+          <div class="form-group">
+            <label for="composite">Compositing <span></span></label>
+            <select
+              class="form-control"
+              id="composite"
+              data-config="composite"
+            ></select>
+          </div>
+          <div class="form-group">
+            <label for="night">Nightmode <span></span></label>
+            <label class="toggle" for="night">
+              <input type="checkbox" id="night" />
+              <div class="toggle-track">
+                <div class="toggle-thumb"></div>
+              </div>
+            </label>
+          </div>
+        </section>
+        <section>
+          <h3>Animation</h3>
+          <p>
+            Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing
+            elit.
+          </p>
+          <div class="form-group">
+            <label for="scale">Scale <span></span></label>
+            <div class="slider" data-min="0" data-max="100" data-accuracy="2">
+              <input type="hidden" id="scale" data-config="scale" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="speed">Speed <span></span></label>
+            <div class="slider" data-min="-5" data-max="5" data-accuracy="2">
+              <input type="hidden" id="speed" value="0" data-config="speed" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="linewidth">Line width <span></span></label>
+            <div class="slider" data-min="1" data-max="50" data-accuracy="0">
+              <input type="hidden" id="linewidth" data-config="linewidth" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="layers">Layers <span></span></label>
+            <div class="slider" data-min="1" data-max="10" data-accuracy="0">
+              <input type="hidden" id="layers" data-config="layers" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Filter</h3>
+          <div class="form-group">
+            <label for="shader">Enable <span></span></label>
+            <label class="toggle" for="shader">
+              <input type="checkbox" id="shader" />
+              <div class="toggle-track">
+                <div class="toggle-thumb"></div>
+              </div>
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="blur">Blur radius <span></span></label>
+            <div class="slider" data-min="1" data-max="50" data-accuracy="0">
+              <input type="hidden" id="blur" data-config="blur" value="10" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="rr">RR</label>
+            <input
+              class="form-control"
+              id="rr"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="rg">RG</label>
+            <input
+              class="form-control"
+              id="rg"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="rb">RB</label>
+            <input
+              class="form-control"
+              id="rb"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="ra">RA</label>
+            <input
+              class="form-control"
+              id="ra"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="r1">R1</label>
+            <input
+              class="form-control"
+              id="r1"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <br />
+          <div class="form-group form-group-vertical">
+            <label for="gr">GR</label>
+            <input
+              class="form-control"
+              id="gr"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="gg">GG</label>
+            <input
+              class="form-control"
+              id="gg"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="gb">GB</label>
+            <input
+              class="form-control"
+              id="gb"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="ga">GA</label>
+            <input
+              class="form-control"
+              id="ga"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="g1">G1</label>
+            <input
+              class="form-control"
+              id="g1"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <br />
+          <div class="form-group form-group-vertical">
+            <label for="br">BR</label>
+            <input
+              class="form-control"
+              id="br"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="bg">BG</label>
+            <input
+              class="form-control"
+              id="bg"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="bb">BB</label>
+            <input
+              class="form-control"
+              id="bb"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="ba">BA</label>
+            <input
+              class="form-control"
+              id="ba"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="b1">B1</label>
+            <input
+              class="form-control"
+              id="b1"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <br />
+          <div class="form-group form-group-vertical">
+            <label for="ar">AR</label>
+            <input
+              class="form-control"
+              id="ar"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="ag">AG</label>
+            <input
+              class="form-control"
+              id="ag"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="ab">AB</label>
+            <input
+              class="form-control"
+              id="ab"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="aa">AA</label>
+            <input
+              class="form-control"
+              id="aa"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+          <div class="form-group form-group-vertical">
+            <label for="a1">A1</label>
+            <input
+              class="form-control"
+              id="a1"
+              type="number"
+              step="0.1"
+              value="0"
+              data-shader
+            />
+          </div>
+        </section>
+        <section>
+          <div class="form-group">
+            <button class="btn btn-success btn-wide trigger-save">
+              <i class="fa fa-floppy-o"></i> Save as...
+            </button>
+          </div>
+        </section>
+      </div>
+      <div class="canvas">
+        <div class="quick">
+          <a href="#" class="trigger-menu"><i class="fa fa-cogs"></i></a>
+          <a href="#" class="trigger-clear"><i class="fa fa-eraser"></i></a>
+
+          <div class="form-group-vertical">
+            <label for="linewidth"
+              ><a href="#"><i class="fa fa-paint-brush"></i></a
+            ></label>
+            <div
+              class="slider slider-vertical"
+              data-min="1"
+              data-max="50"
+              data-accuracy="0"
+            >
+              <input type="hidden" id="linewidth" data-config="linewidth" />
+              <div class="slider-track"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+        </div>
+        <canvas id="temporary"></canvas>
+        <canvas id="render"></canvas>
+      </div>
+    </div>
+
+    <svg>
+      <defs>
+        <filter id="filter">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="" result="filter" />
+          <feBlend />
+        </filter>
+      </defs>
+    </svg>
+  </body>
+  <script src="pen.js"></script>
+</html>
