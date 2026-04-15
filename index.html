@@ -396,6 +396,92 @@
           right: 14px;
         }
       }
+      /* Subscribe section */
+      #subscribe-trigger {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-style: italic;
+        cursor: pointer;
+        z-index: 9999;
+      }
+
+      #subscribe-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9998;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+
+      #subscribe-box.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      #subscribe-inner {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        max-width: 320px;
+        width: 90%;
+
+        transform: translateY(20px);
+        transition: transform 0.4s ease;
+      }
+
+      #subscribe-box.active #subscribe-inner {
+        transform: translateY(0);
+      }
+
+      .subscribe-title {
+        font-style: italic;
+        margin-bottom: 15px;
+      }
+
+      #subscribe-inner input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+      }
+
+      #subscribe-inner button {
+        background: #eb3681;
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        padding: 10px 28px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 15px;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      #subscribe-inner button:hover {
+        background: #d02a6e;
+        transform: scale(1.03);
+      }
+
+      #subscribe-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+      }
     </style>
 
     <link href="css/animations.css?v=3.5" rel="stylesheet" />
@@ -474,21 +560,30 @@
       </div>
     </div>
 
-    <div class="newsletter">
-      <iframe
-        width="340"
-        height="305"
-        src="https://b2f24b07.sibforms.com/serve/MUIFACyeJkeO8R6gMzIfCqSSIl9d9jY4YgrY0IHAqwcCYCw2kHcRnXsbGPnFTDvcRd56KfB_xcffWUHRlU2kFGs1hvapir9oCvWw-yZQ3lUoZirG2pTmE07l4I-z89eFBVdkq5FzZSVPE55NdVG7VNHVSoBGgCvacJ4Hn4FZKWcym455DZaTKicW4pSG-NO8NhjgKT3Is-Mscd8b"
-        frameborder="0"
-        scrolling="auto"
-        allowfullscreen
-        style="
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          max-width: 100%;
-        "
-      ></iframe>
+    <div id="subscribe-trigger">U wanna hear from me?</div>
+
+    <div id="subscribe-box">
+      <div id="subscribe-inner">
+        <p class="subscribe-title">Leave your trace</p>
+        <form
+          id="subscribe-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLScZkqRceJWOxVr8GZUtvZcswCj4-5v08U-w3S2xyK-_nWgduA/formResponse"
+          method="POST"
+          target="hidden_iframe"
+          onsubmit="submitted = true"
+        >
+          <input
+            type="email"
+            id="email"
+            name="entry.1332847598"
+            placeholder="your@email.com"
+            required
+          />
+          <button type="submit">Send</button>
+        </form>
+        <iframe name="hidden_iframe" style="display: none"></iframe>
+        <p id="subscribe-success" class="hidden">I’ll write to you soon 💌</p>
+      </div>
     </div>
 
     <script>
@@ -570,7 +665,12 @@
 
     <div id="wa-box">
       <div id="wa-header">
-        <img id="wa-avatar" loading="lazy" src="images/diana-the-huntress.jpg" alt="diana the huntress" />
+        <img
+          id="wa-avatar"
+          loading="lazy"
+          src="images/diana-the-huntress.jpg"
+          alt="diana the huntress"
+        />
         <div id="wa-info">
           <div id="wa-name">Yaël K.</div>
           <div id="wa-email">contact@yaelkempf.com</div>
@@ -628,5 +728,40 @@
     function startChat() {
       window.open("https://wa.me/33764565969", "_blank");
     }
+    /* Subscribe box logic */
+    function openSubscribe() {
+      subscribeBox.classList.add("active");
+    }
+
+    function closeSubscribe() {
+      subscribeBox.classList.remove("active");
+    }
+
+    document
+      .getElementById("subscribe-trigger")
+      .addEventListener("click", openSubscribe);
+
+    let submitted = false;
+    document.getElementById("subscribe-form").addEventListener("submit", () => {
+      setTimeout(() => {
+        document.querySelector("#subscribe-form").style.display = "none";
+        document.getElementById("subscribe-success").classList.remove("hidden");
+
+        // close after 2s
+        setTimeout(() => {
+          closeSubscribe();
+        }, 2000);
+      }, 500);
+    });
+
+    const subscribeBox = document.getElementById("subscribe-box");
+    const subscribeInner = document.getElementById("subscribe-inner");
+
+    subscribeBox.addEventListener("click", (e) => {
+      // if click is OUTSIDE the form
+      if (!subscribeInner.contains(e.target)) {
+        closeSubscribe();
+      }
+    });
   </script>
 </html>
