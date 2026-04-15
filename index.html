@@ -558,26 +558,6 @@
         }, 500);
       });
     </script>
-
-    <script>
-      window.addEventListener("load", function () {
-        const typeWriter = (selector) => {
-          const el = document.querySelector(selector);
-          el.style.visibility = "visible";
-          const text = el.innerHTML;
-
-          (function _type(i = 0) {
-            if (i === text.length) return;
-
-            el.innerHTML =
-              text.substring(0, i + 1) + '<span aria-hidden="true"></span>';
-            setTimeout(() => _type(i + 1), 100);
-          })();
-        };
-        typeWriter(".js-type-writer");
-      });
-    </script>
-
     <div id="wa-fab" onclick="toggleChat()" title="Message Yaël">
       <div id="wa-notif"></div>
       <svg viewBox="0 0 24 24" fill="none" style="width: 28px; height: 28px">
@@ -590,7 +570,7 @@
 
     <div id="wa-box">
       <div id="wa-header">
-        <img id="wa-avatar" src="images/diana-the-huntress.jpg" alt="diana the huntress" />
+        <img id="wa-avatar" loading="lazy" src="images/diana-the-huntress.jpg" alt="diana the huntress" />
         <div id="wa-info">
           <div id="wa-name">Yaël K.</div>
           <div id="wa-email">contact@yaelkempf.com</div>
