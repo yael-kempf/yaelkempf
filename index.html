@@ -27,11 +27,15 @@
         font-family: serif;
         text-align: center;
         min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+      }
+      main {
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        overflow: hidden;
+        justify-content: center; /* only if you still want intro centered */
       }
 
       .hidden {
@@ -119,10 +123,13 @@
 
         #greeting {
           font-size: 24px;
+          opacity: 0;
+          transition: opacity 0.6s ease;
         }
 
         .hidden-menu {
-          transform: translateY(5rem);
+          opacity: 0;
+          transition: opacity 0.6s ease;
         }
 
         .hidden-menu .items {
@@ -485,12 +492,6 @@
     </style>
 
     <link href="css/animations.css?v=3.5" rel="stylesheet" />
-    <!-- Scripts for loading screen-->
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
     <link
       crossorigin="anonymous"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -501,158 +502,92 @@
   </head>
 
   <body>
-    <div id="futter-cont" style="visibility: hidden">
-      <a href="bonus/index.html">
-        <div id="futterbly">
-          <div class="left wing"></div>
-          <div class="right wing"></div>
+    <main>
+      <div id="futter-cont" style="visibility: hidden">
+        <a href="bonus/index.html" aria-label="Bonus page">
+          <div id="futterbly">
+            <div class="left wing"></div>
+            <div class="right wing"></div>
+          </div>
+        </a>
+      </div>
+
+      <div id="greeting"></div>
+
+      <div class="hidden-menu">
+        <div class="items">
+          <p>
+            Beneath
+            <a href="work/bigbrother.html">
+              <span class="menj">Big Brother</span> </a
+            >'s all-seeing sight,
+          </p>
+          <p>
+            Where
+            <a href="work/wedonthaveforever.html">
+              <span class="menj">mushrooms</span>
+            </a>
+            murmur in the night,
+          </p>
+          <p>
+            And
+            <a href="work/lanausee.html">
+              <span class="menj">algae</span>
+            </a>
+            sway in the ocean's light.
+          </p>
+          <p>
+            In a realms where
+            <a href="work/runrabbitrun.html">
+              <span class="menj">GTA</span>
+            </a>
+            and
+            <a href="work/playitforwhat.html">
+              <span class="menj">FIFA</span>
+            </a>
+            meet,
+          </p>
+          <p>
+            An
+            <a href="work/republicainsocial.html"
+              ><span class="menj">odyssey</span></a
+            >
+            unfolds, both wild and sweet.
+          </p>
+          <p>
+            <a href="work/thxforcoming.html"
+              ><span class="menj">Thanks for coming</span></a
+            >, our journey's not complete.
+          </p>
         </div>
-      </a>
-    </div>
+      </div>
 
-    <div id="greeting"></div>
+      <div id="subscribe-trigger">U wanna hear from me?</div>
 
-    <div class="hidden-menu">
-      <div class="items">
-        <p>
-          Beneath
-          <a href="work/bigbrother.html">
-            <span class="menj">Big Brother</span> </a
-          >'s all-seeing sight,
-        </p>
-        <p>
-          Where
-          <a href="work/wedonthaveforever.html">
-            <span class="menj">mushrooms</span>
-          </a>
-          murmur in the night,
-        </p>
-        <p>
-          And
-          <a href="work/lanausee.html">
-            <span class="menj">algae</span>
-          </a>
-          sway in the ocean's light.
-        </p>
-        <p>
-          In a realms where
-          <a href="work/runrabbitrun.html">
-            <span class="menj">GTA</span>
-          </a>
-          and
-          <a href="work/playitforwhat.html">
-            <span class="menj">FIFA</span>
-          </a>
-          meet,
-        </p>
-        <p>
-          An
-          <a href="work/republicainsocial.html"
-            ><span class="menj">odyssey</span></a
+      <div id="subscribe-box">
+        <div id="subscribe-inner">
+          <p class="subscribe-title">Leave your trace</p>
+          <form
+            id="subscribe-form"
+            action="https://docs.google.com/forms/d/e/1FAIpQLScZkqRceJWOxVr8GZUtvZcswCj4-5v08U-w3S2xyK-_nWgduA/formResponse"
+            method="POST"
+            target="hidden_iframe"
+            onsubmit="submitted = true"
           >
-          unfolds, both wild and sweet.
-        </p>
-        <p>
-          <a href="work/thxforcoming.html"
-            ><span class="menj">Thanks for coming</span></a
-          >, our journey's not complete.
-        </p>
+            <input
+              type="email"
+              id="email"
+              name="entry.1332847598"
+              placeholder="your@email.com"
+              required
+            />
+            <button type="submit">Send</button>
+          </form>
+          <iframe name="hidden_iframe" style="display: none"></iframe>
+          <p id="subscribe-success" class="hidden">I’ll write to you soon 💌</p>
+        </div>
       </div>
-    </div>
-
-    <div id="subscribe-trigger">U wanna hear from me?</div>
-
-    <div id="subscribe-box">
-      <div id="subscribe-inner">
-        <p class="subscribe-title">Leave your trace</p>
-        <form
-          id="subscribe-form"
-          action="https://docs.google.com/forms/d/e/1FAIpQLScZkqRceJWOxVr8GZUtvZcswCj4-5v08U-w3S2xyK-_nWgduA/formResponse"
-          method="POST"
-          target="hidden_iframe"
-          onsubmit="submitted = true"
-        >
-          <input
-            type="email"
-            id="email"
-            name="entry.1332847598"
-            placeholder="your@email.com"
-            required
-          />
-          <button type="submit">Send</button>
-        </form>
-        <iframe name="hidden_iframe" style="display: none"></iframe>
-        <p id="subscribe-success" class="hidden">I’ll write to you soon 💌</p>
-      </div>
-    </div>
-
-    <script>
-      $(document).ready(function () {
-        // Show greeting animation only once for an user
-        var visited = localStorage.getItem("visited");
-        if (visited) {
-          $(".hidden-menu").fadeIn();
-        } else {
-          $("#greeting").show();
-          $("#greeting").each(function (index) {
-            var characters = $(this).text().split("");
-            $this = $(this);
-            $this.empty();
-            $.each(characters, function (i, el) {
-              if (el == " ") {
-                el = "&nbsp;";
-              }
-              $this.append('<span class="letter-' + i + '">' + el + "</span>");
-            });
-          });
-          setTimeout(() => {
-            $(".hidden-menu").fadeIn();
-            $("#greeting").fadeOut();
-          }, 15000);
-          localStorage.setItem("visited", true);
-        }
-      });
-    </script>
-
-    <script>
-      function updateGreeting() {
-        const currentHour = new Date().getHours();
-        const europeanHour =
-          currentHour === 0
-            ? "midnight"
-            : currentHour > 12
-              ? currentHour - 12
-              : currentHour;
-        const previousEuropeanHour =
-          currentHour === 0
-            ? 11
-            : currentHour - 1 === 0
-              ? 11
-              : currentHour - 1 > 12
-                ? currentHour - 1 - 12
-                : currentHour - 1;
-        const timeOfDay =
-          currentHour < 12
-            ? "morning"
-            : currentHour < 18
-              ? "afternoon"
-              : "evening";
-        const greetingSentence = `I knew you would arrive around ${europeanHour === "midnight" ? "midnight my dear Cinderella. However, I was already happy by 11." : `${europeanHour} in the ${timeOfDay}, I was already happy by ${previousEuropeanHour}.`}`;
-
-        document.getElementById("greeting").textContent = greetingSentence;
-      }
-
-      updateGreeting(); // Initial update
-
-      // Update the greeting every minute
-      setInterval(updateGreeting, 60000);
-
-      $(document).ready(function () {
-        setTimeout(function () {
-          $("#futter-cont").css("visibility", "");
-        }, 500);
-      });
-    </script>
+    </main>
     <div id="wa-fab" onclick="toggleChat()" title="Message Yaël">
       <div id="wa-notif"></div>
       <svg viewBox="0 0 24 24" fill="none" style="width: 28px; height: 28px">
@@ -684,6 +619,94 @@
     </div>
   </body>
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const greetingEl = document.getElementById("greeting");
+      const menuEl = document.querySelector(".hidden-menu");
+      const futter = document.getElementById("futter-cont");
+
+      // --- Greeting text logic ---
+      function updateGreeting() {
+        const currentHour = new Date().getHours();
+
+        const europeanHour =
+          currentHour === 0
+            ? "midnight"
+            : currentHour > 12
+              ? currentHour - 12
+              : currentHour;
+
+        const previousEuropeanHour =
+          currentHour === 0
+            ? 11
+            : currentHour - 1 === 0
+              ? 11
+              : currentHour - 1 > 12
+                ? currentHour - 1 - 12
+                : currentHour - 1;
+
+        const timeOfDay =
+          currentHour < 12
+            ? "morning"
+            : currentHour < 18
+              ? "afternoon"
+              : "evening";
+
+        const sentence =
+          europeanHour === "midnight"
+            ? "I knew you would arrive around midnight my dear Cinderella. However, I was already happy by 11."
+            : `I knew you would arrive around ${europeanHour} in the ${timeOfDay}, I was already happy by ${previousEuropeanHour}.`;
+
+        greetingEl.textContent = sentence;
+      }
+
+      updateGreeting();
+      setInterval(updateGreeting, 60000);
+
+      // --- Typewriter letter split ---
+      function splitTextToSpans(el) {
+        const text = el.textContent;
+        el.innerHTML = "";
+
+        [...text].forEach((char, i) => {
+          const span = document.createElement("span");
+          span.className = "letter-" + i;
+          span.innerHTML = char === " " ? "&nbsp;" : char;
+          el.appendChild(span);
+        });
+      }
+
+      // --- First visit logic ---
+      const visited = localStorage.getItem("visited");
+
+      if (visited) {
+        menuEl.style.display = "block";
+        menuEl.style.opacity = "1";
+      } else {
+        greetingEl.style.display = "block";
+        greetingEl.style.opacity = "1";
+
+        splitTextToSpans(greetingEl);
+
+        setTimeout(() => {
+          // fade out greeting
+          greetingEl.style.transition = "opacity 0.6s ease";
+          greetingEl.style.opacity = "0";
+
+          // show menu
+          menuEl.style.display = "block";
+          setTimeout(() => {
+            menuEl.style.opacity = "1";
+          }, 50);
+        }, 15000);
+
+        localStorage.setItem("visited", "true");
+      }
+
+      // --- Butterfly reveal ---
+      setTimeout(() => {
+        futter.style.visibility = "visible";
+      }, 500);
+    });
     let _waOpened = false;
     let _waAnimated = false;
 
