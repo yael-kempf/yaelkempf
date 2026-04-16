@@ -1,328 +1,790 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Small logo for browser tab -->
+    <link href="logo/favicon.ico" rel="icon" type="image/x-icon" />
+    <title>Love U</title>
+    <meta
+      name="description"
+      content="New York Times: “You're a candle in the darkness.”"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Small logo for browser tab -->
-  <link href="logo/favicon.ico" rel="icon" type="image/x-icon">
-  <title>Love U</title>
-  <meta name="description" content="New York Times: “You're a candle in the darkness.”">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+      html {
+        overflow-x: hidden;
+        font-size: 125%;
+      }
 
-    html {
-      overflow-x: hidden;
-      font-size: 125%;
-    }
+      body {
+        font-family: serif;
+        text-align: center;
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+      }
+      main {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* only if you still want intro centered */
+      }
 
-    body {
-      font-family: serif;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    #futter-cont a {
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    /* Style pour le message de salutation */
-    #greeting {
-      padding: 1rem;
-      font-size: 36px;
-      font-style: italic;
-      display: none;
-    }
-
-    #futter-cont #futterbly {
-      margin-top: 1em;
-    }
-
-    .newsletter {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-    .hidden-menu {
-      position: absolute;
-      margin: auto;
-      width: 100%;
-      max-width: 1200px;
-      display: none;
-    }
-
-    .hidden-menu .items {
-      display: flex;
-      flex-direction: column;
-      padding: 1rem;
-      gap: .75rem 0;
-      font-size: 2rem;
-      font-style: italic;
-    }
-
-    .hidden-menu a {
-      color: black;
-      text-decoration: none;
-    }
-
-    .menj {
-      display: inline-block;
-      position: relative;
-      padding: 3px;
-    }
-
-    .menj:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      -webkit-transition: all ease 0.5s;
-      -moz-transition: all ease 0.5s;
-      transition: all ease 0.5s;
-      height: 8px;
-      background: rgba(255, 12, 129, 0.83);
-      z-index: -99999;
-    }
-
-    .menj:hover:after {
-      height: 2.5rem;
-      background: coral;
-    }
-
-    .menj:hover {
-      color: #FFF;
-    }
-
-    @media screen and (max-width :576px) {
-
-      #futterbly {
+      .hidden {
         display: none;
       }
 
+      #futter-cont a {
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      /* Style pour le message de salutation */
       #greeting {
-        font-size: 24px;
+        padding: 1rem;
+        font-size: 36px;
+        font-style: italic;
+        display: none;
       }
 
-      .hidden-menu {
-        transform: translateY(5rem);
-      }
-
-      .hidden-menu .items {
-        font-size: 16px;
+      #futter-cont #futterbly {
+        margin-top: 1em;
       }
 
       .newsletter {
-        left: 0;
+        position: absolute;
+        top: 0;
         right: 0;
-        margin: 0 auto;
+      }
+
+      .hidden-menu {
+        position: absolute;
+        margin: auto;
+        width: 100%;
+        max-width: 1200px;
+        display: none;
+      }
+
+      .hidden-menu .items {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.75rem 0;
+        font-size: 2rem;
+        font-style: italic;
+      }
+
+      .hidden-menu a {
+        color: black;
+        text-decoration: none;
+      }
+
+      .menj {
+        display: inline-block;
+        position: relative;
+        padding: 3px;
       }
 
       .menj:after {
-        height: 5px;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        -webkit-transition: all ease 0.5s;
+        -moz-transition: all ease 0.5s;
+        transition: all ease 0.5s;
+        height: 8px;
+        background: rgba(255, 12, 129, 0.83);
+        z-index: -99999;
       }
 
       .menj:hover:after {
-        height: 24px;
+        height: 2.5rem;
+        background: coral;
       }
-    }
 
-    @media (orientation: landscape) and (hover: none) and (pointer: coarse) {
-      #futterbly {
+      .menj:hover {
+        color: #fff;
+      }
+
+      @media screen and (max-width: 576px) {
+        #futterbly {
+          display: none;
+        }
+
+        #greeting {
+          font-size: 24px;
+          opacity: 0;
+          transition: opacity 0.6s ease;
+        }
+
+        .hidden-menu {
+          opacity: 0;
+          transition: opacity 0.6s ease;
+        }
+
+        .hidden-menu .items {
+          font-size: 16px;
+        }
+
+        .newsletter {
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+        }
+
+        .menj:after {
+          height: 5px;
+        }
+
+        .menj:hover:after {
+          height: 24px;
+        }
+      }
+
+      @media (orientation: landscape) and (hover: none) and (pointer: coarse) {
+        #futterbly {
+          display: none;
+        }
+      }
+
+      .mobile-only {
+        background-color: #111;
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
         display: none;
       }
-    }
 
-
-    .mobile-only {
-      background-color: #111;
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 5px;
-      display: none;
-
-    }
-
-    .js-type-writer {
-      font-size: 48px;
-      font-family: sans-serif;
-      color: white;
-      text-transform: uppercase;
-      text-align: center;
-      visibility: hidden;
-    }
-
-    .js-type-writer>span {
-      border-right: .05em solid;
-      animation: caret 1s steps(1) infinite;
-    }
-
-    @keyframes caret {
-      50% {
-        border-color: transparent;
+      .js-type-writer {
+        font-size: 48px;
+        font-family: sans-serif;
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+        visibility: hidden;
       }
-    }
 
+      .js-type-writer > span {
+        border-right: 0.05em solid;
+        animation: caret 1s steps(1) infinite;
+      }
 
-    @media screen and (max-width:576px) {
-    }
-  </style>
+      @keyframes caret {
+        50% {
+          border-color: transparent;
+        }
+      }
 
+      /*WhatsApp-style chatbot*/
+      #wa-fab {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: transparent;
+        border: 2.5px solid #eb3681;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        animation: wa-bounce 2s infinite;
+        transition: background 0.25s;
+      }
+      #wa-fab:hover {
+        background: #fdebf2;
+      }
+      #wa-fab svg {
+        width: 28px;
+        height: 28px;
+      }
+      #wa-notif {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 13px;
+        height: 13px;
+        background: #eb3681;
+        border-radius: 50%;
+        border: 2px solid white;
+        animation: wa-pulse 1.8s infinite;
+      }
+      @keyframes wa-bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      @keyframes wa-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.3);
+        }
+      }
+      #wa-box {
+        position: fixed;
+        bottom: 100px;
+        right: 28px;
+        width: 310px;
+        max-width: calc(100vw - 32px);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+        z-index: 9998;
+        display: none;
+        flex-direction: column;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #f0ebe3;
+      }
+      #wa-header {
+        background: #eb3681;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      #wa-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #fff;
+        overflow: hidden;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 16px;
+        color: #eb3681;
+      }
+      #wa-info {
+        flex: 1;
+      }
+      #wa-name {
+        color: #fff;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 1.2;
+      }
+      #wa-email {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 12px;
+      }
+      #wa-close {
+        color: rgba(255, 255, 255, 0.85);
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 1;
+        padding: 4px;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+      }
+      #wa-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      #wa-body {
+        padding: 16px 14px 12px;
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background: #f0ebe3;
+      }
+      .wa-bubble {
+        background: #fff;
+        border-radius: 0 12px 12px 12px;
+        padding: 8px 12px 6px;
+        max-width: 88%;
+        align-self: flex-start;
+        font-size: 14px;
+        color: #111;
+        line-height: 1.45;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+      .wa-bubble .wa-time {
+        font-size: 11px;
+        color: #999;
+        text-align: right;
+        margin-top: 3px;
+      }
+      .wa-typing-bubble {
+        background: #fff;
+        border-radius: 0 12px 12px 12px;
+        padding: 10px 14px;
+        align-self: flex-start;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+      .wa-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #bbb;
+        animation: wa-dots 1.2s infinite;
+      }
+      .wa-dot:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .wa-dot:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      @keyframes wa-dots {
+        0%,
+        60%,
+        100% {
+          transform: translateY(0);
+          background: #bbb;
+        }
+        30% {
+          transform: translateY(-4px);
+          background: #888;
+        }
+      }
+      #wa-footer {
+        padding: 12px 14px;
+        background: #f0ebe3;
+        display: flex;
+        justify-content: center;
+      }
+      #wa-start-btn {
+        background: #eb3681;
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        padding: 10px 28px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      #wa-start-btn:hover {
+        background: #d02a6e;
+        transform: scale(1.03);
+      }
+      @media (max-width: 400px) {
+        #wa-box {
+          right: 8px;
+          bottom: 90px;
+          width: calc(100vw - 16px);
+        }
+        #wa-fab {
+          bottom: 18px;
+          right: 14px;
+        }
+      }
+      /* Subscribe section */
+      #subscribe-trigger {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-style: italic;
+        cursor: pointer;
+        z-index: 9999;
+      }
 
-  <link href="css/animations.css?v=3.5" rel="stylesheet" />
-  <!-- Scripts for loading screen-->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
-    referrerpolicy="no-referrer" rel="stylesheet" />
-</head>
+      #subscribe-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9998;
 
-<body>
-  <div id="futter-cont" style="visibility: hidden;">
-    <a href="bonus/index.html">
-      <div id="futterbly">
-        <div class="left wing"></div>
-        <div class="right wing"></div>
-      </div>
-    </a>
-  </div>
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
 
-  <div id="greeting">
-  </div>
+      #subscribe-box.active {
+        opacity: 1;
+        pointer-events: all;
+      }
 
-  <div class="hidden-menu">
-    <div class="items">
-      <p>Beneath
-        <a href="work/bigbrother.html">
-          <span class="menj">Big Brother</span>
-        </a>'s all-seeing sight,
-      </p>
-      <p>Where <a href="work/wedonthaveforever.html">
-          <span class="menj">mushrooms</span>
-        </a> murmur in
-        the night,</p>
-      <p>And <a href="work/lanausee.html">
-          <span class="menj">algae</span>
-        </a> sway in the ocean's light.</p>
-      <p>In a realms where <a href="work/runrabbitrun.html">
-          <span class="menj">GTA</span>
-        </a> and <a href="work/playitforwhat.html">
-          <span class="menj">FIFA</span>
+      #subscribe-inner {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        max-width: 320px;
+        width: 90%;
+
+        transform: translateY(20px);
+        transition: transform 0.4s ease;
+      }
+
+      #subscribe-box.active #subscribe-inner {
+        transform: translateY(0);
+      }
+
+      .subscribe-title {
+        font-style: italic;
+        margin-bottom: 15px;
+      }
+
+      #subscribe-inner input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+      }
+
+      #subscribe-inner button {
+        background: #eb3681;
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        padding: 10px 28px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 15px;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      #subscribe-inner button:hover {
+        background: #d02a6e;
+        transform: scale(1.03);
+      }
+
+      #subscribe-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+      }
+    </style>
+
+    <link href="css/animations.css?v=3.5" rel="stylesheet" />
+    <link
+      crossorigin="anonymous"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+      referrerpolicy="no-referrer"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <div id="futter-cont" style="visibility: hidden">
+        <a href="bonus/index.html" aria-label="Bonus page">
+          <div id="futterbly">
+            <div class="left wing"></div>
+            <div class="right wing"></div>
+          </div>
         </a>
-        meet,</p>
-      <p>An <a href="work/republicainsocial.html"><span class="menj">odyssey</span></a>
-        unfolds, both wild and sweet.</p>
-      <p><a href="work/thxforcoming.html"><span class="menj">Thanks for
-            coming</span></a>, our journey's not complete.</p>
+      </div>
+
+      <div id="greeting"></div>
+
+      <div class="hidden-menu">
+        <div class="items">
+          <p>
+            Beneath
+            <a href="work/bigbrother.html">
+              <span class="menj">Big Brother</span> </a
+            >'s all-seeing sight,
+          </p>
+          <p>
+            Where
+            <a href="work/wedonthaveforever.html">
+              <span class="menj">mushrooms</span>
+            </a>
+            murmur in the night,
+          </p>
+          <p>
+            And
+            <a href="work/lanausee.html">
+              <span class="menj">algae</span>
+            </a>
+            sway in the ocean's light.
+          </p>
+          <p>
+            In a realms where
+            <a href="work/runrabbitrun.html">
+              <span class="menj">GTA</span>
+            </a>
+            and
+            <a href="work/playitforwhat.html">
+              <span class="menj">FIFA</span>
+            </a>
+            meet,
+          </p>
+          <p>
+            An
+            <a href="work/republicainsocial.html"
+              ><span class="menj">odyssey</span></a
+            >
+            unfolds, both wild and sweet.
+          </p>
+          <p>
+            <a href="work/thxforcoming.html"
+              ><span class="menj">Thanks for coming</span></a
+            >, our journey's not complete.
+          </p>
+        </div>
+      </div>
+
+      <div id="subscribe-trigger">U wanna hear from me?</div>
+
+      <div id="subscribe-box">
+        <div id="subscribe-inner">
+          <p class="subscribe-title">Leave your trace</p>
+          <form
+            id="subscribe-form"
+            action="https://docs.google.com/forms/d/e/1FAIpQLScZkqRceJWOxVr8GZUtvZcswCj4-5v08U-w3S2xyK-_nWgduA/formResponse"
+            method="POST"
+            target="hidden_iframe"
+            onsubmit="submitted = true"
+          >
+            <input
+              type="email"
+              id="email"
+              name="entry.1332847598"
+              placeholder="your@email.com"
+              required
+            />
+            <button type="submit">Send</button>
+          </form>
+          <iframe name="hidden_iframe" style="display: none"></iframe>
+          <p id="subscribe-success" class="hidden">I’ll write to you soon 💌</p>
+        </div>
+      </div>
+    </main>
+    <div id="wa-fab" onclick="toggleChat()" title="Message Yaël">
+      <div id="wa-notif"></div>
+      <svg viewBox="0 0 24 24" fill="none" style="width: 28px; height: 28px">
+        <path
+          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+          fill="#eb3681"
+        />
+      </svg>
     </div>
-  </div>
 
-  <div class="newsletter">
-    <iframe width="340" height="305"
-      src="https://b2f24b07.sibforms.com/serve/MUIFACyeJkeO8R6gMzIfCqSSIl9d9jY4YgrY0IHAqwcCYCw2kHcRnXsbGPnFTDvcRd56KfB_xcffWUHRlU2kFGs1hvapir9oCvWw-yZQ3lUoZirG2pTmE07l4I-z89eFBVdkq5FzZSVPE55NdVG7VNHVSoBGgCvacJ4Hn4FZKWcym455DZaTKicW4pSG-NO8NhjgKT3Is-Mscd8b"
-      frameborder="0" scrolling="auto" allowfullscreen
-      style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
-  </div>
-
+    <div id="wa-box">
+      <div id="wa-header">
+        <img
+          id="wa-avatar"
+          loading="lazy"
+          src="images/diana-the-huntress.jpg"
+          alt="diana the huntress"
+        />
+        <div id="wa-info">
+          <div id="wa-name">Yaël K.</div>
+          <div id="wa-email">contact@yaelkempf.com</div>
+        </div>
+        <div id="wa-close" onclick="closeChat()">✕</div>
+      </div>
+      <div id="wa-body"></div>
+      <div id="wa-footer">
+        <button id="wa-start-btn" onclick="startChat()">Start chat</button>
+      </div>
+    </div>
+  </body>
   <script>
-    $(document).ready(function () {
-      // Show greeting animation only once for an user
-      var visited = localStorage.getItem('visited');
-      if (visited) {
-        $('.hidden-menu').fadeIn();
-      } else {
-        $('#greeting').show();
-        $('#greeting').each(function (index) {
-          var characters = $(this).text().split("");
-          $this = $(this);
-          $this.empty();
-          $.each(characters, function (i, el) {
-            if (el == " ") {
-              el = "&nbsp;"
-            }
-            $this.append('<span class="letter-' + i + '">' + el + '</span>');
-          });
-        });
-        setTimeout(() => {
-          $('.hidden-menu').fadeIn();
-          $('#greeting').fadeOut();
-        }, 15000);
-        localStorage.setItem('visited', true);
+    document.addEventListener("DOMContentLoaded", () => {
+      const greetingEl = document.getElementById("greeting");
+      const menuEl = document.querySelector(".hidden-menu");
+      const futter = document.getElementById("futter-cont");
+
+      // --- Greeting text logic ---
+      function updateGreeting() {
+        const currentHour = new Date().getHours();
+
+        const europeanHour =
+          currentHour === 0
+            ? "midnight"
+            : currentHour > 12
+              ? currentHour - 12
+              : currentHour;
+
+        const previousEuropeanHour =
+          currentHour === 0
+            ? 11
+            : currentHour - 1 === 0
+              ? 11
+              : currentHour - 1 > 12
+                ? currentHour - 1 - 12
+                : currentHour - 1;
+
+        const timeOfDay =
+          currentHour < 12
+            ? "morning"
+            : currentHour < 18
+              ? "afternoon"
+              : "evening";
+
+        const sentence =
+          europeanHour === "midnight"
+            ? "I knew you would arrive around midnight my dear Cinderella. However, I was already happy by 11."
+            : `I knew you would arrive around ${europeanHour} in the ${timeOfDay}, I was already happy by ${previousEuropeanHour}.`;
+
+        greetingEl.textContent = sentence;
       }
-    });
 
-  </script>
+      updateGreeting();
+      setInterval(updateGreeting, 60000);
 
-  <script>
-    function updateGreeting() {
-      const currentHour = new Date().getHours();
-      const europeanHour = currentHour === 0 ? "midnight" : currentHour > 12 ? currentHour - 12 : currentHour;
-      const previousEuropeanHour = currentHour === 0 ? 11 : currentHour - 1 === 0 ? 11 : currentHour - 1 > 12 ? currentHour - 1 - 12 : currentHour - 1;
-      const timeOfDay = currentHour < 12 ? "morning" : currentHour < 18 ? "afternoon" : "evening";
-      const greetingSentence = `I knew you would arrive around ${europeanHour === "midnight" ? "midnight my dear Cinderella. However, I was already happy by 11." : `${europeanHour} in the ${timeOfDay}, I was already happy by ${previousEuropeanHour}.`}`;
+      // --- Typewriter letter split ---
+      function splitTextToSpans(el) {
+        const text = el.textContent;
+        el.innerHTML = "";
 
-      document.getElementById('greeting').textContent = greetingSentence;
-    }
+        [...text].forEach((char, i) => {
+          const span = document.createElement("span");
+          span.className = "letter-" + i;
+          span.innerHTML = char === " " ? "&nbsp;" : char;
+          el.appendChild(span);
+        });
+      }
 
-    updateGreeting(); // Initial update
+      // --- First visit logic ---
+      const visited = localStorage.getItem("visited");
 
-    // Update the greeting every minute
-    setInterval(updateGreeting, 60000);
+      if (visited) {
+        menuEl.style.display = "block";
+        menuEl.style.opacity = "1";
+      } else {
+        greetingEl.style.display = "block";
+        greetingEl.style.opacity = "1";
 
+        splitTextToSpans(greetingEl);
 
-    $(document).ready(function () {
-      setTimeout(function () {
-        $('#futter-cont').css('visibility', '');
+        setTimeout(() => {
+          // fade out greeting
+          greetingEl.style.transition = "opacity 0.6s ease";
+          greetingEl.style.opacity = "0";
+
+          // show menu
+          menuEl.style.display = "block";
+          setTimeout(() => {
+            menuEl.style.opacity = "1";
+          }, 50);
+        }, 15000);
+
+        localStorage.setItem("visited", "true");
+      }
+
+      // --- Butterfly reveal ---
+      setTimeout(() => {
+        futter.style.visibility = "visible";
       }, 500);
     });
-  </script>
+    let _waOpened = false;
+    let _waAnimated = false;
 
-
-  <script>
-    window.addEventListener('load', function () {
-
-      const typeWriter = selector => {
-        const el = document.querySelector(selector)
-        el.style.visibility = "visible"
-        const text = el.innerHTML
-
-          ; (function _type(i = 0) {
-            if (i === text.length) return
-
-            el.innerHTML =
-              text.substring(0, i + 1) + '<span aria-hidden="true"></span>'
-            setTimeout(() => _type(i + 1), 100)
-          })()
+    function toggleChat() {
+      const box = document.getElementById("wa-box");
+      if (!_waOpened) {
+        box.style.display = "flex";
+        _waOpened = true;
+        document.getElementById("wa-notif").style.display = "none";
+        if (!_waAnimated) {
+          _waAnimated = true;
+          _waRunAnimation();
+        }
+      } else {
+        closeChat();
       }
-      typeWriter(".js-type-writer")
+    }
 
-    })
+    function closeChat() {
+      document.getElementById("wa-box").style.display = "none";
+      _waOpened = false;
+    }
 
+    function _waRunAnimation() {
+      const body = document.getElementById("wa-body");
+      body.innerHTML = "";
+      const typing = document.createElement("div");
+      typing.className = "wa-typing-bubble";
+      typing.innerHTML =
+        '<div class="wa-dot"></div><div class="wa-dot"></div><div class="wa-dot"></div>';
+      body.appendChild(typing);
+      setTimeout(() => {
+        body.removeChild(typing);
+        const msg = document.createElement("div");
+        msg.className = "wa-bubble";
+        msg.innerHTML =
+          'Hi Honey,<br>I have something to <a href="https://artviewer.org/yael-kempf-at-kunsthaus-essen/" target="_blank">announce</a>...<br>Kiss kiss 💋<div class="wa-time">now</div>';
+        body.appendChild(msg);
+      }, 2200);
+    }
+
+    function startChat() {
+      window.open("https://wa.me/33764565969", "_blank");
+    }
+    /* Subscribe box logic */
+    function openSubscribe() {
+      subscribeBox.classList.add("active");
+    }
+
+    function closeSubscribe() {
+      subscribeBox.classList.remove("active");
+    }
+
+    document
+      .getElementById("subscribe-trigger")
+      .addEventListener("click", openSubscribe);
+
+    let submitted = false;
+    document.getElementById("subscribe-form").addEventListener("submit", () => {
+      setTimeout(() => {
+        document.querySelector("#subscribe-form").style.display = "none";
+        document.getElementById("subscribe-success").classList.remove("hidden");
+
+        // close after 2s
+        setTimeout(() => {
+          closeSubscribe();
+        }, 2000);
+      }, 500);
+    });
+
+    const subscribeBox = document.getElementById("subscribe-box");
+    const subscribeInner = document.getElementById("subscribe-inner");
+
+    subscribeBox.addEventListener("click", (e) => {
+      // if click is OUTSIDE the form
+      if (!subscribeInner.contains(e.target)) {
+        closeSubscribe();
+      }
+    });
   </script>
-
-  <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-  <div class="elfsight-app-7633051d-08be-454f-93c7-27a2e9808859"></div>
-</body>
-
 </html>

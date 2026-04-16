@@ -859,4 +859,30 @@ section {
     margin-top: -50px;
     height: 500px
   }
+
+    .section-one {
+    padding-bottom: 50px;
+  }
+
+  .hero-img-box {
+    margin-top: 0 !important;
+  }
+
+  .mt-n115,
+  .mt-n100 {
+    margin-top: 0 !important;
+  }
+
+  .section-two {
+    margin-top: 60px;
+  }
+
+  .video-box {
+    margin-top: 0 !important; /* important: stops stacking negative spacing */
+  }
+
+  .section-three {
+    margin-top: 100px; /* replaces the overlap spacing in a controlled way */
+    padding-top: 20px;;
+  }
 }
