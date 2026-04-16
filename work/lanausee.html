@@ -505,62 +505,78 @@
 </div>
 </section>
 </div>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script><script>
-    // MARQUEE TEXT
-    function Marquee(selector, speed) {
-      const parentSelector = document.querySelector(selector);
-      const clone = parentSelector.innerHTML;
-      const firstElement = parentSelector.children[0];
-      let i = 0;
-      parentSelector.insertAdjacentHTML("beforeend", clone);
-      parentSelector.insertAdjacentHTML("beforeend", clone);
+<script>
+  // MARQUEE TEXT
+  function Marquee(selector, speed) {
+    const parent = document.querySelector(selector);
+    if (!parent) return;
 
-      setInterval(function () {
-        firstElement.style.marginLeft = `-${i}px`;
-        if (i > firstElement.clientWidth) {
-          i = 0;
+    const clone = parent.innerHTML;
+    const firstElement = parent.children[0];
+    let i = 0;
+
+    parent.insertAdjacentHTML("beforeend", clone);
+    parent.insertAdjacentHTML("beforeend", clone);
+
+    setInterval(() => {
+      firstElement.style.marginLeft = `-${i}px`;
+      if (i > firstElement.clientWidth) i = 0;
+      i += speed;
+    }, 16); // 👈 ~60fps instead of 0ms (better for performance)
+  }
+
+  window.addEventListener("load", () => {
+    Marquee(".marquee", 0.5);
+  });
+</script>
+
+<script>
+  // Increase font size on scroll
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.innerWidth > 768) {
+      window.addEventListener("scroll", () => {
+        const mass = Math.min(2, 1 + 0.001 * window.scrollY);
+        const marquee = document.querySelector(".marquee");
+
+        if (marquee) {
+          marquee.style.transform = `scale(${mass})`;
         }
-        i = i + speed;
-      }, 0);
+      });
+    }
+  });
+</script>
+
+<script>
+  // Rotating Stars
+  document.addEventListener("DOMContentLoaded", () => {
+    const starsContainer = document.querySelector(".stars");
+    if (!starsContainer) return;
+
+    const stars = 800;
+    const r = 800;
+
+    for (let i = 0; i < stars; i++) {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      starsContainer.appendChild(star);
     }
 
-    //after window is completed load
-    //1 class selector for marquee
-    //2 marquee speed 0.5
-    window.addEventListener("load", Marquee(".marquee", 0.5));
-  </script><script>
-    //Increase font size on scroll
-    $(function () {
-      if (window.innerWidth > 768) {
-        $(window).scroll(function () {
-          var mass = Math.min(2, 1 + 0.001 * $(this).scrollTop());
+    const allStars = document.querySelectorAll(".star");
 
-          $(".marquee").css("transform", "scale(" + mass + ")");
-        });
-      }
+    allStars.forEach((star) => {
+      const s = 0.2 + Math.random();
+      const curR = r + Math.random() * 300;
+
+      star.style.transformOrigin = `0 0 ${curR}px`;
+      star.style.transform = `
+        translate3d(0,0,-${curR}px)
+        rotateY(${Math.random() * 360}deg)
+        rotateX(${Math.random() * -50}deg)
+        scale(${s}, ${s})
+      `;
     });
-  </script><script>
-    // Rotating Stars
-    $(document).ready(function () {
-      var stars = 800;
-      var $stars = $(".stars");
-      var r = 800;
-      for (var i = 0; i < stars; i++) {
-        var $star = $("<div/>").addClass("star");
-        $stars.append($star);
-      }
-      $(".star").each(function () {
-        var cur = $(this);
-        var s = 0.2 + (Math.random() * 1);
-        var curR = r + (Math.random() * 300);
-        cur.css({
-          transformOrigin: "0 0 " + curR + "px",
-          transform: " translate3d(0,0,-" + curR + "px) rotateY(" + (Math.random() * 360) + "deg) rotateX(" + (Math.random() * -50) + "deg) scale(" + s + "," + s + ")"
-
-        })
-      })
-    })
-  </script><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+  });
+</script><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 
 <p></p>
 </body>
