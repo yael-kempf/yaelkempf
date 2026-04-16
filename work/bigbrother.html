@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Explore 'Big Brother', an immersive installation blending surveillance, religion, and technology through video, sculpture, and interactive design.">
+    <meta
+      name="description"
+      content="Explore 'Big Brother', an immersive installation blending surveillance, religion, and technology through video, sculpture, and interactive design."
+    />
     <title>Big Brother</title>
     <link
       href="https://fonts.googleapis.com/css?family=Cedarville+Cursive"
@@ -22,8 +25,7 @@
     <style>
       @font-face {
         font-family: "CandleBright";
-        src:
-          url("../fonts/candlebright_sample.woff2") format("woff2");
+        src: url("../fonts/candlebright_sample.woff2") format("woff2");
         font-display: swap;
       }
 
@@ -113,7 +115,14 @@
         width: 100%;
         height: 100%;
         top: 2rem;
-        display: none;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+
+      .content.visible {
+        opacity: 1;
+        pointer-events: auto;
       }
 
       .text-container {
@@ -613,6 +622,7 @@
                   src="../images/bigbrother/beforewebsite.png"
                   draggable="false"
                   alt="Before Image"
+                  loading="lazy"
                 />
               </div>
               <div class="after">
@@ -621,6 +631,7 @@
                   src="../images/bigbrother/afterwebsite.png"
                   draggable="false"
                   alt="After Image"
+                    loading="lazy"
                 />
               </div>
               <div class="scroller">
@@ -643,11 +654,11 @@
             <div id="background">
               <div id="gallery">
                 <figure class="pic1">
-                  <img src="../images/bigbrother/pola1.jpg" alt="Polaroid 1" />
+                  <img src="../images/bigbrother/pola1.jpg" alt="Polaroid 1" loading="lazy"/>
                   <figcaption></figcaption>
                 </figure>
                 <figure class="pic2">
-                  <img src="../images/bigbrother/pola2.jpg" alt="Polaroid 2" />
+                  <img src="../images/bigbrother/pola2.jpg" alt="Polaroid 2" loading="lazy"/>
                   <figcaption></figcaption>
                 </figure>
               </div>
@@ -707,12 +718,6 @@
         </div>
       </div>
     </div>
-
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
       integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
@@ -743,7 +748,9 @@
           left: "50%",
           x: "-50%",
         });
+
         gsap.set(".scrollDist", { width: "100%", height: "200%" });
+
         gsap
           .timeline({
             scrollTrigger: {
@@ -761,39 +768,46 @@
           .fromTo(".mountMg", { y: -30 }, { y: -250 }, 0)
           .fromTo(".mountFg", { y: -50 }, { y: -600 }, 0);
 
-        $("#arrowBtn").on("mouseenter", (e) => {
-          gsap.to(".arrow", {
-            y: 10,
-            duration: 0.8,
-            ease: "back.inOut(3)",
-            overwrite: "auto",
+        const arrowBtn = document.querySelector("#arrowBtn");
+
+        if (arrowBtn) {
+          arrowBtn.addEventListener("mouseenter", () => {
+            gsap.to(".arrow", {
+              y: 10,
+              duration: 0.8,
+              ease: "back.inOut(3)",
+              overwrite: "auto",
+            });
           });
-        });
-        $("#arrowBtn").on("mouseleave", (e) => {
-          gsap.to(".arrow", {
-            y: 0,
-            duration: 0.5,
-            ease: "power3.out",
-            overwrite: "auto",
+
+          arrowBtn.addEventListener("mouseleave", () => {
+            gsap.to(".arrow", {
+              y: 0,
+              duration: 0.5,
+              ease: "power3.out",
+              overwrite: "auto",
+            });
           });
-        });
-        $("#arrowBtn").on("click", (e) => {
-          gsap.to(window, {
-            scrollTo: innerHeight,
-            duration: 1.5,
-            ease: "power1.inOut",
+
+          arrowBtn.addEventListener("click", () => {
+            gsap.to(window, {
+              scrollTo: innerHeight,
+              duration: 1.5,
+              ease: "power1.inOut",
+            });
           });
-        }); // scrollTo requires the ScrollTo plugin (not to be confused w/ ScrollTrigger)
+        }
       });
     </script>
 
     <script>
-      window.addEventListener("scroll", (event) => {
-        let scroll = this.scrollY;
-        if (scroll > 500) {
-          $(".content").fadeIn();
+      window.addEventListener("scroll", () => {
+        const content = document.querySelector(".content");
+
+        if (window.scrollY > 500) {
+          content.classList.add("visible");
         } else {
-          $(".content").fadeOut();
+          content.classList.remove("visible");
         }
       });
 
@@ -801,13 +815,15 @@
       const showDesc = document.querySelector(".show-desc");
       const closeBtn = document.querySelector(".text-container .close-btn");
 
-      showDesc.addEventListener("click", function () {
-        textContainer.classList.add("show");
-      });
+      if (showDesc && closeBtn && textContainer) {
+        showDesc.addEventListener("click", () => {
+          textContainer.classList.add("show");
+        });
 
-      closeBtn.addEventListener("click", function () {
-        textContainer.classList.remove("show");
-      });
+        closeBtn.addEventListener("click", () => {
+          textContainer.classList.remove("show");
+        });
+      }
     </script>
 
     <script>
