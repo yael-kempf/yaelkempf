@@ -10,13 +10,21 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/animations.css" />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
-
       @font-face {
         font-family: "CandleBright";
-        src: url("../fonts/candlebright_sample.ttf") format("truetype");
+        src:
+          url("../fonts/candlebright_sample.woff2") format("woff2"),
+          url("../fonts/candlebright_sample.ttf") format("truetype");
+        font-display: swap;
       }
 
       *,
@@ -31,12 +39,11 @@
       html {
         width: 100%;
         height: 100%;
-        font-family: serif;
         font-size: 40px;
         text-align: center;
         overflow-x: hidden;
         margin: 0px;
-        font-family: "CandleBright";
+        font-family: "CandleBright", serif;
       }
 
       header {
@@ -481,7 +488,7 @@
         svg.desktop {
           display: none;
         }
-    }
+      }
     </style>
   </head>
 
@@ -491,7 +498,10 @@
     <div class="main">
       <header>
         <a class="link_left" href="../"
-          ><img src="../logo/spinningstar-black.svg" class="star-menu-icon" alt="logo"
+          ><img
+            src="../logo/spinningstar-black.svg"
+            class="star-menu-icon"
+            alt="logo"
         /></a>
       </header>
       <svg
@@ -567,7 +577,7 @@
               xlink:href="https://assets.codepen.io/721952/cloud1Mask.jpg"
               width="1200"
               height="800"
-              y = "80"
+              y="80"
             />
           </g>
         </mask>
@@ -602,7 +612,7 @@
                   class="content-image"
                   src="../images/bigbrother/beforewebsite.png"
                   draggable="false"
-                  alt ="Before Image"
+                  alt="Before Image"
                 />
               </div>
               <div class="after">
@@ -633,11 +643,11 @@
             <div id="background">
               <div id="gallery">
                 <figure class="pic1">
-                  <img src="../images/bigbrother/pola1.jpg" alt="Polaroid 1"/>
+                  <img src="../images/bigbrother/pola1.jpg" alt="Polaroid 1" />
                   <figcaption></figcaption>
                 </figure>
                 <figure class="pic2">
-                  <img src="../images/bigbrother/pola2.jpg" alt="Polaroid 2"/>
+                  <img src="../images/bigbrother/pola2.jpg" alt="Polaroid 2" />
                   <figcaption></figcaption>
                 </figure>
               </div>
