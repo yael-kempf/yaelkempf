@@ -365,7 +365,6 @@ header a.link_right {
 
 .stars,
 .twinkleMask,
-.twinkleMask2,
 .clouds {
   position: absolute;
   top: 0;
@@ -378,27 +377,20 @@ header a.link_right {
 }
 
 .stars {
-  background: #000 url("https://wolf.drjm.co.uk/nightsky/stars.jpg") repeat top center;
+  background: #000 url("../images/wedonthaveforever/stars.webp") repeat top center;
   z-index: 0;
 }
 
 .twinkleMask {
-  background: transparent url("https://wolf.drjm.co.uk/nightsky/twinklemask.png") repeat top center;
+  background: transparent url("../images/wedonthaveforever/twinkleMask.png") repeat top center;
   z-index: 1;
-  -webkit-animation: twinkleFrames 700s linear infinite;
-  animation: twinkleFrames 700s linear infinite;
-}
-
-.twinkleMask2 {
-  background: transparent url("https://wolf.drjm.co.uk/nightsky/twinkleMask2.png") repeat top center;
-  z-index: 2;
   height: 200%;
-  -webkit-animation: twinkleFrames2 300s linear infinite;
-  animation: twinkleFrames2 300s linear infinite;
+  -webkit-animation: twinkleFrames 300s linear infinite;
+  animation: twinkleFrames 300s linear infinite;
 }
 
 .clouds {
-  background: transparent url("https://wolf.drjm.co.uk/nightsky/clouds.png") repeat top center;
+  background: transparent url("../images/wedonthaveforever/clouds.webp") repeat top center;
   z-index: 3;
   height: 150%;
   -webkit-animation: cloudsFrames 300s linear infinite;
@@ -490,31 +482,11 @@ header a.link_right {
   }
 
   to {
-    background-position: -10000px 5000px;
-  }
-}
-
-@keyframes twinkleFrames {
-  from {
-    background-position: 0 0;
-  }
-
-  to {
-    background-position: -10000px 5000px;
-  }
-}
-
-@-webkit-keyframes twinkleFrames2 {
-  from {
-    background-position: 0 0;
-  }
-
-  to {
     background-position: 10000px 5000px;
   }
 }
 
-@keyframes twinkleFrames2 {
+@keyframes twinkleFrames {
   from {
     background-position: 0 0;
   }
@@ -865,7 +837,7 @@ section {
   }
 
   .hero-img-box {
-    margin-top: 0 !important;
+    margin-top: -10px !important;
   }
 
   .mt-n115,
