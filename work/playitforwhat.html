@@ -8,7 +8,7 @@
   <title>Yael Kempf - PlayItForWhat</title>
 
   <link href="https://vjs.zencdn.net/7.20.1/video-js.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://sliderm.com/dist/1.0.8/sliderm.css">
+  <link rel="stylesheet" href="../css/sliderm.css">
 
   <link href="../css/styles.css" rel="stylesheet" />
   <link href="../css/animations.css" rel="stylesheet" />
@@ -16,6 +16,17 @@
 
   <style type="text/css">
     @import url("https://fonts.googleapis.com/css?family=Quicksand:500,600,700&display=swap");
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      width: 100%;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -36,7 +47,7 @@
       overflow-x: hidden;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      width: 100%;
       font-family: serif;
       font-weight: 500;
     }
@@ -49,6 +60,8 @@
 
     .site-wrapper {
       overflow-x: hidden;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .vjs-big-play-button {
@@ -72,12 +85,18 @@
       justify-content: center;
       align-items: center;
       width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
     }
 
     .wrapper .img-container {
       display: flex;
       padding: 2rem;
-      max-width: 1200px;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
     }
 
     .wrapper .img-container img {
@@ -93,8 +112,10 @@
     .wrapper .text-container {
       padding: 0 2rem;
       padding-bottom: 4rem;
-      max-width: 1400px;
-      width: 90%;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
     }
 
     .wrapper .text-container p {
@@ -115,6 +136,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      box-sizing: border-box;
+      overflow: hidden;
     }
 
     .scoreboard-container {
@@ -369,22 +392,26 @@
     .container {
       position: relative;
       width: 100%;
+      max-width: 100%;
       min-height: 90vh;
       perspective: 2000px;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      box-sizing: border-box;
     }
 
     /* ---------Slide--------- */
     .container .slide {
       width: 100%;
+      max-width: 100%;
       transform-style: preserve-3d;
       display: flex;
       justify-content: center;
       align-items: center;
       animation: rotation 20s infinite linear;
+      box-sizing: border-box;
     }
 
     .container .slide:hover {
@@ -414,6 +441,7 @@
       padding: 20px;
       border-radius: 20px;
       margin: 0 10px;
+      box-sizing: border-box;
     }
 
     .container .slide .product-box:nth-child(1) {
@@ -495,18 +523,69 @@
       color: #000000;
     }
 
+    #slider {
+      max-width: 1400px;
+      width: 90%;
+      margin: 3rem auto;
+      box-sizing: border-box;
+    }
+
+    .sliderm__button--previous {
+      left: 1rem;
+    }
+
+    .sliderm__button--next {
+      right: 1rem;
+    }
+
     /* --------------Media Queries-------------- */
     @media (max-width: 768px) {
+      body, html {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      .site-wrapper {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      .wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      .wrapper .text-container {
+        padding: 0 1.5rem;
+        padding-bottom: 4rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+
+      .wrapper .text-container p {
+        font-size: 1rem;
+      }
+
+      .wrapper .img-container {
+        padding: 1rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
       .iframe-container {
         transform: translateY(8vh);
         margin-bottom: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
       }
-
-      .video-js {
-        width: 90%;
-        height: 300px;
-      }
-
+      
       @keyframes moveScoreboard {
         from {
           transform: translateY(30vh);
@@ -519,8 +598,23 @@
 
       /* ---------Container--------- */
       .container {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
         overflow-y: auto;
         margin: 4rem 0;
+        box-sizing: border-box;
+      }
+
+      .container .slide {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      .container .product-box {
+        max-width: 90%;
+        box-sizing: border-box;
       }
 
       .container .product-box .img {
@@ -549,10 +643,6 @@
       }
 
       /* ---Product Box--- */
-      .container .slide .product-box {
-        max-width: 350px;
-      }
-
       .container .slide .product-box:nth-child(1) {
         transform: rotateX(60deg) translateZ(250px);
       }
@@ -577,57 +667,65 @@
         transform: rotateX(360deg) translateZ(250px);
       }
 
-      .wrapper .text-container p {
-        font-size: 1rem;
+      #slider {
+        max-width: 95%;
+        width: 95%;
+        margin: 2rem auto;
+        box-sizing: border-box;
       }
     }
 
     @media (max-width: 550px) {
-
       /* ---Product Box--- */
       .container .slide .product-box {
-        max-width: 250px;
+        max-width: 80%;
+      }
+
+      .wrapper .text-container {
+        padding: 0 1rem;
+      }
+
+      #slider {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 1rem;
+        margin: 2rem 0;
+        box-sizing: border-box;
       }
     }
 
     /* 3D CAROUSEL ENDS */
 
     @media screen and (max-height: 560px) {
-
       body,
       .iframe-container {
         padding-top: 0;
+      }
+
+      html {
+        overflow-x: hidden;
       }
 
       .wrapper {
         position: relative;
         flex-direction: row;
         gap: 2rem;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
       }
 
       .iframe-container {
         height: 90vh;
         padding-bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .scoreboard-container {
         transform: translateY(0);
         animation: none;
       }
-    }
-
-    #slider {
-      max-width: 1400px;
-      width: 90%;
-      margin: 3rem auto;
-    }
-
-    .sliderm__button--previous {
-      left: 1rem;
-    }
-
-    .sliderm__button--next {
-      right: 1rem;
     }
   </style>
 </head>
@@ -798,7 +896,7 @@
 
   <script src="https://vjs.zencdn.net/7.20.1/video.min.js"></script>
   <script src="../js/Youtube.min.js"></script>
-  <script src="https://sliderm.com/dist/1.0.8/sliderm.js"></script>
+  <script src="../js/sliderm.js"></script>
   <script>
     const sliderm = new Sliderm('#slider', {
       arrow: true,
