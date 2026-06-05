@@ -201,7 +201,8 @@
       z-index: 10;
     }
 
-    .modalVideo video {
+    .modalVideo video,
+    .modalVideo iframe {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -316,7 +317,8 @@
         width: 30%;
       }
 
-      .modalVideo video {
+      .modalVideo video,
+      .modalVideo iframe {
         width: 100%;
         height: 100%;
       }
@@ -380,8 +382,7 @@
   </div>
 
   <div class="modalVideo is-hide" id="thirdVid">
-    <video width="80%" height="80%" src="../mywork/projects/runrabbitrun/nightmode.mp4" frameborder="0" allowfullscreen
-      controls></video>
+    <iframe width="990" height="557" src="https://www.youtube.com/embed/g7JZQAB21DE" title="nightmode run rabbit run" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <a class="modal-close js-modal-close">X</a>
   </div>
 
@@ -517,16 +518,15 @@
       });
 
       var $modal2 = $("#thirdVid");
-      let modalVideo2 = $("#thirdVid video");
+      let modalVideo2 = $("#thirdVid iframe");
       $("#night-mode").on("click", function () {
         $modal2.removeClass(HIDE_CLASS);
-        modalVideo2.trigger("play");
+        modalVideo2.attr("src", modalVideo2.data("src"));
       });
 
       $("#thirdVid .js-modal-close").on("click", function () {
         $modal2.addClass(HIDE_CLASS);
-        modalVideo2.trigger("pause");
-        modalVideo2.get(0).load();
+        modalVideo2.attr("src", "");
       });
     });
   </script>
