@@ -6,6 +6,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <title>Love is the Law</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta
+    name="description"
+    content="Love is the Law by Yael Kempf presents installation imagery, poetic text, and a video work documenting the project and its atmosphere."
+  />
   <link href="../css/styles.css?v=1" rel="stylesheet" />
   <link href="../css/animations.css" rel="stylesheet" />
   <link href="../css/work.css" rel="stylesheet" />
@@ -15,7 +19,7 @@
     }
 
     .bg {
-      background: url(../mywork/projects/loveisthelaw/3.png);
+      background: url(../images/loveisthelaw/3.webp);
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
@@ -51,7 +55,8 @@
     }
 
     section img,
-    section video {
+    section video,
+    section iframe {
       width: 100%;
       max-width: 1000px;
     }
@@ -74,7 +79,8 @@
     @media screen and (max-width: 576px) {
 
       section img,
-      section video {
+      section video,
+      section iframe {
         height: 400px;
         width: 300px;
         object-fit: cover;
@@ -105,10 +111,10 @@
     <div class="container-big">
       <div hidden="hidden" id="lighthouse-bg"></div>
       <section class="first-section">
-        <img src="../mywork/projects/loveisthelaw/image01.gif" alt="" />
+        <img loading="lazy" src="../images/loveisthelaw/image01.gif" alt="Love is the Law animated artwork image 1" />
       </section>
       <section>
-        <img src="../mywork/projects/loveisthelaw/1.png" alt="" />
+        <img loading="lazy" src="../images/loveisthelaw/1.webp" alt="Love is the Law installation image 2" />
       </section>
       <section class="align-left">
         <div class="text-container">
@@ -143,10 +149,10 @@
         </div>
       </section>
       <section>
-        <img src="../mywork/projects/loveisthelaw/2.png" alt="" />
+        <img loading="lazy" src="../images/loveisthelaw/2.webp" alt="Love is the Law installation image 3" />
       </section>
       <section>
-        <video controls src="../mywork/projects/loveisthelaw/loveisthelaw.mp4"></video>
+        <iframe width="990" height="557" src="https://www.youtube.com/embed/vIVlT5aS7YI" title="Love is the Law" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </section>
     </div>
 
@@ -185,7 +191,6 @@
       </div>
     </div>
   </div>
-  <script src="../js/script.js" type="text/javascript"></script>
   <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 </body>
 
