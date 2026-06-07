@@ -6,6 +6,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <title>Run Rabbit Run</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta
+    name="description"
+    content="Run Rabbit Run by Yael Kempf presents a playful interactive project with animated visuals, exhibition text, and embedded video works for Race 1 and Race 2."
+  />
   <link href="../css/styles.css?v=1.1" rel="stylesheet" />
   <link href="../css/animations.css" rel="stylesheet" />
   <link href="../css/work.css" rel="stylesheet" />
@@ -343,7 +347,7 @@
   </div>
   <div class="logo">
     <a href="../">
-      <img src="../images/runrabbitrun/bugsbunny/rabbitgoback.svg" alt="" /></a>
+      <img src="../images/runrabbitrun/bugsbunny/rabbitgoback.svg" alt="Run Rabbit Run back link icon" /></a>
   </div>
   <div class="top-links">
     <a id="race-1" href="#">
@@ -370,23 +374,25 @@
   </div>
 
   <div class="modalVideo is-hide" id="firstVid">
-    <video width="80%" height="80%" src="../mywork/projects/runrabbitrun/race1.mp4" frameborder="0" allowfullscreen
-      controls></video>
+    <iframe width="80%" height="80%" data-src="https://www.youtube.com/embed/CY-xw898lAo?autoplay=1&rel=0&modestbranding=1"
+      title="Race 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <a class="modal-close js-modal-close">X</a>
   </div>
 
   <div class="modalVideo is-hide" id="secondVid">
-    <video width="80%" height="80%" src="../mywork/projects/runrabbitrun/race2.mp4" frameborder="0" allowfullscreen
-      controls></video>
+    <iframe width="80%" height="80%" data-src="https://www.youtube.com/embed/6S2A6mNIXtA?autoplay=1&rel=0&modestbranding=1"
+      title="Race 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <a class="modal-close js-modal-close">X</a>
   </div>
 
   <div class="modalVideo is-hide" id="thirdVid">
-    <iframe width="990" height="557" src="https://www.youtube.com/embed/g7JZQAB21DE" title="nightmode run rabbit run" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="990" height="557" src="https://www.youtube.com/embed/g7JZQAB21DE" title="Night Mode" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <a class="modal-close js-modal-close">X</a>
   </div>
 
-  <img id="homer" class="homer" src="../images/runrabbitrun/bugsbunny/upleftrabbit.svg" alt="" />
+  <img id="homer" class="homer" src="../images/runrabbitrun/bugsbunny/upleftrabbit.svg" alt="Bugs Bunny character from Run Rabbit Run" />
   <div id="donut"></div>
 
   <div class="modal" id="myModal">
@@ -492,29 +498,27 @@
     $(function () {
       var $modal = $("#firstVid");
       var HIDE_CLASS = "is-hide";
-      let modalVideo = $("#firstVid video");
+      let modalVideo = $("#firstVid iframe");
       $("#race-1").on("click", function () {
         $modal.removeClass(HIDE_CLASS);
-        modalVideo.trigger("play");
+        modalVideo.attr("src", modalVideo.data("src"));
       });
 
       $("#firstVid .js-modal-close").on("click", function () {
         $modal.addClass(HIDE_CLASS);
-        modalVideo.trigger("pause");
-        modalVideo.get(0).load();
+        modalVideo.attr("src", "");
       });
 
       var $modal1 = $("#secondVid");
-      let modalVideo1 = $("#secondVid video");
+      let modalVideo1 = $("#secondVid iframe");
       $("#race-2").on("click", function () {
         $modal1.removeClass(HIDE_CLASS);
-        modalVideo1.trigger("play");
+        modalVideo1.attr("src", modalVideo1.data("src"));
       });
 
       $("#secondVid .js-modal-close").on("click", function () {
         $modal1.addClass(HIDE_CLASS);
-        modalVideo1.trigger("pause");
-        modalVideo1.get(0).load();
+        modalVideo1.attr("src", "");
       });
 
       var $modal2 = $("#thirdVid");
