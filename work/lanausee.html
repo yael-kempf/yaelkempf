@@ -199,10 +199,12 @@
         object-fit: cover;
       }
 
-      .page2-img video {
+      .page2-img video,
+      .page2-img iframe {
         width: 100%;
         min-height: 100vh;
-        object-fit: cover;
+        border: 0;
+        display: block;
       }
 
       .page2-row {
@@ -408,7 +410,8 @@
           height: 50vh;
         }
 
-        .page2-img video {
+        .page2-img video,
+        .page2-img iframe {
           min-height: 50vh;
         }
       }
@@ -621,12 +624,16 @@
         </div>
 
         <div class="page2-img">
-          <video
-            alt="project video 9"
-            controls=""
-            src="https://www.yaelkempf.com/mywork/projects/lanausee/Wedding.mp4?v=1"
-            loading="lazy"
-          ></video>
+          <iframe
+            width="990"
+            height="557"
+            src="https://www.youtube.com/embed/Sh9VxOgrRfM"
+            title="Wedding"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
 
         <div class="page2-text">
