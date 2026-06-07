@@ -106,16 +106,6 @@
         transform: translateZ(5rem) scale(0.95);
       }
 
-      /* .demo__img:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("../mywork/projects/republicainsocial/posterfront.png");
-        background-size: cover;
-      } */
       .demo__img:after {
         content: "";
         z-index: 2;
@@ -199,10 +189,12 @@
         object-fit: cover;
       }
 
-      .page2-img video {
+      .page2-img video,
+      .page2-img iframe {
         width: 100%;
         min-height: 100vh;
-        object-fit: cover;
+        border: 0;
+        display: block;
       }
 
       .page2-row {
@@ -408,7 +400,8 @@
           height: 50vh;
         }
 
-        .page2-img video {
+        .page2-img video,
+        .page2-img iframe {
           min-height: 50vh;
         }
       }
@@ -474,12 +467,12 @@
           </div>
 
           <div class="row-img">
-            <img alt="" src="../images/lanausee/1.webp?v=1" />
+            <img loading="lazy" decoding="async" alt="La Nausée installation image 1" src="../images/lanausee/1.webp?v=1" />
           </div>
         </div>
 
         <div class="page2-img mt">
-          <img alt="" src="../images/lanausee/2.webp?v=1" />
+          <img loading="lazy" decoding="async" alt="La Nausée installation image 2" src="../images/lanausee/2.webp?v=1" />
         </div>
 
         <div class="page2-text">
@@ -621,12 +614,16 @@
         </div>
 
         <div class="page2-img">
-          <video
-            alt="project video 9"
-            controls=""
-            src="https://www.yaelkempf.com/mywork/projects/lanausee/Wedding.mp4?v=1"
-            loading="lazy"
-          ></video>
+          <iframe
+            width="990"
+            height="557"
+            src="https://www.youtube.com/embed/Sh9VxOgrRfM"
+            title="Wedding"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
 
         <div class="page2-text">
