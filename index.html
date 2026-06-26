@@ -16,6 +16,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+  outline: 1px solid red;
       }
 
       html {
@@ -117,8 +118,10 @@
       }
 
       @media screen and (max-width: 576px) {
-        #futterbly {
-          display: none;
+        #futter-cont #futterbly {
+          position: relative;
+          margin-top: 3em;
+          width: 200px;
         }
 
         #greeting {
@@ -619,6 +622,11 @@
     </div>
   </body>
   <script>
+    document.querySelectorAll("*").forEach(el => {
+  if (el.scrollWidth > document.documentElement.clientWidth) {
+    console.log(el, el.scrollWidth);
+  }
+});
     document.addEventListener("DOMContentLoaded", () => {
       const greetingEl = document.getElementById("greeting");
       const menuEl = document.querySelector(".hidden-menu");

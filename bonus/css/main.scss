@@ -166,6 +166,7 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
+        z-index: 10;
 
         .speaker {
             width: auto;
@@ -209,6 +210,14 @@
             &:hover .dog-necklace-img {
                 opacity: 0; // Show the necklace on hover
             }
+
+            &.touch-active .dog-necklace-gif {
+                opacity: 1;
+            }
+
+            &.touch-active .dog-necklace-img {
+                opacity: 0;
+            }
         }
 
 
@@ -226,6 +235,7 @@
         width: 8rem;
         top: 0%;
         right: 25%;
+        z-index: 5;
 
         .window-box {
             position: relative;
@@ -245,11 +255,12 @@
         width: 15rem;
         top: 5%;
         right: 2%;
-
+        z-index: 3;
 
         .cars-box {
             position: relative;
-            height: 60vh;
+            max-height: 50vh;
+            overflow: hidden;
 
             .nest {
                 position: absolute;
@@ -308,10 +319,9 @@
     .box6 {
         position: absolute;
         width: 9rem;
-        top: 0%;
-        right: 42%;
         top: 20%;
-
+        right: 42%;
+        z-index: 8;
 
         .horse-box {
             position: relative;
@@ -2040,7 +2050,7 @@
 @media(max-width:460px) {
     .container {
         position: relative;
-        height: 90vh;
+        height: 100vh;
         max-width: 100%;
 
         .box {
@@ -2060,7 +2070,7 @@
 
                 .heart {
                     height: auto;
-                    width: 3rem;
+                    width: 4rem;
                     transition: transform 1s ease-in-out;
 
                     &:hover {
@@ -2075,7 +2085,7 @@
 
         .box1 {
             position: absolute;
-            width: 20rem;
+            width: 25rem;
             top: 35%;
 
 
@@ -2085,14 +2095,14 @@
 
                 .table {
                     width: auto;
-                    height: 170px;
+                    height: 210px;
                 }
 
                 .fish {
                     position: absolute;
-                    top: -25%;
-                    left: 10%;
-                    height: 65px;
+                    top: -23%;
+                    left: 10.5%;
+                    height: 76px;
                     width: auto;
                     cursor: pointer
                 }
@@ -2100,8 +2110,8 @@
                 .lamp {
                     position: absolute;
                     left: 22%;
-                    top: -18% !important;
-                    height: 50px;
+                    top: -17% !important;
+                    height: 57px;
                     width: auto;
                     cursor: pointer
                 }
@@ -2110,7 +2120,7 @@
                     position: absolute;
                     left: 40%;
                     top: -14%;
-                    height: 20px;
+                    height: 25px;
                     width: auto;
                     cursor: pointer;
 
@@ -2121,9 +2131,9 @@
 
                 .frame {
                     position: absolute;
-                    right: 49%;
-                    top: 6%;
-                    height: 35px;
+                    right: 50%;
+                    top: 9%;
+                    height: 41px;
                     width: auto;
                     cursor: pointer
                 }
@@ -2132,7 +2142,7 @@
                     position: absolute;
                     right: 53%;
                     top: 38%;
-                    height: 25px;
+                    height: 30px;
                     width: auto;
                     cursor: pointer
                 }
@@ -2141,7 +2151,7 @@
                     position: absolute;
                     left: 23%;
                     top: 23%;
-                    height: 40px;
+                    height: 48px;
                     width: auto;
                     cursor: pointer;
                 }
@@ -2150,7 +2160,7 @@
                     position: absolute;
                     left: 4%;
                     bottom: 18%;
-                    height: 80px;
+                    height: 97px;
                     width: auto;
                     cursor: pointer
                 }
@@ -2158,8 +2168,8 @@
                 .cartoondhl {
                     position: absolute;
                     right: 55%;
-                    bottom: -25%;
-                    height: 60px;
+                    bottom: -41%;
+                    height: 100px;
                     width: auto;
                     cursor: pointer
                 }
@@ -2170,7 +2180,7 @@
         .box2 {
             position: absolute;
             width: 15rem;
-            height: 70vh;
+            height: 21vh;
             top: 0%;
             left: 0%;
 
@@ -2201,8 +2211,8 @@
 
         .box3 {
             position: absolute;
-            width: 25rem;
-            bottom: 0%;
+            width: 20rem;
+            bottom: 1%;
             left: 10% !important;
             display: flex;
             justify-content: center;
@@ -2210,7 +2220,7 @@
 
             .speaker {
                 width: auto;
-                height: 80px;
+                height: 150px;
                 cursor: pointer
             }
 
@@ -2220,7 +2230,7 @@
 
                 .dog {
                     width: auto;
-                    height: 220px;
+                    height: 300px;
                 }
 
                 .dog-necklace-gif {
@@ -2256,7 +2266,7 @@
 
 
             .chicken {
-                height: 80px;
+                height: 150px;
                 width: auto;
                 cursor: pointer
             }
@@ -2283,7 +2293,7 @@
 
         .box5 {
             position: absolute;
-            width: 15rem;
+            width: 18rem;
             top: 10%;
             right: 0%;
 
@@ -2350,7 +2360,7 @@
             position: absolute;
             width: 9rem;
             right: 0%;
-            top: 39%;
+            top: 42%;
 
 
             .horse-box {
@@ -2358,7 +2368,7 @@
 
                 .horse {
                     width: auto;
-                    height: 150px !important;
+                    height: 220px !important;
                     position: absolute;
                     right: 0%;
                 }
@@ -2376,13 +2386,13 @@
 @media(max-width:430px) {
     .container {
         position: relative;
-        height: 80vh;
+        height: 100vh;
         max-width: 100%;
 
         .box5 {
             position: absolute;
-            width: 15rem;
-            top: 5%;
+            width: 18rem;
+            top: 10%;
             right: 0%;
 
 
@@ -2394,7 +2404,7 @@
                     position: absolute;
                     right: 15%;
                     top: 18%;
-                    height: 90px;
+                    height: 100px;
                     width: auto;
 
                     &:hover {
@@ -2406,7 +2416,7 @@
                     position: absolute;
                     right: 38%;
                     top: 27%;
-                    height: 35px;
+                    height: 45px;
                     width: auto;
                     transition: transform 100ms ease-in;
                     cursor: pointer !important;
@@ -2421,7 +2431,7 @@
                     position: absolute;
                     right: 33%;
                     top: 32%;
-                    height: 35px;
+                    height: 45px;
                     width: auto;
                     cursor: pointer;
                 }
@@ -2430,7 +2440,7 @@
                     position: absolute;
                     right: 3%;
                     top: 34%;
-                    height: 50px;
+                    height: 60px;
                     width: auto;
                     transition: transform 3s ease-in-out;
 
@@ -2449,7 +2459,7 @@
             position: absolute;
             width: 9rem;
             right: 0%;
-            top: 44%;
+            top: 43%;
 
 
             .horse-box {
@@ -2457,7 +2467,7 @@
 
                 .horse {
                     width: auto;
-                    height: 150px !important;
+                    height: 220px !important;
                     position: absolute;
                     right: 0%;
                 }
@@ -2478,11 +2488,79 @@
         height: 100vh !important;
         max-width: 100%;
 
+        .box1 {
+            z-index: 5;
+        }
+
+        .box3 {
+            position: absolute;
+            width: 16rem;
+            bottom: 1%;
+            left: 10% !important;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+
+            .speaker {
+                width: auto;
+                height: 150px;
+                cursor: pointer
+            }
+
+            .dog-container {
+                position: relative;
+                cursor: pointer;
+
+                .dog {
+                    width: auto;
+                    height: 250px;
+                }
+
+                .dog-necklace-gif {
+                    height: 40px;
+                    width: auto;
+                    position: absolute;
+                    top: 32%;
+                    left: 40%;
+                    opacity: 0; // Initially, set opacity to 0 (hidden)
+                    transition: opacity 0.1s ease; // Add transition for smooth effect
+                }
+
+                .dog-necklace-img {
+                    height: 40px;
+                    width: auto;
+                    position: absolute;
+                    top: 32%;
+                    left: 40%;
+                    opacity: 1; // Initially, set opacity to 0 (hidden)
+                    transition: opacity 0.1s ease; // Add transition for smooth effect
+                }
+
+                &:hover .dog-necklace-gif {
+                    opacity: 1; // Show the necklace on hover
+                }
+
+                &:hover .dog-necklace-img {
+                    opacity: 0; // Show the necklace on hover
+                }
+            }
+
+
+
+
+            .chicken {
+                height: 120px;
+                width: auto;
+                cursor: pointer
+            }
+        }
+
         .box5 {
             position: absolute;
             width: 15rem;
             top: 10%;
             right: 0%;
+            z-index: 1;
 
 
             .cars-box {
