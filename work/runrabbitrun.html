@@ -374,21 +374,17 @@
   </div>
 
   <div class="modalVideo is-hide" id="firstVid">
-    <iframe width="80%" height="80%" data-src="https://www.youtube.com/embed/_67AFJffCxI?autoplay=1&rel=0&modestbranding=1&vq=highres"
-      title="Race 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div id="player1" style="width: 80%; height: 80%;"></div>
     <a class="modal-close js-modal-close">X</a>
   </div>
 
-  <div width="80%" height="80%" class="modalVideo is-hide" id="secondVid">
-    <iframe data-src="https://www.youtube.com/embed/keeBM8pip5g?autoplay=1&rel=0&modestbranding=1&vq=highres"
-      title="Race 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <div class="modalVideo is-hide" id="secondVid">
+    <div id="player2" style="width: 80%; height: 80%;"></div>
     <a class="modal-close js-modal-close">X</a>
   </div>
 
   <div class="modalVideo is-hide" id="thirdVid">
-    <iframe width="80%" height="80%" src="https://www.youtube.com/embed/g7JZQAB21DE?vq=highres" title="Night Mode" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div id="player3" style="width: 80%; height: 80%;"></div>
     <a class="modal-close js-modal-close">X</a>
   </div>
 
@@ -494,43 +490,78 @@
     }
   </script>
 
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
+    let player1, player2, player3;
+    const HIDE_CLASS = "is-hide";
+
+    function onYouTubeIframeAPIReady() {
+      player1 = new YT.Player('player1', {
+        height: '100%',
+        width: '100%',
+        videoId: '_67AFJffCxI',
+        playerVars: {
+          'autoplay': 0,
+          'rel': 0,
+          'modestbranding': 1,
+          'controls': 1
+        }
+      });
+
+      player2 = new YT.Player('player2', {
+        height: '100%',
+        width: '100%',
+        videoId: 'keeBM8pip5g',
+        playerVars: {
+          'autoplay': 0,
+          'rel': 0,
+          'modestbranding': 1,
+          'controls': 1
+        }
+      });
+
+      player3 = new YT.Player('player3', {
+        height: '100%',
+        width: '100%',
+        videoId: 'g7JZQAB21DE',
+        playerVars: {
+          'autoplay': 0,
+          'rel': 0,
+          'modestbranding': 1,
+          'controls': 1
+        }
+      });
+    }
+
     $(function () {
-      var $modal = $("#firstVid");
-      var HIDE_CLASS = "is-hide";
-      let modalVideo = $("#firstVid iframe");
       $("#race-1").on("click", function () {
-        $modal.removeClass(HIDE_CLASS);
-        modalVideo.attr("src", modalVideo.data("src"));
+        $("#firstVid").removeClass(HIDE_CLASS);
+        if (player1) player1.playVideo();
       });
 
       $("#firstVid .js-modal-close").on("click", function () {
-        $modal.addClass(HIDE_CLASS);
-        modalVideo.attr("src", "");
+        $("#firstVid").addClass(HIDE_CLASS);
+        if (player1) player1.stopVideo();
       });
 
-      var $modal1 = $("#secondVid");
-      let modalVideo1 = $("#secondVid iframe");
       $("#race-2").on("click", function () {
-        $modal1.removeClass(HIDE_CLASS);
-        modalVideo1.attr("src", modalVideo1.data("src"));
+        $("#secondVid").removeClass(HIDE_CLASS);
+        if (player2) player2.playVideo();
       });
 
       $("#secondVid .js-modal-close").on("click", function () {
-        $modal1.addClass(HIDE_CLASS);
-        modalVideo1.attr("src", "");
+        $("#secondVid").addClass(HIDE_CLASS);
+        if (player2) player2.stopVideo();
       });
 
-      var $modal2 = $("#thirdVid");
-      let modalVideo2 = $("#thirdVid iframe");
       $("#night-mode").on("click", function () {
-        $modal2.removeClass(HIDE_CLASS);
-        modalVideo2.attr("src", modalVideo2.data("src"));
+        $("#thirdVid").removeClass(HIDE_CLASS);
+        if (player3) player3.playVideo();
       });
 
       $("#thirdVid .js-modal-close").on("click", function () {
-        $modal2.addClass(HIDE_CLASS);
-        modalVideo2.attr("src", "");
+        $("#thirdVid").addClass(HIDE_CLASS);
+        if (player3) player3.stopVideo();
       });
     });
   </script>
