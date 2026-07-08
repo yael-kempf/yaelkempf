@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
         audioEl.pause();
         audioEl.currentTime = 0;
       }
+      isPlaying = false;
     } else {
       // Play random sound
       var shuffled = soundsData.slice();
@@ -81,7 +82,17 @@ document.addEventListener("DOMContentLoaded", function() {
       currentSound = shuffled[0];
       var audio = document.getElementById("sound" + currentSound);
       if (audio) {
-        audio.play();
+        var playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function(error) {
+            console.error('Audio playback failed:', error);
+            isPlaying = false;
+          }).then(function() {
+            isPlaying = true;
+          });
+        } else {
+          isPlaying = true;
+        }
       }
 
       // Trigger all GIF animations
@@ -103,11 +114,24 @@ document.addEventListener("DOMContentLoaded", function() {
       if (heart) heart.style.animation = "rotateAnimation 5s linear infinite";
       if (music) music.style.animation = "rotateAnimation 5s linear infinite";
     }
-    isPlaying = !isPlaying;
   }
 
-  speakerElement.addEventListener("click", toggleSound);
-  speakerElement.addEventListener("touchstart", toggleSound);
+speakerElement.addEventListener("touchend", function(e) {
+
+
+    var audio = document.getElementById("sound1");
+
+    audio.play()
+        .catch(console.error);
+
+}, { passive: false });
+
+  // Unlock audio context on first interaction
+  document.addEventListener("click", function() {
+    var dummy = new Audio();
+    dummy.src = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==";
+    dummy.play().catch(function() {});
+  }, { once: true });
 });
 
 document.addEventListener("DOMContentLoaded", function() {
