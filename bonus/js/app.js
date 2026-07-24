@@ -84,11 +84,11 @@ document.addEventListener("DOMContentLoaded", function() {
       if (audio) {
         var playPromise = audio.play();
         if (playPromise !== undefined) {
-          playPromise.catch(function(error) {
+          playPromise.then(function() {
+            isPlaying = true;
+          }).catch(function(error) {
             console.error('Audio playback failed:', error);
             isPlaying = false;
-          }).then(function() {
-            isPlaying = true;
           });
         } else {
           isPlaying = true;
@@ -116,15 +116,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-speakerElement.addEventListener("touchend", function(e) {
-
-
-    var audio = document.getElementById("sound1");
-
-    audio.play()
-        .catch(console.error);
-
-}, { passive: false });
+  // "click" fires on mouse click and also after a tap on mobile,
+  // and counts as a user gesture so audio.play() is allowed on both.
+  speakerElement.addEventListener("click", toggleSound);
 
   // Unlock audio context on first interaction
   document.addEventListener("click", function() {
