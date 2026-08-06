@@ -544,7 +544,7 @@
 
             .speaker {
                 width: auto;
-                height: 250px;
+                height: 24vh;
                 cursor: pointer
             }
 
@@ -554,11 +554,11 @@
 
                 .dog {
                     width: auto;
-                    height: 550px !important;
+                    height: 52vh !important;
                 }
 
                 .dog-necklace-gif {
-                    height: 90px;
+                    height: 9vh;
                     width: auto;
                     position: absolute;
                     top: 32%;
@@ -568,7 +568,7 @@
                 }
 
                 .dog-necklace-img {
-                    height: 90px;
+                    height: 9vh;
                     width: auto;
                     position: absolute;
                     top: 32%;
@@ -590,7 +590,7 @@
 
 
             .chicken {
-                height: 250px;
+                height: 24vh;
                 width: auto;
                 cursor: pointer
             }
@@ -625,6 +625,7 @@
             .cars-box {
                 position: relative;
                 height: 60vh;
+                overflow: visible;
 
                 .nest {
                     position: absolute;
@@ -640,8 +641,8 @@
 
                 .car1 {
                     position: absolute;
-                    right: 68%;
-                    top: 39%;
+                    right: 225px;
+                    top: 205px;
                     height: 105px;
                     transition: transform 100ms ease-in;
                     cursor: pointer !important;
@@ -654,8 +655,8 @@
 
                 .car2 {
                     position: absolute;
-                    right: 58%;
-                    top: 48%;
+                    right: 160px;
+                    top: 265px;
                     height: 105px;
                     width: auto;
                     cursor: pointer;
@@ -663,8 +664,8 @@
 
                 .car3 {
                     position: absolute;
-                    right: 3%;
-                    top: 55%;
+                    right: 10px;
+                    top: 330px;
                     height: 120px;
                     width: auto;
                     transition: transform 3s ease-in-out;
@@ -873,7 +874,7 @@
 
             .speaker {
                 width: auto;
-                height: 210px;
+                height: 24vh;
                 cursor: pointer
             }
 
@@ -883,11 +884,11 @@
 
                 .dog {
                     width: auto;
-                    height: 480px !important;
+                    height: 52vh !important;
                 }
 
                 .dog-necklace-gif {
-                    height: 90px;
+                    height: 9vh;
                     width: auto;
                     position: absolute;
                     top: 32%;
@@ -897,7 +898,7 @@
                 }
 
                 .dog-necklace-img {
-                    height: 90px;
+                    height: 9vh;
                     width: auto;
                     position: absolute;
                     top: 32%;
@@ -916,7 +917,7 @@
             }
 
             .chicken {
-                height: 210px;
+                height: 24vh;
                 width: auto;
                 cursor: pointer
             }
@@ -951,6 +952,7 @@
             .cars-box {
                 position: relative;
                 height: 60vh;
+                overflow: visible;
 
                 .nest {
                     position: absolute;
@@ -966,8 +968,8 @@
 
                 .car1 {
                     position: absolute;
-                    right: 68%;
-                    top: 39%;
+                    right: 225px;
+                    top: 205px;
                     height: 105px;
                     transition: transform 100ms ease-in;
                     cursor: pointer !important;
@@ -980,8 +982,8 @@
 
                 .car2 {
                     position: absolute;
-                    right: 58%;
-                    top: 48%;
+                    right: 160px;
+                    top: 265px;
                     height: 105px;
                     width: auto;
                     cursor: pointer;
@@ -989,8 +991,8 @@
 
                 .car3 {
                     position: absolute;
-                    right: 3%;
-                    top: 55%;
+                    right: 10px;
+                    top: 330px;
                     height: 120px;
                     width: auto;
                     transition: transform 3s ease-in-out;
@@ -1194,7 +1196,7 @@
 
             .speaker {
                 width: auto;
-                height: 150px;
+                height: 21vh;
                 cursor: pointer
             }
 
@@ -1204,11 +1206,11 @@
 
                 .dog {
                     width: auto;
-                    height: 350px !important;
+                    height: 46vh !important;
                 }
 
                 .dog-necklace-gif {
-                    height: 65px;
+                    height: 8vh;
                     width: auto;
                     position: absolute;
                     top: 32%;
@@ -1218,7 +1220,7 @@
                 }
 
                 .dog-necklace-img {
-                    height: 65px;
+                    height: 8vh;
                     width: auto;
                     position: absolute;
                     top: 32%;
@@ -1237,7 +1239,7 @@
             }
 
             .chicken {
-                height: 150px;
+                height: 21vh;
                 width: auto;
                 cursor: pointer
             }
@@ -1288,8 +1290,8 @@
 
                 .car1 {
                     position: absolute;
-                    right: 75%;
-                    top: 32%;
+                    right: 160px;
+                    top: 150px;
                     height: 76px;
                     transition: transform 100ms ease-in;
                     cursor: pointer !important;
@@ -1301,8 +1303,8 @@
 
                 .car2 {
                     position: absolute;
-                    right: 60%;
-                    top: 42%;
+                    right: 120px;
+                    top: 200px;
                     height: 76px;
                     width: auto;
                     cursor: pointer;
@@ -1310,8 +1312,8 @@
 
                 .car3 {
                     position: absolute;
-                    right: 3%;
-                    top: 55%;
+                    right: 7px;
+                    top: 240px;
                     height: 87px;
                     width: auto;
                     transition: transform 3s ease-in-out;

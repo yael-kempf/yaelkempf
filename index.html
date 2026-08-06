@@ -569,23 +569,24 @@
       <div id="subscribe-box">
         <div id="subscribe-inner">
           <p class="subscribe-title">Leave your trace</p>
-          <form
-            id="subscribe-form"
-            action="https://docs.google.com/forms/d/e/1FAIpQLScZkqRceJWOxVr8GZUtvZcswCj4-5v08U-w3S2xyK-_nWgduA/formResponse"
-            method="POST"
-            target="hidden_iframe"
-            onsubmit="submitted = true"
-          >
+          <form id="subscribe-form">
             <input
               type="email"
               id="email"
-              name="entry.1332847598"
               placeholder="your@email.com"
               required
             />
+            <input
+              type="text"
+              id="subscribe-website"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              style="position: absolute; left: -9999px; opacity: 0; height: 0"
+              aria-hidden="true"
+            />
             <button type="submit">Send</button>
           </form>
-          <iframe name="hidden_iframe" style="display: none"></iframe>
           <p id="subscribe-success" class="hidden">I’ll write to you soon 💌</p>
         </div>
       </div>
@@ -761,6 +762,7 @@
     /* Subscribe box logic */
     function openSubscribe() {
       subscribeBox.classList.add("active");
+      subscribeOpenedAt = Date.now();
     }
 
     function closeSubscribe() {
@@ -771,8 +773,26 @@
       .getElementById("subscribe-trigger")
       .addEventListener("click", openSubscribe);
 
-    let submitted = false;
-    document.getElementById("subscribe-form").addEventListener("submit", () => {
+    // Form endpoint kept out of the static HTML so crawlers can't harvest it
+    const SF_ID = "MUZBSXBRTFNjWmtxUmNlSldPeFZyOEdaVXR2WmNzd0NqNC01djA4VS13M1MyeHlLLV9uV2dkdUE=";
+    const SF_ENTRY = "ZW50cnkuMTMzMjg0NzU5OA==";
+    let subscribeOpenedAt = 0;
+
+    document.getElementById("subscribe-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // Honeypot filled or submitted less than 3s after opening → bot
+      const honeypot = document.getElementById("subscribe-website").value;
+      const tooFast = Date.now() - subscribeOpenedAt < 3000;
+      if (!honeypot && !tooFast) {
+        const data = new FormData();
+        data.append(atob(SF_ENTRY), document.getElementById("email").value);
+        fetch(
+          "https://docs.google.com/forms/d/e/" + atob(SF_ID) + "/formResponse",
+          { method: "POST", mode: "no-cors", body: data }
+        );
+      }
+
       setTimeout(() => {
         document.querySelector("#subscribe-form").style.display = "none";
         document.getElementById("subscribe-success").classList.remove("hidden");
