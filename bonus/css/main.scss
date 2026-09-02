@@ -3391,6 +3391,7 @@ body.has-night {
 // =============================window styling=================================
 .custom-window {
     position: absolute;
+    z-index: 1000;
     border: 1px solid #ccc;
     background-color: #fff;
     cursor: move;
