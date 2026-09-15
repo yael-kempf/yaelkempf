@@ -491,6 +491,190 @@
         right: 15px;
         cursor: pointer;
       }
+
+      /* Portfolio book — fixed bottom left, click downloads the PDF */
+      .books__item {
+        position: fixed;
+        left: 28px;
+        bottom: 28px;
+        z-index: 100;
+        display: block;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .books__container {
+        position: relative;
+        width: 140px;
+      }
+
+      .books__cover {
+        position: relative;
+        will-change: transform;
+      }
+
+      /* Back cover: 96% with 2% margin */
+      .books__back-cover {
+        position: absolute;
+        width: 96%;
+        height: 96%;
+        top: 2%;
+        left: 2%;
+        background: #111;
+        border-radius: 0 6px 6px 0;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        z-index: -10;
+      }
+
+      /* Paper container */
+      .books__inside {
+        position: absolute;
+        width: 90%;
+        height: 94%;
+        top: 3%;
+        left: 5%;
+        z-index: 0;
+      }
+
+      .books__page {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 98%;
+        height: 100%;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 0 6px 6px 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        transform: translateX(0);
+        transform-origin: right center;
+        transition: transform 0.7s cubic-bezier(0.45, 0, 0.55, 1);
+        z-index: -5;
+      }
+
+      /* Front cover image */
+      .books__image {
+        line-height: 0;
+        position: relative;
+        border-radius: 2px 6px 6px 2px;
+        box-shadow:
+          0 10px 20px rgba(0, 0, 0, 0.15),
+          0 30px 45px rgba(0, 0, 0, 0.12),
+          0 60px 80px rgba(0, 0, 0, 0.1);
+        transform: perspective(2000px) rotateY(0deg) translateX(0) scaleX(1);
+        transform-style: preserve-3d;
+        transform-origin: left center;
+        will-change: transform;
+        z-index: 10;
+        transition:
+          transform 0.7s cubic-bezier(0.25, 1, 0.5, 1),
+          box-shadow 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .books__image img {
+        width: 100%;
+        height: auto;
+        border-radius: 2px 6px 6px 2px;
+      }
+
+      .books__effect {
+        position: absolute;
+        width: 20px;
+        height: 100%;
+        margin-left: 16px;
+        top: 0;
+        border-left: 2px solid rgba(0, 0, 0, 0.06);
+        background-image: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform-origin: left center;
+        transition: margin-left 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 5;
+        pointer-events: none;
+      }
+
+      .books__light {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 2px 6px 6px 2px;
+        background-image: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.5) 100%
+        );
+        top: 0;
+        left: 0;
+        opacity: 0.1;
+        transform: rotateY(0deg);
+        transform-origin: left center;
+        transition:
+          transform 0.7s cubic-bezier(0.25, 1, 0.5, 1),
+          opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 4;
+        pointer-events: none;
+        mix-blend-mode: overlay;
+      }
+
+      /* Open-book state: hover on pointer devices, focus for keyboard */
+      .books__item:hover .books__image,
+      .books__item:focus-visible .books__image {
+        transform: perspective(2000px) rotateY(-12deg) translateX(-6px)
+          scaleX(0.96);
+        box-shadow:
+          10px 10px 20px rgba(0, 0, 0, 0.25),
+          20px 20px 40px rgba(0, 0, 0, 0.2),
+          40px 40px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .books__item:hover .books__light,
+      .books__item:focus-visible .books__light {
+        opacity: 0.2;
+        transform: rotateY(-12deg);
+      }
+
+      .books__item:hover .books__effect,
+      .books__item:focus-visible .books__effect {
+        margin-left: 10px;
+      }
+
+      .books__item:hover .books__page:nth-child(1),
+      .books__item:focus-visible .books__page:nth-child(1) {
+        transform: translateX(4px);
+      }
+
+      .books__item:hover .books__page:nth-child(2),
+      .books__item:focus-visible .books__page:nth-child(2) {
+        transform: translateX(2px);
+      }
+
+      .books__item:focus-visible {
+        outline: 2px solid #eb3681;
+        outline-offset: 6px;
+        border-radius: 4px;
+      }
+
+      @media screen and (max-width: 576px) {
+        .books__item {
+          left: 14px;
+          bottom: 18px;
+        }
+
+        .books__container {
+          width: 88px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .books__image,
+        .books__light,
+        .books__effect,
+        .books__page {
+          transition: none;
+        }
+      }
     </style>
 
     <link href="css/animations.css?v=3.6" rel="stylesheet" />
@@ -591,6 +775,39 @@
         </div>
       </div>
     </main>
+
+    <!-- Portfolio book: click downloads the PDF (same-origin file + download attr) -->
+    <a
+      class="books__item"
+      href="portfolio/yael-kempf-portfolio.pdf"
+      download="Yael-Kempf-Portfolio.pdf"
+      type="application/pdf"
+      title="Download my portfolio"
+      aria-label="Download Yaël Kempf's portfolio as a PDF"
+    >
+      <div class="books__container">
+        <div class="books__cover">
+          <div class="books__back-cover"></div>
+          <div class="books__inside">
+            <div class="books__page"></div>
+            <div class="books__page"></div>
+            <div class="books__page"></div>
+          </div>
+          <div class="books__image">
+            <img
+              src="images/coverbookportfolio.png"
+              alt="Portfolio – Yaël Kempf"
+              width="1018"
+              height="1545"
+              decoding="async"
+            />
+            <div class="books__effect"></div>
+            <div class="books__light"></div>
+          </div>
+        </div>
+      </div>
+    </a>
+
     <div id="wa-fab" onclick="toggleChat()" title="Message Yaël">
       <div id="wa-notif"></div>
       <svg viewBox="0 0 24 24" fill="none" style="width: 28px; height: 28px">
